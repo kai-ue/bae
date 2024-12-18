@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="description" content="Manufacturing metal stamping parts and tooling dies for automotive (car).">
+	<meta name="keywords" content="metal stamping, tooling dies, manufacture, automotive car parts">
+	<title>BAE - Brother Auto Parts & Engineering | Stamping, Tooling & Die in Bangkok/ EEC</title>
+	<link rel="icon" href="./favicon_BAE.svg" type="image/x-icon">
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel='stylesheet'href='https://fonts.googleapis.com/css?family=Cairo'>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="C:\Users\kaika\Documents\BAE\Website\stylesheet.css">
+	
+	<script>
+		function preloadContent(){
+			const components = [
+				{ url: '/header.html', id: 'header' },
+				{ url: '/footer.html', id: 'footer' }
+			];
+
+			components.forEach(component => {
+				fetch(component.url)
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById(component.id).innerHTML = data;
+				});
+			});
+		}
+
+	preloadContent();
+	</script>
+
+   
+	<style>
+		.video-background{
+			position: relative;
+			width: 100%;
+			height: 100vh; /* ビューポートの高さに合わせて調整 */
+			overflow: hidden;
+			background-color: green;
+		}
+		.video-background video {
+			position: absolute;
+    		top: 0;
+    		left: 0;
+    		width: 100%;
+    		height: 100vh;
+    		object-fit: cover;
+		}
+		
+		
+	</style>
+</head>
+<body>
+<header id="header"><nav><ul class="navbar-nav" style="flex-direction: row;"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#products">Products</a></li><li><a href="#csr">CSR</a></li><li><a href="#contact">Contact</a></li></ul></nav></header>
+<main>
+
+<section id="hero">
+	<figure class="video-background">
+		<video autoplay loop muted playsinline>
+			<source src="C:\Users\kaika\Documents\BAE\Website\ref\a.mp4" type="video/mp4">
+			<img src="C:\Users\kaika\Documents\BAE\Website\ref\a.mp4" alt="Overview of our business">
+		</video>
+		<span>
+			<h1>Die design to Mass production: One-stop Stamping solution</h1>
+			<p>With 30+ years of proven experience in Thai automotive industry, BAE meets all your needs for stamping parts.</p>
+			<a href="#contact" class="cta_btn">Request a Quote</a>
+		</span>
+	</figure>
+</section>
+<section class="container p-5" id="home-about">
+	<div class="row p-4">
+		
+		<div class="col-md-6">
+			<h2>About Us</h2>
+			<p>Brother Auto Parts & Engineering (BAE) is a leading first-tier manufacturer of stamping parts, proudly serving the Thai automotive industry for over 30 years.</p>
+			<p>With decades of expertise, we have developed technology proficiency, experience, and knowledge that consistently meet the high standards set by automotive makers. Our focus areas include quality control, cost control, and project management, ensuring we deliver exactly what our clients expect.</p>
+			<a href="#services" class="learn-more">Learn More</a>
+		</div>
+		<div class="col-md-6" style="width: 50%; border: 5px solid #000;">
+		</div>
+	</div>
+</section>
+
+<section class="container-fluid p-0 text-center" id="home-products">
+	<h2>Products & Services</h2>
+		
+	<script>
+		const $sec = document.getElementById( "home-products" );
+		const $dir_path = "C:\\Users\\kaika\\Documents\\BAE\\Website\\img\\img-index\\col_3_img-"; // Escape backslashes properly
+		const $data = [
+			{ shop: 'Tooling & Die', file_name: 'tooling_die.jpg' },
+			{ shop: 'Stamping', file_name: 'stamping.jpg' },
+			{ shop: 'Welding', file_name: 'welding.jpg' },
+			{ shop: 'Plating', file_name: 'plating.jpg' },
+		];
+		function populateArray() {
+			let $parent = '<div class="row">';
+			$data.forEach(value => {
+				$parent += `
+				<div class="col-lg-3 col-md-6 p-1px">
+					<a class="pstn_rel_dis_blck" href="#home-products" title="${value.shop}">
+						<img class="img-fluid" src="${$dir_path}${value.file_name}" alt="${value.shop}">
+						<div class="fill_tile">
+							<h3>${value.shop}</h3>
+						</div>
+					</a>
+				</div>
+				`;
+			});
+
+			$parent += '</div>';
+			$sec.innerHTML += $parent;
+		}
+
+		// Call the function to populate the content
+		populateArray();
+	</script>
+</section>
+
+<section class="container p-3 text-center" id="home-gal">
+	<h2>Products Gallery</h2>
+	
+		<script>
+			const $sec = document.getElementById( "home-products" );
+			const $dir_path = "C:\\Users\\kaika\\Documents\\BAE\\Website\\img\\img-index\\col_3_img-"; // Escape backslashes properly
+			const $data = [
+				{ shop: 'Tooling & Die', file_name: 'tooling_die.jpg' },
+				{ shop: 'Stamping', file_name: 'stamping.jpg' },
+				{ shop: 'Welding', file_name: 'welding.jpg' },
+				{ shop: 'Plating', file_name: 'plating.jpg' },
+			];
+
+			function populateArray() {
+				let $parent = '<div class="row">';
+				$data.forEach(value => {
+					$parent += `
+					<div class="col-lg-3 col-md-6 p-1px">
+						<a class="pstn_rel_dis_blck" href="#home-products" title="${value.shop}">
+							<img class="img-fluid" src="${$dir_path}${value.file_name}" alt="${value.shop}">
+							<div class="fill_tile">
+								<h3>${value.shop}</h3>
+							</div>
+						</a>
+					</div>
+					`;
+				});
+
+				$parent += '</div>';
+				$sec.innerHTML += $parent;
+			}
+
+			// Call the function to populate the content
+			populateArray();
+		</script>
+</section>
+
+
+<!-- Case Studies / Projects -->
+<section class="container" id="projects">
+	<h2>Successful Projects</h2>
+	<div class="project-item">
+		<h3>Automotive Parts for XYZ Corp</h3>
+		<p>We provided precision metal stamping and tooling solutions for XYZ Corp, improving production efficiency by 20%.</p>
+	</div>
+	<div class="project-item">
+		<h3>Aerospace Components for ABC Aerospace</h3>
+		<p>We manufactured complex aerospace components, meeting the highest standards of precision and durability.</p>
+	</div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="container" id="why-us">
+	<h2>Why Choose ABC Manufacturing?</h2>
+	<ul>
+		<li>State-of-the-art equipment</li>
+		<li>ISO-certified quality control</li>
+		<li>Custom solutions tailored to your needs</li>
+		<li>Fast turnaround times and on-time delivery</li>
+	</ul>
+</section>
+
+<!-- Testimonials -->
+<section class="container" id="testimonials">
+	<h2>What Our Clients Say</h2>
+	<blockquote>"ABC Manufacturing delivered the highest quality tooling for our new product line, helping us reduce costs and improve efficiency." – Client Name, Industry</blockquote>
+	<blockquote>"Their customer service and precision engineering are second to none. Highly recommend!" – Another Client</blockquote>
+</section>
+
+<!-- Certifications -->
+<section class="container" id="certifications">
+	<h2>Certifications & Quality Assurance</h2>
+	<p>We are ISO 9001 certified, ensuring that all our processes meet the highest standards of quality and reliability.</p>
+</section>
+
+<!-- Contact Us -->
+<section class="container" id="contact">
+	<h2>Get a Quote or Contact Us</h2>
+	<form action="/contact" method="post">
+		<label for="name">Your Name:</label>
+		<input type="text" id="name" name="name" required>
+		<label for="email">Your Email:</label>
+		<input type="email" id="email" name="email" required>
+		<textarea id="message" name="message" placeholder="Describe your project or request"></textarea>
+		<button type="submit">Submit</button>
+	</form>
+</section>
+
+</main>
+<footer><nav><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#products">Products</a></li><li><a href="#csr">CSR</a></li><li><a href="#contact">Contact</a></li></ul></nav></footer>
+</body>
+</html>
