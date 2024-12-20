@@ -218,6 +218,11 @@ header{
 	width: 100%;
 	position: relative;
 }
+#hero > .video-container{
+	background: url( img/img-index/hero_img.jpg );
+	background-repeat: no-repeat;
+	background-size: cover;
+}
 .video-container {
 	position: absolute;
 	top: 0;
