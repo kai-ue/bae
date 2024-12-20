@@ -175,6 +175,7 @@ header{
 	3px 3px 26px rgb(0 0 0 / 77%)
 	min-width: 180px;
 }
+.rotate-btn:hover .dropdown-menu,
 .dropdown-menu.show {
 	display: block;
 }
