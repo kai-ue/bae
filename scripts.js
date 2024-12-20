@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Populate the products section with dynamic content
 	const $sec = document.getElementById("home-products");
-	const $dir_path = "/img/img-index/col_3_img-"; // Escape backslashes properly
+	const $dir_path = "img/img-index/col_3_img-"; // Escape backslashes properly
 	const $data = [
 		{ shop: 'Tooling & Die', file_name: 'tooling_die.jpg' },
 		{ shop: 'Stamping', file_name: 'stamping.jpg' },
