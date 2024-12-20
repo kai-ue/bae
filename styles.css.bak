@@ -8,7 +8,6 @@
 }
 */
 
-
 :root{
 	--light_blue: #5389DC;
 	--font_blue: #1a4dd6;
@@ -218,6 +217,12 @@ header{
 	width: 100%;
 	position: relative;
 }
+#hero > .video-container{
+	background: url( img/img-index/hero_img.jpg );
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
 .video-container {
 	position: absolute;
 	top: 0;
@@ -227,8 +232,12 @@ header{
 	overflow: hidden;
 }
 .video-container iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
+	object-fit: cover; /* Make the video cover the area of the parent */
 	border: none;
 }
 

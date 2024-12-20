@@ -20,7 +20,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
             </li>
-            <li class="nav-item" id="li-products" style="display: flex; justify-content: center;">
+            <li class="nav-item" style="display: flex; justify-content: center;">
 				<a class="nav-link" href="#">Products</a>
 				<button id="rotateButton" class="rotate-btn">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8" viewBox="0 0 16 10" fill="none">
