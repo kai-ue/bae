@@ -8,7 +8,6 @@
 }
 */
 
-
 :root{
 	--light_blue: #5389DC;
 	--font_blue: #1a4dd6;
@@ -222,6 +221,7 @@ header{
 	background: url( img/img-index/hero_img.jpg );
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-position: center;
 }
 .video-container {
 	position: absolute;
