@@ -281,6 +281,7 @@ header{
 	transform-origin: center;
 	height: 40px;
 }
+#li-products:hover,
 .rotate-btn:hover,
 .rotate-btn.rotate-180{
 	transform: rotate(180deg);
