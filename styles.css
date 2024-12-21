@@ -69,7 +69,7 @@ h1, h2, h3{
 	transition: transform 0.5s ease-in-out;
 	width: 100%;
 }
-.carousel-images .carousel-item {
+.carousel-images .crsl-item {
 	position: relative;
 	width: 25%; /* 100% / 4 items = 25% width */
 	padding: 10px;
