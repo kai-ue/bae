@@ -201,7 +201,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		const modal = document.getElementById("imageModal");
 		modal.style.display = "none"; // Hide the modal
 	}
-
 	// Adding event listeners for modal close
 	document.getElementById("closeModal").addEventListener("click", closeModal);
 });
