@@ -277,9 +277,10 @@ header{
 	border: none;
 	cursor: pointer;
 	padding: 0;
-	transition: transform 0.4s ease; /* smooth transition for rotation */
-	width: 40px; /* Set width for visibility */
-	height: 40px; /* Set height for visibility */
+	transition: transform 0.4s ease;
+	transform-origin: center;
+	width: 40px;
+	height: 40px;
 }
 .rotate-btn:hover,
 .rotate-btn.rotate-180{
