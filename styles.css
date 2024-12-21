@@ -302,6 +302,7 @@ header{
 #hero {
 	width: 100%;
 	position: relative;
+	min-height: 300px;
 }
 #hero > .video-container{
 	background: url( img/img-index/hero_img.jpg );
@@ -404,6 +405,7 @@ header{
 @media (min-width: 769px) and (max-width: 992px) {
 	#hero {
 		height: 75vh;
+		min-height: 350px;
 	}
 }
 /* Align navbar items to the right for larger screens */
