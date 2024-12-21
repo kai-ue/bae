@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	populateArray();
 	
 	// Data arrays for carousel
-	const path_Pro_gal = "C:\\Users\\kaika\\Documents\\BAE\\Website\\ref\\img\\";
+	const path_Pro_gal = "img/img-index/img-crsl-pro_gal/";
 	const $arrProGal = [
 		{ title: 'Parts1 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
 		{ title: 'Parts2 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		{ title: 'Parts12 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
 	];
 
-	const path_Client = "C:\\Users\\kaika\\Documents\\BAE\\Website\\img\\img-index\\img-crsl-client_gal\\logo-";
+	const path_Client = "img/img-index/img-crsl-client_gal/logo-";
 	const $arrClient = [
 		{ title: 'Mitsubishi Motors (Thailand) Co., Ltd.', file_name: `${ path_Client }MMTh.svg`, link_add: 'https://www.mitsubishi-motors.co.th/th?rd=true' },
 		{ title: 'H-ONE Parts (Thailand) Co., Ltd.', file_name: `${ path_Client }H_one.png`, link_add: 'https://www.h1-co.jp/eng/' },
