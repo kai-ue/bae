@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		const container = document.getElementById(carouselId);
 		data.forEach(value => {
 			const itemDiv = document.createElement('div');
-			itemDiv.classList.add('crsl-item');
+			itemDiv.classList.add('carousel-item');
 
 			// Create <a> tag for opening the image (conditionally applied)
 			const linkElement = document.createElement('a');
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Function to move the carousel images
 	function moveSlide(step, carouselId) {
-		const slides = document.querySelectorAll(`#${carouselId} .crsl-item`);
+		const slides = document.querySelectorAll(`#${carouselId} .carousel-item`);
 		const totalSlides = slides.length;
 		let index = carouselId === 'crsl_img-pro_gal' ? index1 : index2;
 		index = (index + step + totalSlides) % totalSlides;
