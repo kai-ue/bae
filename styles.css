@@ -94,7 +94,7 @@ h1, h2, h3{
 	font-size: 16px;
 	border-radius: 5px;
 }
-	button {
+.carousel > button {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
@@ -108,7 +108,7 @@ h1, h2, h3{
 	opacity: 0.5;
 	transition: opacity 0.3s ease;
 }
-	button:hover {
+.carousel > button:hover {
 	opacity: 1;
 }
 .prev {
@@ -277,9 +277,9 @@ header{
 	border: none;
 	cursor: pointer;
 	padding: 0;
-	transition: transform 0.4s ease; /* smooth transition for rotation */
-	width: 40px; /* Set width for visibility */
-	height: 40px; /* Set height for visibility */
+	transition: transform 0.4s ease;
+	transform-origin: center;
+	height: 40px;
 }
 .rotate-btn:hover,
 .rotate-btn.rotate-180{
