@@ -92,14 +92,34 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Data arrays for carousel
 	const path_Pro_gal = "C:\\Users\\kaika\\Documents\\BAE\\Website\\ref\\img\\";
 	const $arrProGal = [
-		{ title: 'Parts1 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor	E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor	E.jpg` },
-		// More items...
+		{ title: 'Parts1 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
+		{ title: 'Parts2 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
+		{ title: 'Parts3 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
+		{ title: 'Parts4 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
+		{ title: 'Parts5 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
+		{ title: 'Parts6 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
+		{ title: 'Parts7 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
+		{ title: 'Parts8 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
+		{ title: 'Parts9 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
+		{ title: 'Parts10 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
+		{ title: 'Parts11 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
+		{ title: 'Parts12 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
 	];
 
 	const path_Client = "C:\\Users\\kaika\\Documents\\BAE\\Website\\img\\img-index\\img-crsl-client_gal\\logo-";
 	const $arrClient = [
 		{ title: 'Mitsubishi Motors (Thailand) Co., Ltd.', file_name: `${ path_Client }MMTh.svg`, link_add: 'https://www.mitsubishi-motors.co.th/th?rd=true' },
-		// More items...
+		{ title: 'H-ONE Parts (Thailand) Co., Ltd.', file_name: `${ path_Client }H_one.png`, link_add: 'https://www.h1-co.jp/eng/' },
+		{ title: 'Hitachi Consumer Products (Thailand) Ltd.', file_name: `${ path_Client }Hitachi.svg`, link_add: 'https://www.hitachi-homeappliances.com/th-en/' },
+		{ title: 'NHK Spring (Thailand) Co., Ltd.', file_name: `${ path_Client }Nhk.svg`, link_add: 'https://www.nhkspg.co.th/th/' },
+		{ title: 'Copeland (Thailand) Ltd.', file_name: `${ path_Client }Emerson.png`, link_add: 'https://www.copeland.com/en-th/tools-resources/facilities/thailand' },
+		{ title: 'Magna Automotive Technology (Thailand) Co., Ltd.', file_name: `${ path_Client }Magna.svg`, link_add: 'https://www.magna.com/' },
+		{ title: 'Walker Exhaust (Thailand) Co., Ltd.', file_name: `${ path_Client }Walker.svg`, link_add: 'https://www.walkerexhaust.com/' },
+		{ title: 'MAHLE Engine Components (Thailand) Co., Ltd.', file_name: `${ path_Client }Mahle.svg`, link_add: 'https://www.mahle.com/en/about-mahle/locations/1166.jsp' },
+		{ title: 'Techno Associe (Thailand) Co., Ltd.', file_name: `${ path_Client }Techno_associe.png`, link_add: 'https://www.technoassocie.co.jp/en/company/network/thailand/' },
+		{ title: 'Thai Kokoku Rubber Co., Ltd.', file_name: `${ path_Client }Kokoku.png`, link_add: 'https://www.kokoku-intech.com/en/' },
+		{ title: 'Innova Rubber Co., Ltd.', file_name: `${ path_Client }Innova_rubber.png`, link_add: 'https://www.ircthailand.com/th/home' },
+		{ title: 'Prospira (Thailand) Co., Ltd.', file_name: `${ path_Client }Prospira.svg`, link_add: 'https://prospira.com/' },
 	];
 
 	// Function to populate carousel items dynamically
