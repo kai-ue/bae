@@ -94,7 +94,7 @@ h1, h2, h3{
 	font-size: 16px;
 	border-radius: 5px;
 }
-	button {
+	.carousel > button {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
