@@ -133,7 +133,7 @@ h1, h2, h3{
 	max-width: 80%;
 	max-height: 80%;
 }
-.closeModal {
+#closeModal {
 	position: absolute;
 	top: 20px;
 	right: 20px;
