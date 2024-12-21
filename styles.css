@@ -279,7 +279,6 @@ header{
 	padding: 0;
 	transition: transform 0.4s ease;
 	transform-origin: center;
-	width: 40px;
 	height: 40px;
 }
 .rotate-btn:hover,
