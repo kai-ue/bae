@@ -433,7 +433,7 @@ header{
 /* Align navbar items to the right for larger screens */
 @media (min-width: 992px){
 	#navbar-toggler{
-		display: none;
+		display: none !important;
 	}
 	.navbar-collapse{
 		justify-content: flex-end; /* Align to the right */
@@ -480,7 +480,7 @@ header{
 		text-align: center;
 	}
 	#navbar-toggler{
-		display: block;
+		display: block !important;
 		border: none;
 		background: transparent;
 		margin-left: 10px;
