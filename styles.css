@@ -132,6 +132,22 @@ h1, h2, h3{
 .next {
 	right: 10px;
 }
+
+/*  Bootstrap parameter	 */
+.carousel-inner .carousel-item-end.active,
+.carousel-inner .carousel-item-next {
+	transform: translateX(25%);
+}
+.carousel-inner .carousel-item-start.active, 
+.carousel-inner .carousel-item-prev {
+	transform: translateX(-25%);
+}
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start { 
+	transform: translateX(0);
+}
+
+
 .modal {
 	display: none;
 	position: fixed;
@@ -429,6 +445,7 @@ header{
 		height: 75vh;
 		min-height: 350px;
 	}
+	
 }
 /* Align navbar items to the right for larger screens */
 @media (min-width: 992px){
@@ -439,7 +456,6 @@ header{
 		justify-content: flex-end; /* Align to the right */
 	}
 }
-
 /* Mobile styling for hamburger menu */
 @media (max-width: 992px){
 	#hero {
