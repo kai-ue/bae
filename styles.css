@@ -434,14 +434,14 @@ header{
 	}
 }
 /* Align navbar items to the right for larger screens */
-@media (min-width: 769px){
+@media (min-width: 992px){
 	.navbar-collapse{
 		justify-content: flex-end; /* Align to the right */
 	}
 }
 
 /* Mobile styling for hamburger menu */
-@media (max-width: 768px){
+@media (max-width: 992px){
 	#hero {
 		height: 60vh;
 		min-height: 250px;
@@ -521,7 +521,12 @@ header{
 		font-size: 3vw;
 	}
 }
-
+@media (max-width: 768px){
+	#hero {
+		height: 60vh;
+		min-height: 250px;
+	}
+}
 @media (max-width: 576px){
 	.video-container > span{
 		width: 100%;
