@@ -29,6 +29,13 @@ h1, h2, h3{
 .p-1px{
 	padding: 1px !important;
 }
+*,
+*::before,
+*::after
+.bodr_bx{
+	box-sizing: border-box;
+}
+
 
 /*  Common  */
 .pstn_rel_dis_blck{
@@ -156,14 +163,16 @@ header{
 header{
 	position: fixed;
 	top: 0;
+	left: 0;
 	width: 100%;
+	padding: 0 1rem;
 	z-index: 1000;
 	color: #fff !important;
 }
 #header-logo{
 	display: inline-block;
 	width: 20%;
-	padding: 0em 16px;
+	padding: 0em;
 	/* background-color: rgb(255 255 255 / 53%); */
 }
 #header-logo img{
@@ -442,11 +451,12 @@ header{
 		z-index: 999; */
 	}
 	.navbar-collapse{
+		display: block; 
 		order: 4;
 	}
-	.navbar-collapse.show > .navbar-nav{
+	/* .navbar-collapse.show > .navbar-nav{
 		/*height: 200px;*/
-	}
+	}*/
 	.navbar-nav .nav-item{
 		width: 100%;
 		text-align: center;
