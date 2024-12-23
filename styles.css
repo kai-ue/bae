@@ -180,8 +180,8 @@ header{
 	margin: 0;
 	padding: 0;
 	background-color: #0000004d;
-	backdrop-filter: blur(10px); /* Apply blur to the content behind the header */
-    -webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(3px); /* Apply blur to the content behind the header */
+    -webkit-backdrop-filter: blur(3px);
 }
 header{
 	position: fixed;
