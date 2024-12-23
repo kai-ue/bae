@@ -57,6 +57,7 @@ h1, h2, h3{
 .fill_tile:hover{
 	background: #5389dcbf;
 }
+
 /*  carousel  */
 .carousel {
 	position: relative;
@@ -141,8 +142,6 @@ h1, h2, h3{
 	color: white;
 	cursor: pointer;
 }
-
-
 
 /*  Header  */
 .dropdown-menu,
@@ -374,6 +373,13 @@ header{
 	text-decoration: none;
 }
 
+/*  Home  */
+#home-about{
+	background: #fff url("img/img-index/home-about_bg_img.jpg") no-repeat cover 50% 50%;
+}
+#home-about_img > img{
+	
+}
 
 /* Ultra-wide and very large desktops (1401px and above) */
 @media (min-width: 1401px) {
