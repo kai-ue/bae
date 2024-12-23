@@ -214,9 +214,6 @@ header{
 #lang-jp {
 	background-image: url('C:\Users\kaika\Documents\BAE\Website\img\common\flag-jp.svg');
 }
-#navbar-toggler{
-	display: none;
-}
 
 
 /*   Need to change   */
@@ -435,6 +432,9 @@ header{
 }
 /* Align navbar items to the right for larger screens */
 @media (min-width: 992px){
+	#navbar-toggler{
+		display: none;
+	}
 	.navbar-collapse{
 		justify-content: flex-end; /* Align to the right */
 	}
