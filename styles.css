@@ -214,6 +214,9 @@ header{
 #lang-jp {
 	background-image: url('C:\Users\kaika\Documents\BAE\Website\img\common\flag-jp.svg');
 }
+#navbar-toggler{
+	display: none;
+}
 
 
 /*   Need to change   */
