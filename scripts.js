@@ -123,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	];
 
 	function populateCarousel(carouselId, data) {
-		const wrapper = document.getElementById(`${carouselId}-wrapper`);
-		const container = document.getElementById(carouselId);
+		const wrapper = document.getElementById(carouselId);
+		const container = document.getElementById(`${carouselId}_img`);
 
 		// Clear any existing content
 		container.innerHTML = '';
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				linkElement.href = value.link_add;
 
 				// Check carousel type and handle target behavior
-				if (carouselId === 'crsl_img-pro_gal') {
+				if (carouselId === 'crsl-pro_gal') {
 						linkElement.removeAttribute('target');
 						linkElement.addEventListener('click', (event) => {
 								event.preventDefault();
@@ -166,12 +166,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		const prevButton = document.createElement('button');
 		prevButton.classList.add('crsl-prev');
 		prevButton.innerHTML = '&#10094;';
-		prevButton.onclick = () => moveSlide(-1, carouselId);
+		prevButton.onclick = () => moveSlide(-1, `${carouselId}_img`);
 
 		const nextButton = document.createElement('button');
 		nextButton.classList.add('crsl-next');
 		nextButton.innerHTML = '&#10095;';
-		nextButton.onclick = () => moveSlide(1, carouselId);
+		nextButton.onclick = () => moveSlide(1, `${carouselId}_img`);
 
 		wrapper.appendChild(prevButton);
 		wrapper.appendChild(nextButton);
@@ -186,17 +186,17 @@ document.addEventListener('DOMContentLoaded', function () {
 	let index2 = 0;
 
 	// Function to move the carousel images
-	function moveSlide(step, carouselId) {
+	function moveSlide(step, `${carouselId}_img`) {
 		const slides = document.querySelectorAll(`#${carouselId} .crsl-item`);
 		const totalSlides = slides.length;
-		let index = carouselId === 'crsl_img-pro_gal' ? index1 : index2;
+		let index = `${carouselId}_img` === 'crsl_img-pro_gal' ? index1 : index2;
 		index = (index + step + totalSlides) % totalSlides;
 
-		const carouselContainer = document.querySelector(`#${carouselId}`);
+		const carouselContainer = document.querySelector(`${carouselId}_img`);
 		carouselContainer.style.transform = `translateX(-${index * 100}%)`; // 100% for full carousel slide
 
 		// Update the index for the respective carousel
-		if (carouselId === 'crsl_img-pro_gal') {
+		if (`${carouselId}_img` === 'crsl-pro_gal_img') {
 				index1 = index;
 		} else {
 				index2 = index;
