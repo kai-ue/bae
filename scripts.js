@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-	// Function to preload content what the fuck 
+
 	function preloadContent() {
 		const components = [
 			{ url: 'Components/header.html', id: 'header' },
@@ -187,23 +187,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Initialize index for carousel movement
 	let index1 = 0;
-	let index2 = 0;
 
 	function moveSlide(step, carouselId) {
 		const slides = document.querySelectorAll(`#${carouselId} .crsl-item`);
 		const totalSlides = slides.length;
-		let index = carouselId === 'crsl-pro_gal' ? index1 : index2;
-		index = (index + step + totalSlides) % totalSlides;
+		
+	    const slidesToShow = 4; // Show 4 items at a time
 
+		// Calculate the new index
+		index1 = (index1 + step + totalSlides) % totalSlides;
+
+		// Adjust the container's transform property to show the correct slides
 		const carouselContainer = document.querySelector(`#${carouselId}`);
-		carouselContainer.style.transform = `translateX(-${index * 100}%)`; // 100% for full carousel slide
-
-		// Update the index for the respective carousel
-		if (carouselId === 'crsl-pro_gal') {
-				index1 = index;
-		} else {
-				index2 = index;
-		}
+		const slideWidth = 100 / slidesToShow; // 25% per slide
+		carouselContainer.style.transform = `translateX(-${index1 * slideWidth}%)`; // Move the carousel
 	}
 
 	function openModal(src) {
