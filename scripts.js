@@ -122,8 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		{ title: 'Prospira (Thailand) Co., Ltd.', file_name: `${ path_Client }Prospira.svg`, link_add: 'https://prospira.com/' },
 	];
 
-
-function populateCarousel(carouselId, data) {
+	function populateCarousel(carouselId, data) {
 		const wrapper = document.getElementById(`${carouselId}-wrapper`);
 		const container = document.getElementById(carouselId);
 
@@ -140,7 +139,7 @@ function populateCarousel(carouselId, data) {
 				linkElement.href = value.link_add;
 
 				// Check carousel type and handle target behavior
-				if (carouselId === 'crsl_img-pro_gal') {
+				if (carouselId === 'crsl-pro_gal') {
 						linkElement.removeAttribute('target');
 						linkElement.addEventListener('click', (event) => {
 								event.preventDefault();
@@ -185,8 +184,8 @@ function populateCarousel(carouselId, data) {
 }
 
 // Populate both carousels
-populateCarousel('crsl_img-pro_gal', $arrProGal);
-populateCarousel('crsl_img-client', $arrClient);
+populateCarousel('crsl-pro_gal', $arrProGal);
+populateCarousel('crsl-client', $arrClient);
 
 // Initialize index for carousel movement
 let index1 = 0;
@@ -196,14 +195,14 @@ let index2 = 0;
 function moveSlide(step, carouselId) {
 		const slides = document.querySelectorAll(`#${carouselId} .crsl-item`);
 		const totalSlides = slides.length;
-		let index = carouselId === 'crsl_img-pro_gal' ? index1 : index2;
+		let index = carouselId === 'crsl-pro_gal' ? index1 : index2;
 		index = (index + step + totalSlides) % totalSlides;
 
 		const carouselContainer = document.querySelector(`#${carouselId}`);
 		carouselContainer.style.transform = `translateX(-${index * 100}%)`; // 100% for full carousel slide
 
 		// Update the index for the respective carousel
-		if (carouselId === 'crsl_img-pro_gal') {
+		if (carouselId === 'crsl-pro_gal') {
 				index1 = index;
 		} else {
 				index2 = index;
