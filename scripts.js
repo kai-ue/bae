@@ -122,66 +122,60 @@ document.addEventListener('DOMContentLoaded', function () {
 		{ title: 'Prospira (Thailand) Co., Ltd.', file_name: `${ path_Client }Prospira.svg`, link_add: 'https://prospira.com/' },
 	];
 
-	// Function to populate carousel items dynamically
 	function populateCarousel(carouselId, data) {
+		const wrapper = document.getElementById(`${carouselId}-wrapper`);
 		const container = document.getElementById(carouselId);
-		
-		// Clear any existing content in the carousel container
+
+		// Clear any existing content
 		container.innerHTML = '';
 
-		// Create carousel items
 		data.forEach(value => {
-			const itemDiv = document.createElement('div');
-			itemDiv.classList.add('crsl-item');
+				const itemDiv = document.createElement('div');
+				itemDiv.classList.add('crsl-item');
 
-			// Create <a> tag for opening the image (conditionally applied)
-			const linkElement = document.createElement('a');
-			linkElement.href = value.link_add;
+				// Create <a> tag for opening the image (conditionally applied)
+				const linkElement = document.createElement('a');
+				linkElement.href = value.link_add;
 
-			// Check carousel type and handle target behavior
-			if (carouselId === 'crsl_img-pro_gal') {
-				linkElement.removeAttribute('target');
-				linkElement.addEventListener('click', (event) => {
-					event.preventDefault();
-					openModal(value.file_name); // Open the modal with the image
-				});
-			} else {
-				linkElement.target = "_blank"; // For client gallery, open in new tab
-			}
+				// Check carousel type and handle target behavior
+				if (carouselId === 'crsl_img-pro_gal') {
+						linkElement.removeAttribute('target');
+						linkElement.addEventListener('click', (event) => {
+								event.preventDefault();
+								openModal(value.file_name); // Open the modal with the image
+						});
+				} else {
+					linkElement.target = "_blank";
+				}
 
-			const imgElement = document.createElement('img');
-			imgElement.src = value.file_name;
-			imgElement.alt = value.title;
+				const imgElement = document.createElement('img');
+				imgElement.src = value.file_name;
+				imgElement.alt = value.title;
 
-				// Caption
 				const captionDiv = document.createElement('div');
 				captionDiv.classList.add('caption');
 				captionDiv.textContent = value.title;
 
-				// Append image and caption to the link
 				linkElement.appendChild(imgElement);
 				linkElement.appendChild(captionDiv);
 				itemDiv.appendChild(linkElement);
 
-				// Append the item to the carousel
 				container.appendChild(itemDiv);
 		});
 
-		// Create and append Prev and Next buttons
 		const prevButton = document.createElement('button');
 		prevButton.classList.add('crsl-prev');
-		prevButton.innerHTML = '&#10094;'; // Left arrow character
+		prevButton.innerHTML = '&#10094;';
 		prevButton.onclick = () => moveSlide(-1, carouselId);
 
 		const nextButton = document.createElement('button');
 		nextButton.classList.add('crsl-next');
-		nextButton.innerHTML = '&#10095;'; // Right arrow character
+		nextButton.innerHTML = '&#10095;';
 		nextButton.onclick = () => moveSlide(1, carouselId);
 
-		// Append buttons to the carousel container
-		container.appendChild(prevButton);
-		container.appendChild(nextButton);
-	}
+		wrapper.appendChild(prevButton);
+		wrapper.appendChild(nextButton);
+		}
 
 	// Populate both carousels
 	populateCarousel('crsl_img-pro_gal', $arrProGal);
