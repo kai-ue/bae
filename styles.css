@@ -11,6 +11,8 @@
 :root{
 	--light_blue: #5389DC;
 	--font_blue: #1D4EB8;
+	--trans_blue-light: #3575ff9e;
+	--trans_blue-dark: #405d9bd4;
 }
 html, body {
 	width: 100%;
@@ -22,6 +24,7 @@ html, body {
 body{
 	font-family:'Cairo' !important;
 	font-weight: 100;
+	background-color: #d9e1ea;
 }
 a{
 	text-decoration: none;
@@ -69,7 +72,7 @@ h1, h2, h3{
 	text-shadow: 2px 2px 25px #0e1828;
 }
 .fill_tile:hover{
-	background: #5389dcbf;
+	background: var(--trans_blue-light);
 }
 
 /*  carousel  */
@@ -106,15 +109,16 @@ h1, h2, h3{
 	bottom: 10px;
 	left: 50%;
 	transform: translateX(-50%);
-	background: rgba(0, 0, 0, 0.5);
-	color: white;
+	background: var(--trans_blue-dark);
+	color: #fff;
 	padding: 5px;
-	border-radius: 5px;
-	transition: width 0.3s, height 0.3s ease;
+	border-radius: 8px 8px 0 0;
+	transition: width 0.3s, height 0.3s, background 0.3s ease;
 }
 .crsl-item:hover .caption {
 	width: 100%;
 	height: auto;
+	background: var(--trans_blue-light);
 }
 
 .crsl-prev,
@@ -122,9 +126,8 @@ h1, h2, h3{
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	background-color: rgba(0, 0, 0, 0.5);
-	color: white;	
-	border: none;
+	background-color: var(--trans_blue-dark);
+	color: white;	border: none;
 	font-size: 2rem;
 	padding: 10px;
 	cursor: pointer;
@@ -139,7 +142,7 @@ h1, h2, h3{
 }
 .crsl-prev:hover,
 .crsl-next:hover {
-	background-color: rgba(0, 0, 0, 0.7); /* Darker background on hover */
+	background: var(--trans_blue-light);
 }
 
 
