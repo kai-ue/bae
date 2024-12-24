@@ -109,29 +109,29 @@ h1, h2, h3{
 	font-size: 16px;
 	border-radius: 5px;
 }
-.carousel > button {
+.crsl-prev,
+.crsl-next {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 	background-color: rgba(0, 0, 0, 0.5);
-	color: white;
-	border: none;
-	padding: 15px;
+	color: white;	border: none;
+	font-size: 2rem;
+	padding: 10px;
 	cursor: pointer;
-	font-size: 24px;
-	border-radius: 50%;
-	opacity: 0.5;
-	transition: opacity 0.3s ease;
+	z-index: 100;
 }
-.carousel > button:hover {
-	opacity: 1;
-}
-.prev {
+.crsl-prev {
 	left: 10px;
 }
-.next {
+.crsl-next {
 	right: 10px;
 }
+.crsl-prev:hover,
+.crsl-next:hover {
+	background-color: rgba(0, 0, 0, 0.7); /* Darker background on hover */
+}
+
 
 /*  Bootstrap parameter	 */
 .carousel-inner .carousel-item-end.active,
