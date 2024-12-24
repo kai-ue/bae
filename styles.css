@@ -100,15 +100,21 @@ h1, h2, h3{
 }
 .carousel-images .caption {
 	position: absolute;
+	height: 2rem;
+	overflow: hidden;
 	bottom: 10px;
 	left: 50%;
 	transform: translateX(-50%);
 	background: rgba(0, 0, 0, 0.5);
 	color: white;
 	padding: 5px;
-	font-size: 16px;
 	border-radius: 5px;
 }
+.carousel-images:hover .caption {
+	width: auto;
+	height: auto;
+}
+
 .crsl-prev,
 .crsl-next {
 	position: absolute;
