@@ -131,27 +131,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Create carousel items
 		data.forEach(value => {
-				const itemDiv = document.createElement('div');
-				itemDiv.classList.add('crsl-item');
+			const itemDiv = document.createElement('div');
+			itemDiv.classList.add('crsl-item');
 
-				// Create <a> tag for opening the image (conditionally applied)
-				const linkElement = document.createElement('a');
-				linkElement.href = value.link_add;
+			// Create <a> tag for opening the image (conditionally applied)
+			const linkElement = document.createElement('a');
+			linkElement.href = value.link_add;
 
-				// Check carousel type and handle target behavior
-				if (carouselId === 'crsl_img-pro_gal') {
-						linkElement.removeAttribute('target');
-						linkElement.addEventListener('click', (event) => {
-								event.preventDefault();
-								openModal(value.file_name); // Open the modal with the image
-						});
-				} else {
-						linkElement.target = "_blank"; // For client gallery, open in new tab
-				}
+			// Check carousel type and handle target behavior
+			if (carouselId === 'crsl_img-pro_gal') {
+				linkElement.removeAttribute('target');
+				linkElement.addEventListener('click', (event) => {
+					event.preventDefault();
+					openModal(value.file_name); // Open the modal with the image
+				});
+			} else {
+				linkElement.target = "_blank"; // For client gallery, open in new tab
+			}
 
-				const imgElement = document.createElement('img');
-				imgElement.src = value.file_name;
-				imgElement.alt = value.title;
+			const imgElement = document.createElement('img');
+			imgElement.src = value.file_name;
+			imgElement.alt = value.title;
 
 				// Caption
 				const captionDiv = document.createElement('div');
@@ -169,12 +169,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Create and append Prev and Next buttons
 		const prevButton = document.createElement('button');
-		prevButton.classList.add('prev');
+		prevButton.classList.add('crsl-prev');
 		prevButton.innerHTML = '&#10094;'; // Left arrow character
 		prevButton.onclick = () => moveSlide(-1, carouselId);
 
 		const nextButton = document.createElement('button');
-		nextButton.classList.add('next');
+		nextButton.classList.add('crsl-next');
 		nextButton.innerHTML = '&#10095;'; // Right arrow character
 		nextButton.onclick = () => moveSlide(1, carouselId);
 
