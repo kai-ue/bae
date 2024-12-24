@@ -131,68 +131,65 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Create carousel items
 		data.forEach(value => {
-				const itemDiv = document.createElement('div');
-				itemDiv.classList.add('crsl-item');
+			const itemDiv = document.createElement('div');
+			itemDiv.classList.add('crsl-item');
 
-				// Create <a> tag for opening the image (conditionally applied)
-				const linkElement = document.createElement('a');
-				linkElement.href = value.link_add;
+			const linkElement = document.createElement('a');
+			linkElement.href = value.link_add;
 
-				// Check carousel type and handle target behavior
-				if (carouselId === 'crsl-pro_gal') {
-						linkElement.removeAttribute('target');
-						linkElement.addEventListener('click', (event) => {
-								event.preventDefault();
-								openModal(value.file_name); // Open the modal with the image
-						});
-				} else {
-						linkElement.target = "_blank"; // For client gallery, open in new tab
-				}
+			// Check carousel type and handle target behavior
+			if (carouselId === 'crsl-pro_gal') {
+				linkElement.removeAttribute('target');
+				linkElement.addEventListener('click', (event) => {
+					event.preventDefault();
+					openModal(value.file_name); // Open the modal with the image
+				});
+			} else {
+				linkElement.target = "_blank"; // For client gallery, open in new tab
+			}
 
-				const imgElement = document.createElement('img');
-				imgElement.src = value.file_name;
-				imgElement.alt = value.title;
+			const imgElement = document.createElement('img');
+			imgElement.src = value.file_name;
+			imgElement.alt = value.title;
 
-				// Caption
-				const captionDiv = document.createElement('div');
-				captionDiv.classList.add('caption');
-				captionDiv.textContent = value.title;
+			// Caption
+			const captionDiv = document.createElement('div');
+			captionDiv.classList.add('caption');
+			captionDiv.textContent = value.title;
 
-				// Append image and caption to the link
-				linkElement.appendChild(imgElement);
-				linkElement.appendChild(captionDiv);
-				itemDiv.appendChild(linkElement);
+			// Append image and caption to the link
+			linkElement.appendChild(imgElement);
+			linkElement.appendChild(captionDiv);
+			itemDiv.appendChild(linkElement);
 
-				// Append the item to the carousel
-				container.appendChild(itemDiv);
+			// Append the item to the carousel
+			container.appendChild(itemDiv);
 		});
 
 		// Create Prev/Next buttons
 		const prevButton = document.createElement('button');
-		prevButton.classList.add('prev');
+		prevButton.classList.add('crsl-prev');
 		prevButton.innerHTML = '&#10094;';
 		prevButton.onclick = () => moveSlide(-1, carouselId);
 
 		const nextButton = document.createElement('button');
-		nextButton.classList.add('next');
+		nextButton.classList.add('crsl-next');
 		nextButton.innerHTML = '&#10095;';
 		nextButton.onclick = () => moveSlide(1, carouselId);
 
 		// Append buttons to the wrapper (not inside the carousel container)
 		wrapper.appendChild(prevButton);
 		wrapper.appendChild(nextButton);
-}
+	}
 
-// Populate both carousels
-populateCarousel('crsl-pro_gal', $arrProGal);
-populateCarousel('crsl-client', $arrClient);
+	populateCarousel('crsl-pro_gal', $arrProGal);
+	populateCarousel('crsl-client', $arrClient);
 
-// Initialize index for carousel movement
-let index1 = 0;
-let index2 = 0;
+	// Initialize index for carousel movement
+	let index1 = 0;
+	let index2 = 0;
 
-// Function to move the carousel images
-function moveSlide(step, carouselId) {
+	function moveSlide(step, carouselId) {
 		const slides = document.querySelectorAll(`#${carouselId} .crsl-item`);
 		const totalSlides = slides.length;
 		let index = carouselId === 'crsl-pro_gal' ? index1 : index2;
@@ -208,8 +205,6 @@ function moveSlide(step, carouselId) {
 				index2 = index;
 		}
 	}
-
-
 
 	function openModal(src) {
 		const modal = document.getElementById("imageModal");
