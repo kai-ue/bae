@@ -31,6 +31,7 @@ html, body {
 body{
 	font-family:'Cairo' !important;
 	font-weight: 100;
+	background-color: #d9e1ea;
 }
 a{
 	text-decoration: none;
@@ -58,7 +59,7 @@ h1, h2, h3{
 	position: relative;
 	display: block;
 }
-.fill_tile{
+.fill_tile > div{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -73,12 +74,16 @@ h1, h2, h3{
 	transition: background 0.25s ease-in;
 	text-align: center;
 }
-.fill_tile > h3{
+.fill_tile h3{
 	color: #fff;
 	text-shadow: 2px 2px 25px #0e1828;
 }
-.fill_tile:hover{
+.fill_tile:hover > div{
 	background: var(--trans_blue-light);
+}
+.fill_tile:hover > img{
+	transform: scale(1.3);
+	transition: 0.3s ease;
 }
 
 /*  carousel  */
@@ -119,7 +124,7 @@ h1, h2, h3{
 	color: #fff;
 	text-shadow: 0 0 0.7rem #000;
 	border-radius: 8px 8px 0 0;
-	transition: width 0.3s, height 0.3s, background 0.3s ease;
+	transition: width 0.3s, height 1s, background 0.7s ease;
 }
 .crsl-item:hover .caption {
 	width: 100%;
@@ -410,19 +415,21 @@ header{
 	margin-bottom: 20px;
 }
 .cta_btn{
+	display: inline-block;
     background-color: var(--trans_blue-light);
     color: #fff;
 	padding: 7px 14px;
 	font-size: 2vw;
     text-decoration: none;
     border-radius: 10%/30%;
-    transition: background-color 0.3s ease;
-	box-shadow: 1px 1px 12px #000000db;
+	box-shadow: 0 0 0 0 #fff;
 }
 .cta_btn:hover{
     background-color: #ff8fffd4;
 	color: #fff;
 	text-decoration: none;
+	animation: pulse 1s ease-out;
+	animation-iteration-count: 1;
 }
 
 /*  Home  */
@@ -431,6 +438,20 @@ header{
 }
 #home-about_img > img{
 	
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(.85);
+	}
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 50px #ffffff00;
+	}
+	100% {
+		transform: scale(1);
+		box-shadow: 0 0 0 0 #3575ff00;
+	}
 }
 
 /* Large desktops and smaller screens (max-width: 1400px) */
