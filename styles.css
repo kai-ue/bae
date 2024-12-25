@@ -31,7 +31,6 @@ html, body {
 body{
 	font-family:'Cairo' !important;
 	font-weight: 100;
-	background-color: #d9e1ea;
 }
 a{
 	text-decoration: none;
@@ -58,6 +57,9 @@ h1, h2, h3{
 .pstn_rel_dis_blck{
 	position: relative;
 	display: block;
+}
+.fill_tile{
+	overflow: hidden;
 }
 .fill_tile > div{
 	display: flex;
