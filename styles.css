@@ -96,7 +96,7 @@ h1, h2, h3{
 .crsl-item {
 	position: relative;
 	width: 25%; /* 100% / 4 items = 25% width */
-	padding: 10px;
+	padding: 0 2rem;
 	box-sizing: border-box;
 	flex-shrink: 0;
 	text-align: center;
@@ -108,15 +108,16 @@ h1, h2, h3{
 }
 .carousel-images .caption {
 	position: absolute;
+	bottom: 0;
+	left: 50%;
 	width: 50%;
 	height: 2rem;
+	padding: 5px;
 	overflow: hidden;
-	bottom: 10px;
-	left: 50%;
 	transform: translateX(-50%);
 	background: var(--trans_blue-dark);
 	color: #fff;
-	padding: 5px;
+	text-shadow: 0 0 0.7rem #000;
 	border-radius: 8px 8px 0 0;
 	transition: width 0.3s, height 0.3s, background 0.3s ease;
 }
@@ -290,7 +291,7 @@ header{
 }
 .navbar-nav{
 	list-style-type: none;
-	margin: 0;
+	margin: 0 0 0 auto;
 	padding: 0;
 	display: flex;
 }
@@ -396,7 +397,7 @@ header{
 	width: 3px;
 	left: -1rem;
 	top: 1rem;
-	background-color: var(--light_blue);
+	background-color: var(--trans_blue-light);
 	height:95%;
 }
 #hero > .video-container > span > h1{
@@ -409,16 +410,17 @@ header{
 	margin-bottom: 20px;
 }
 .cta_btn{
-    background-color: var(--light_blue);
+    background-color: var(--trans_blue-light);
     color: #fff;
 	padding: 7px 14px;
 	font-size: 2vw;
     text-decoration: none;
     border-radius: 10%/30%;
     transition: background-color 0.3s ease;
+	box-shadow: 1px 1px 12px #000000db;
 }
 .cta_btn:hover{
-    background-color: #ff8fff;
+    background-color: #ff8fffd4;
 	color: #fff;
 	text-decoration: none;
 }
@@ -534,7 +536,6 @@ header{
 	}
 	.crsl-item {
 		width: 50%;
-		background-color: red;
 	}
 	.video-container > span {
 		width: 100%;
