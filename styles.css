@@ -6,6 +6,13 @@
 .element{
   filter: var(--shadow-effect);
 }
+
+.video-background {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
 */
 
 :root{
@@ -86,7 +93,7 @@ h1, h2, h3{
 	transition: transform 0.5s ease-in-out;
 	width: 100%;
 }
-.carousel-images .crsl-item {
+.crsl-item {
 	position: relative;
 	width: 25%; /* 100% / 4 items = 25% width */
 	padding: 10px;
@@ -97,7 +104,6 @@ h1, h2, h3{
 .carousel-images img {
 	width: 100%;
 	height: auto;
-	border-radius: 10px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .carousel-images .caption {
@@ -425,56 +431,34 @@ header{
 	
 }
 
-/* Ultra-wide and very large desktops (1401px and above) */
-@media (min-width: 1401px) {
+/* Large desktops and smaller screens (max-width: 1400px) */
+@media (max-width: 1400px) {
 	#hero {
-		height: 90vh; /* Or you can keep it at 100vh */
+		height: 85vh; /* Adjusted for large desktops */
 	}
 }
-/* Extra-large desktops (1201px to 1400px) */
-@media (min-width: 1201px) and (max-width: 1400px) {
+
+/* Medium desktops (max-width: 1200px) */
+@media (max-width: 1200px) {
 	#hero {
-		height: 85vh;
+		height: 80vh; /* Adjusted for medium desktops */
 	}
-}/* Large desktops (993px to 1200px) */
-@media (min-width: 993px) and (max-width: 1200px) {
-	#hero {
-		height: 80vh;
-	}
-}
-@media (min-width: 992px) {
-	.nav-link{
+	.nav-link {
 		padding-right: 1rem;
 		padding-left: 1rem;
 	}
-	.rotate-btn:hover + .dropdown-menu{
+	.rotate-btn:hover + .dropdown-menu {
 		display: block;
 	}
 }
-/* Tablets and small desktops (769px to 992px) */
-@media (min-width: 769px) and (max-width: 992px) {
-	#hero {
-		height: 75vh;
-		min-height: 350px;
-	}
-	
-}
-/* Align navbar items to the right for larger screens */
-@media (min-width: 992px){
-	#navbar-toggler{
-		display: none !important;
-	}
-	.navbar-collapse{
-		justify-content: flex-end; /* Align to the right */
-	}
-}
-/* Mobile styling for hamburger menu */
-@media (max-width: 992px){
+
+/* Tablets and smaller laptops (max-width: 992px) */
+@media (max-width: 992px) {
 	#hero {
 		height: 60vh;
-		min-height: 250px;
+		min-height: 250px; /* Adjusted for tablets and smaller laptops */
 	}
-	.navbar{
+	.navbar {
 		padding: 0.2rem 1.5rem 0.2rem 0.2rem;
 	}
 	#header-logo {
@@ -483,31 +467,23 @@ header{
 		padding: 0;
 		order: 1;
 	}
-	#lang-sel{
+	#lang-sel {
 		margin-left: auto;
 		order: 2;
-		/* position: absolute;
-		right: 4.5rem;
-		top: 0.3rem;
-		margin: 0;
-		z-index: 999; */
 	}
-	.navbar-collapse{
-		display: block; 
+	.navbar-collapse {
+		display: block;
 		order: 4;
 	}
-	/* .navbar-collapse.show > .navbar-nav{
-		/*height: 200px;*/
-	}*/
 	.navbar-nav {
-		flex-direction: column; /* Stack items vertically */
-		width: 100%; /* Make sure nav items take full width */
+		flex-direction: column;
+		width: 100%; /* Stack items vertically */
 	}
-	.navbar-nav .nav-item{
+	.navbar-nav .nav-item {
 		width: 100%;
 		text-align: center;
 	}
-	#navbar-toggler{
+	#navbar-toggler {
 		display: block;
 		border: none;
 		background: transparent;
@@ -516,7 +492,7 @@ header{
 		cursor: pointer;
 		order: 3;
 	}
-	.hmbgr_bar{
+	.hmbgr_bar {
 		display: block;
 		width: 35px;
 		height: 5px;
@@ -525,18 +501,18 @@ header{
 		transition: 0.4s;
 		filter: drop-shadow(1px 1px 10px #000) brightness(2) grayscale(100%);
 	}
-	#navbar-toggler.change .bar1{
+	#navbar-toggler.change .bar1 {
 		transform: translate(0, 11px) rotate(-45deg);
 	}
-	#navbar-toggler.change .bar2{
+	#navbar-toggler.change .bar2 {
 		opacity: 0;
 	}
-	#navbar-toggler.change .bar3{
+	#navbar-toggler.change .bar3 {
 		transform: translate(0, -11px) rotate(45deg);
 	}
 	.dropdown-menu {
-		position: static; /* Make dropdown menu block-level */
-		width: 100%; /* Ensure the dropdown takes full width on mobile */
+		position: static;
+		width: 100%;
 		box-sizing: border-box;
 	}
 	.video-container > span {
@@ -549,14 +525,25 @@ header{
 		font-size: 3vw;
 	}
 }
-@media (max-width: 768px){
+
+/* Tablets (portrait orientation) (max-width: 768px) */
+@media (max-width: 768px) {
 	#hero {
 		height: 60vh;
 		min-height: 250px;
 	}
+	.crsl-item {
+		width: 50%;
+		background-color: red;
+	}
+	.video-container > span {
+		width: 100%;
+	}
 }
-@media (max-width: 576px){
-	.video-container > span{
+
+/* Mobile devices (max-width: 576px) */
+@media (max-width: 576px) {
+	.video-container > span {
 		width: 100%;
 	}
 	.video-container > span > h1 {
@@ -569,11 +556,4 @@ header{
 		padding: 5px 10px;
 		font-size: 4vw;
 	}
-}
-/* Default height for larger screens */
-.video-background {
-  width: 100%;
-  height: 100vh; /* Full viewport height */
-  position: relative;
-  overflow: hidden;
 }
