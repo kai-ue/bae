@@ -379,6 +379,9 @@ header{
 }
 .crsl-item:hover img{
 	width: 110%;
+	position: absolute;
+    bottom: 0;
+    left: 0;
 }
 .crsl-item:hover .caption {
 	width: 100%;
