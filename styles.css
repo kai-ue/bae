@@ -382,13 +382,6 @@ header{
 	border-radius: 8px 8px 0 0;
 	transition: width 0.3s, height 1s, background 0.7s ease;
 }
-.crsl-item:hover img{
-	width: 110%;
-	position: absolute;
-    bottom: 0;
-    left: 0;
-	transition: var(--transit);
-}
 .crsl-item:hover .caption {
 	width: 100%;
 	height: auto;
