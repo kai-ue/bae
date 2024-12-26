@@ -380,7 +380,7 @@ header{
 .crsl-item:hover img{
 	width: 110%;
 	height: auto;
-	position: absolute;
+	osition: absolute;
     bottom: 0;
     left: 0;
 }
