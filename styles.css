@@ -18,6 +18,7 @@
 :root{
 	--light_blue: #5389DC;
 	--font_blue: #1D4EB8;
+	--fill_blue: #15479C;
 	--trans_blue-light: #3575ff9e;
 	--trans_blue-dark: #405d9bd4;
 	--transit: 0.3s ease;
@@ -457,11 +458,11 @@ header{
 	box-shadow: 3px 4px 20px var(--trans_blue-dark);
 }
 #home_cta-img{
-	background: #fff url() cover;
+	background: #fff url("img/img-index/home_cta-img.avif") no-repeat center center/cover;
 }
 #home_cta-txt{
 	color: #fff;
-	background-color: var(--font_blue);
+	background-color: var(--fill_blue);
 }
 #home_cta-txt > h3{
 	color: #fff;
