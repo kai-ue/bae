@@ -358,7 +358,7 @@ header{
 .crsl-item {
 	position: relative;
 	width: 25%; /* 100% / 4 items = 25% width */
-	padding: 0 2rem;
+	padding: 0 1rem;
 	box-sizing: border-box;
 	flex-shrink: 0;
 	text-align: center;
@@ -366,6 +366,7 @@ header{
 .carousel-images img {
 	width: 100%;
 	height: auto;
+	padding: 0.5rem;
 	box-shadow: 3px 4px 12px var(--trans_blue-dark);
 }
 .carousel-images .caption {
