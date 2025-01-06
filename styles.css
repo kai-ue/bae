@@ -334,7 +334,7 @@ header{
 	color: #fff;
 }	
 #home-about{
-	background: #fff url("img/img-index/home-about_bg_img.jpg") no-repeat center / cover;
+	background: #fff /* url("img/img-index/home-about_bg_img.jpg") */ no-repeat center / cover;
 }
 #home-about_img > img{
 	
