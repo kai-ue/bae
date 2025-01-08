@@ -67,6 +67,12 @@ img:hover{
 	position: relative;
 	display: block;
 }
+.中心,
+#home-about_img{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 .fill_tile{
 	overflow: hidden;
 }
@@ -336,9 +342,16 @@ header{
 #home-about{
 	background: #fff /* url("img/img-index/home-about_bg_img.jpg") */ no-repeat center / cover;
 }
-#home-about_img > img{
-	
+#home-about > row{
+	min-height: 300px;
 }
+#home-about_img{
+	background: #fff url("img/img-index/home-about_img.avif") no-repeat center / contain;
+}
+#home-about_img > img{
+	width: 80%;	
+}
+
 
 /*  carousel  */
 #home-pro_gal,
