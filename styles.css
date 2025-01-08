@@ -67,8 +67,7 @@ img:hover{
 	position: relative;
 	display: block;
 }
-.中心,
-#home-about_img{
+.中心{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -128,9 +127,10 @@ img:hover{
 	box-shadow: 2px 3px 15px var(--trans_blue-dark);
 }
 .read_btn:hover{
-	text-decoration: none;
-	animation: pulse 1s ease-out;
-	animation-iteration-count: 1;
+	padding:12px;
+	color: #ffffff00;
+	border-radius: 10% / 5%;
+	background: var(--font_blue) url("img/img-index/home-about_bg_img.avif") no-repeat right / contain;
 }
 
 /*  Header  */
@@ -382,7 +382,7 @@ header{
 	background: none;
 }
 #home-about_img > img{
-	width: 80%;	
+	width: 75%;	
 }
 
 
@@ -643,6 +643,12 @@ header{
 	}
 	.video-container > span {
 		width: 100%;
+	}
+	#home-about{
+		background-position: bottom ;
+	}
+	#home-about_img > img {
+		margin: 2rem 0 7.5rem;
 	}
 }
 
