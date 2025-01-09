@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		let $parent = '<div class="row">';
 		$data.forEach(value => {
 			$parent += `
-			<div class="col-lg-3 col-md-6 p-1px">
+			<div class="col-lg-3 col-sm-6 p-1px">
 				<a class="fill_tile pstn_rel_dis_blck" href="#home-products" title="${value.shop}">
 					<img class="img-fluid" src="${$dir_path}${value.file_name}" alt="${value.shop}">
 					<div>

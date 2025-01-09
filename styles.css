@@ -125,12 +125,13 @@ img:hover{
 	text-decoration: none;
 	border-radius: 20% / 50%;
 	box-shadow: 2px 3px 15px var(--trans_blue-dark);
+	background-position: bottom -5rem left -5rem;
 }
 .read_btn:hover{
 	padding:12px;
 	color: #ffffff00;
 	border-radius: 10% / 5%;
-	background: var(--font_blue) url("img/img-index/home-about_bg_img.avif") no-repeat right / contain;
+	background: var(--font_blue) url("img/common/pop_up.svg") no-repeat center / contain;
 }
 
 /*  Header  */
@@ -629,6 +630,9 @@ header{
 	}
 	.video-container > span > p {
 		font-size: 3vw;
+	}
+	#home-about_iso tr{
+		vertical-align: top;
 	}
 }
 
