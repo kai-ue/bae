@@ -1,19 +1,4 @@
-/* Kai's 
-
-:root{
-  --shadow-effect: drop-shadow(8px8px10pxgray);
-}
-.element{
-  filter: var(--shadow-effect);
-}
-
-.video-background {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-*/
+/* Kai's */
 
 :root{
 	--light_blue: #5389DC;
@@ -294,56 +279,45 @@ header{
 	min-height: 300px;
 }
 #hero > .video-container{
-	background: url( img/img-index/hero_img.jpg );
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
+	background: #000 url( img/img-index/hero_img.jpg ) no-repeat center center/ cover;
 }
 .video-container {
-	position: absolute;
-	top: 0;
-	left: 0;
+	position: relative;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
 }
-.video-container iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
+.video-container > video {
 	width: 100%;
 	height: 100%;
-	object-fit: cover; /* Make the video cover the area of the parent */
-	border: none;
+	object-fit: cover;
 }
-#hero > .video-container > span {
+#hero_text{
     position: absolute;
-	display: inline-block;
-	width: 60%;
+	display: flex;
+	flex-wrap: wrap;
+	width: auto;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Offset the element to truly center it */
+    left: 0;
+    transform: translate(0, -50%);
+	
     text-align: left;
+	white-space: nowrap;
 	text-shadow: 0 0 0.9rem #000;
     color: white;
     z-index: 100;
-    padding: 20px;
 }
-#hero > .video-container > span::before{
-	content: "";
-	position: absolute;
-	width: 3px;
-	left: -1rem;
-	top: 1rem;
+#hero_text > span:first-child{
+	display: inline-block;
+	width: calc(2rem + 1.5vw);
 	background-color: var(--trans_blue-light);
-	height:95%;
 }
-#hero > .video-container > span > h1{
+#hero_text h1{
 	color: #fff;
 	font-size: 4vw;
 	margin-bottom: 10px;
 }
-#hero > .video-container > span > p{
+#hero_text p{
 	font-size: 2vw;
 	margin-bottom: 20px;
 }
@@ -443,7 +417,8 @@ header{
 	top: 50%;
 	transform: translateY(-50%);
 	background-color: var(--trans_blue-dark);
-	color: white;	border: none;
+	color: white;
+	border: none;
 	font-size: 2rem;
 	padding: 10px;
 	cursor: pointer;
