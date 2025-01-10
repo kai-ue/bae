@@ -120,6 +120,7 @@ img:hover{
 }
 
 /*  Header  */
+#navbarNav,
 .dropdown-menu,
 header{	
 	left: 0;
