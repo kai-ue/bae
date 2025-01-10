@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				.then(data => {
 					document.getElementById(component.id).innerHTML = data;
 
-					// After content is loaded, attach event listeners
 					if (component.id === 'header') {
 						attachHeaderEvents();
 					}
@@ -23,26 +22,24 @@ document.addEventListener('DOMContentLoaded', function () {
 		const navbarToggler = document.getElementById('navbar-toggler');
 		const navbarCollapse = document.getElementById('navbarNav');
 		const navbarNav = document.querySelector('.navbar-nav');
-		const header = document.querySelector('header'); // Select the header
+		const header = document.querySelector('header');
 		let lastScrollY = window.scrollY; // Track the last scroll position
 		let isScrollingDown = false; // Track scroll direction
 
-		// Toggle mobile navigation on navbar toggler click
 		if (navbarToggler) {
 			navbarToggler.addEventListener('click', function () {
 				navbarCollapse.classList.toggle('show');
-				navbarToggler.classList.toggle('change'); // Hamburger icon animation
+				navbarToggler.classList.toggle('change');
 			});
 		}
 
-		// Handle the rotate button and dropdown menu visibility
 		const rotateButton = document.getElementById('rotateButton');
 		if (rotateButton) {
 			rotateButton.addEventListener('click', function (event) {
 				event.stopPropagation(); // Prevent click from propagating to window click listener
 				this.classList.toggle('rotate-180');
 				const dropdown = document.getElementById('dropdownMenu');
-				dropdown.classList.toggle('show'); // Toggle dropdown visibility
+				dropdown.classList.toggle('show');
 			});
 		}
 
@@ -77,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Populate the products section with dynamic content
 	const $sec = document.getElementById("home-products");
-	const $dir_path = "img/img-index/col_3_img-"; // Escape backslashes properly
+	const $dir_path = "img/img-index/col_3_img-";
 	const $data = [
 		{ shop: 'Tooling & Die', file_name: 'tooling_die.jpg' },
 		{ shop: 'Stamping', file_name: 'stamping.jpg' },
@@ -104,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 	populateArray();
 
-	// Data arrays for carousel
 	const path_Pro_gal = "img/img-index/img-crsl-pro_gal/";
 	const $arrProGal = [
 		{ title: 'Parts1 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
@@ -141,10 +137,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		const wrapper = document.getElementById(`${carouselId}-wrapper`);
 		const container = document.getElementById(carouselId);
 
-		// Clear any existing content
 		container.innerHTML = '';
 
-		// Create carousel items
 		data.forEach(value => {
 			const itemDiv = document.createElement('div');
 			itemDiv.classList.add('crsl-item');
@@ -157,31 +151,27 @@ document.addEventListener('DOMContentLoaded', function () {
 				linkElement.removeAttribute('target');
 				linkElement.addEventListener('click', (event) => {
 					event.preventDefault();
-					openModal(value.file_name); // Open the modal with the image
+					openModal(value.file_name);
 				});
 			} else {
-				linkElement.target = "_blank"; // For client gallery, open in new tab
+				linkElement.target = "_blank";
 			}
 
 			const imgElement = document.createElement('img');
 			imgElement.src = value.file_name;
 			imgElement.alt = value.title;
 
-			// Caption
 			const captionDiv = document.createElement('div');
 			captionDiv.classList.add('caption');
 			captionDiv.textContent = value.title;
 
-			// Append image and caption to the link
 			linkElement.appendChild(imgElement);
 			linkElement.appendChild(captionDiv);
 			itemDiv.appendChild(linkElement);
 
-			// Append the item to the carousel
 			container.appendChild(itemDiv);
 		});
 
-		// Create Prev/Next buttons
 		const prevButton = document.createElement('button');
 		prevButton.classList.add('crsl-prev');
 		prevButton.innerHTML = '&#10094;';
@@ -192,7 +182,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		nextButton.innerHTML = '&#10095;';
 		nextButton.onclick = () => moveSlide(1, carouselId);
 
-		// Append buttons to the wrapper (not inside the carousel container)
 		wrapper.appendChild(prevButton);
 		wrapper.appendChild(nextButton);
 	}
