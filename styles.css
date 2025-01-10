@@ -132,11 +132,15 @@ header{
 header{
 	position: fixed;
 	top: 0;
-	left: 0;
 	width: 100%;
+	height: 55px;
 	padding: 0 1rem;
 	z-index: 1000;
 	color: #fff !important;
+	transition: transform 0.3s ease-in-out;
+}
+header.hidden {
+	transform: translateY(-100%);
 }
 #header-logo{
 	display: inline-block;
@@ -146,7 +150,7 @@ header{
 }
 #header-logo img{
 	max-width: 100%
-	height: auto;
+	height: 55px;
 	filter: drop-shadow(1px 1px 7px #000) brightness(2) grayscale(100%);
 }
 #header-logo:hover img{
@@ -309,12 +313,12 @@ header{
 }
 #hero_text > span:first-child{
 	display: inline-block;
-	width: calc(2rem + 1.5vw);
+	width: calc(2rem + 1vw);
+	margin-right: 0.5vw;
 	background-color: var(--trans_blue-light);
 }
 #hero_text h1{
 	color: #fff;
-	font-size: 4vw;
 	margin-bottom: 10px;
 }
 #hero_text p{
@@ -516,14 +520,14 @@ header{
 /* Large desktops and smaller screens (max-width: 1400px) */
 @media (max-width: 1400px) {
 	#hero {
-		height: 85vh; /* Adjusted for large desktops */
+		height: calc(85vh + 55px);
 	}
 }
 
 /* Medium desktops (max-width: 1200px) */
 @media (max-width: 1200px) {
 	#hero {
-		height: 80vh; /* Adjusted for medium desktops */
+		height: calc(80vh + 55px);
 	}
 	.nav-link {
 		padding-right: 1rem;
@@ -537,11 +541,8 @@ header{
 /* Tablets and smaller laptops (max-width: 992px) */
 @media (max-width: 992px) {
 	#hero {
-		height: 60vh;
-		min-height: 250px; /* Adjusted for tablets and smaller laptops */
-	}
-	header {
-		position: relative;
+		height: calc(60vh + 55px);
+		min-height: 250px;
 	}
 	.navbar {
 		padding: 0.2rem 1.5rem 0.2rem 0.2rem;
@@ -617,7 +618,7 @@ header{
 /* Tablets (portrait orientation) (max-width: 768px) */
 @media (max-width: 768px) {
 	#hero {
-		height: 60vh;
+		height: calc(60vh + 55px);
 		min-height: 250px;
 	}
 	.crsl-item {

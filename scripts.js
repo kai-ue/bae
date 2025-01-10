@@ -1,17 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
-
 	function preloadContent() {
 		const components = [
 			{ url: 'Components/header.html', id: 'header' },
 			{ url: 'Components/footer.html', id: 'footer' }
 		];
-
-		// Loop through the components and fetch each
 		components.forEach(component => {
 			fetch(component.url)
 				.then(response => response.text())
 				.then(data => {
-					// Insert the HTML into the page
 					document.getElementById(component.id).innerHTML = data;
 
 					// After content is loaded, attach event listeners
@@ -22,11 +18,14 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
-	// Attach the header events (navbar toggle and dropdown)
+	// Attach the header events (navbar toggle, dropdown, and scroll effects)
 	function attachHeaderEvents() {
 		const navbarToggler = document.getElementById('navbar-toggler');
 		const navbarCollapse = document.getElementById('navbarNav');
 		const navbarNav = document.querySelector('.navbar-nav');
+		const header = document.querySelector('header'); // Select the header
+		let lastScrollY = window.scrollY; // Track the last scroll position
+		let isScrollingDown = false; // Track scroll direction
 
 		// Toggle mobile navigation on navbar toggler click
 		if (navbarToggler) {
@@ -56,6 +55,22 @@ document.addEventListener('DOMContentLoaded', function () {
 				button.classList.remove('rotate-180');
 			}
 		});
+
+		// Scroll effect: Hide header on scroll down, show on scroll up
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > lastScrollY) {
+				if (!isScrollingDown) {
+					isScrollingDown = true;
+					setTimeout(() => {
+						if (isScrollingDown) header.classList.add('hidden');
+					}, 200); // 200ms delay
+				}
+			} else {
+				isScrollingDown = false;
+				header.classList.remove('hidden');
+			}
+			lastScrollY = window.scrollY;
+		});
 	}
 
 	preloadContent();
@@ -74,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		let $parent = '<div class="row">';
 		$data.forEach(value => {
 			$parent += `
-			<div class="col-lg-3 col-sm-6 p-1px">
+			<div class="col-md-3 col-6 p-1px">
 				<a class="fill_tile pstn_rel_dis_blck" href="#home-products" title="${value.shop}">
 					<img class="img-fluid" src="${$dir_path}${value.file_name}" alt="${value.shop}">
 					<div>
@@ -88,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		$sec.innerHTML += $parent;
 	}
 	populateArray();
-	
+
 	// Data arrays for carousel
 	const path_Pro_gal = "img/img-index/img-crsl-pro_gal/";
 	const $arrProGal = [
@@ -191,8 +206,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	function moveSlide(step, carouselId) {
 		const slides = document.querySelectorAll(`#${carouselId} .crsl-item`);
 		const totalSlides = slides.length;
-		
-	    const slidesToShow = 4; // Show 4 items at a time
+
+		const slidesToShow = 4; // Show 4 items at a time
 
 		// Calculate the new index
 		index1 = (index1 + step + totalSlides) % totalSlides;
