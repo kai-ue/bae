@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		const navbarToggler = document.getElementById('navbar-toggler');
 		const navbarCollapse = document.getElementById('navbarNav');
 		const navbarNav = document.querySelector('.navbar-nav');
-		const header = document.querySelector('header');
+		const header = document.getElementById('header');
 		let lastScrollY = window.scrollY; // Track the last scroll position
 		let isScrollingDown = false; // Track scroll direction
 

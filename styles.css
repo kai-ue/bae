@@ -120,9 +120,8 @@ img:hover{
 }
 
 /*  Header  */
-#navbarNav,
 .dropdown-menu,
-header{	
+header{
 	left: 0;
 	margin: 0;
 	padding: 0;
@@ -545,7 +544,7 @@ header.hidden {
 		height: calc(60vh + 55px);
 		min-height: 250px;
 	}
-	.navbar {
+	.navbar{
 		padding: 0.2rem 1.5rem 0.2rem 0.2rem;
 	}
 	#header-logo {
@@ -561,6 +560,11 @@ header.hidden {
 	.navbar-collapse {
 		display: block;
 		order: 4;
+	}
+	#navbarNav{
+		background-color: #0000004d;
+		backdrop-filter: blur(3px); /* Apply blur to the content behind the header */
+		-webkit-backdrop-filter: blur(3px);
 	}
 	.navbar-nav {
 		flex-direction: column;
