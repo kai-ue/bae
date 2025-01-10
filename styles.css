@@ -278,6 +278,7 @@ header.hidden {
 
 /*   Footer   */
 footer{
+	position: relative;
 	width: 100%;
 	color: #fff;
 	background-color: var(--fill_blue);
