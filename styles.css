@@ -276,6 +276,12 @@ header.hidden {
 	cursor: pointer;
 }
 
+/*   Footer   */
+footer::after{
+	text-align: right;
+	content: "\00A9 2025 Brother Auto parts & Engineering Co., Ltd. All Rights Reserved.";
+}
+
 /*   Index Page   */
 #hero {
 	width: 100%;
@@ -637,6 +643,9 @@ header.hidden {
 	}
 	#home-about_img > img {
 		margin: 2rem 0 7.5rem;
+	}
+	#home_cta-img{
+		height: 15rem;
 	}
 }
 

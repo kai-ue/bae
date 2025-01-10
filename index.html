@@ -121,10 +121,12 @@
 		<div class="col-md" id="home_cta-img">
 		</div>
 		<div class="col-md p-4" id="home_cta-txt">
-			<h3>Grow Your Business with Us!</h3>
+			<h3>Grow Your Business with Us!</h3> 
 			<p>
-				
-			</p>
+				With over 30 years of proven expertise, BAE delivers exceptional skills, quality, competitive pricing, and superior customer experience as a first-tier supplier.<br>
+				We seek partners to leverage our strengths and drive mutual growth.<br>
+				Let’s connect and explore the possibilities together!
+			</p>			
 			<a href="#contact" class="cta_btn">Get in Touch!</a>
 		</div>
 	</div>
@@ -133,37 +135,5 @@
 </main>
 <footer id="footer"><nav><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#products">Products</a></li><li><a href="#csr">CSR</a></li><li><a href="#contact">Contact</a></li></ul></nav></footer>
 <script src="scripts.js"></script>
-	<script>
-        // Function to hide YouTube elements within the iframe
-        function hideYouTubeElements() {
-            var iframe = document.getElementById('youtube-video');
-            var iframeDoc = iframe.contentWindow.document;
-
-            // Wait for iframe to load fully before applying the styles
-            iframe.onload = function() {
-                var hideElements = [
-                    '.ytp-chrome-top',
-                    '.ytp-large-play-button',
-                    '.ytp-watermark',
-                    '.ytp-title-enable-channel-logo',
-                    '.ytp-shorts-title-channel',
-                    '.iv-branding',
-                    '.iv-branding-context-subscribe',
-                    '.branding-img-container',
-                    '.ytp-chrome-bottom'
-                ];
-
-                hideElements.forEach(function(selector) {
-                    var elements = iframeDoc.querySelectorAll(selector);
-                    elements.forEach(function(el) {
-                        el.style.display = 'none';
-                    });
-                });
-            };
-        }
-
-        // Call the function to hide elements
-        hideYouTubeElements();
-    </script>
 </body>
 </html>
