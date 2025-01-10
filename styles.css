@@ -540,6 +540,9 @@ header{
 		height: 60vh;
 		min-height: 250px; /* Adjusted for tablets and smaller laptops */
 	}
+	header {
+		position: relative;
+	}
 	.navbar {
 		padding: 0.2rem 1.5rem 0.2rem 0.2rem;
 	}
