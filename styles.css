@@ -277,8 +277,15 @@ header.hidden {
 }
 
 /*   Footer   */
+footer{
+	width: 100%;
+	color: #fff;
+	background-color: var(--fill_blue);
+}
 footer::after{
-	text-align: right;
+	position: absolute;
+	bottom: 2px;
+	right: 2rem;
 	content: "\00A9 2025 Brother Auto parts & Engineering Co., Ltd. All Rights Reserved.";
 }
 
