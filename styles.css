@@ -321,7 +321,7 @@ footer{
 footer::after{
 	position: absolute;
 	bottom: 0.3rem;
-	right: 1rem;
+	left: 1rem;
 	font-size: 0.8rem;
 	line-height: 0.8rem;
 	content: "\00A9 2025 Brother Auto parts & Engineering Co., Ltd. All Rights Reserved.";
