@@ -15,29 +15,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="styles.css">
 	<style>
-		#li-products {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* 高さの中央揃え */
-}
-
-.nav-link {
-  margin-right: 10px; /* ボタンとの間に隙間を作る */
-}
-
-#rotateButton {
-  background: none;
-  border: none;
-  cursor: pointer;
-  /* ボタンのスタイルを調整 */
-  padding: 0;
-  margin: 0;
-}
-
-#rotateButton svg {
-  display: block; /* svgがインライン表示されないようにする */
-}
-			</style>
+	</style>
 </head>
 <body>
 <header id="header" class="bodr_bx"><nav><ul class="navbar-nav" style="flex-direction: row;"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#products">Products</a></li><li><a href="#csr">CSR</a></li><li><a href="#contact">Contact</a></li></ul></nav></header>
@@ -67,24 +45,22 @@
 			<h2>About Us</h2>
 			<p>Brother Auto Parts & Engineering (BAE) is a leading first-tier manufacturer of stamping parts, proudly serving the Thai automotive industry for over 30 years.</p>
 			<p>With decades of expertise, we have developed technology proficiency, experience, and knowledge that consistently meet the high standards set by automotive makers. Our focus areas include quality control, cost control, and project management, ensuring we deliver exactly what our clients expect.</p>
-			<table id="home-about_iso">
-				<h5>Certificates<h5>
-				<tr>
-					<td>
-						<img src="img/common/logo-ISO.svg" alt="Logo of ISO">
-						<ul>
-							<li>ISO 14001:2015</li>
-							<li>ISO 9001:2015</li>
-						</ul>
-					</td>
-					<td>
-						<img src="img/common/logo-IATF_edit.svg" alt="Logo of IATF">
-						<ul>
-							<li>IATF 16949:2016</li>
-						</ul>
-					</td>
-				</tr>
-			</table>
+			<h5>Certificates</h5>
+			<div id="home-about_iso" class="row mb-lg-3">
+				<div class="col-6">
+					<img src="img/common/logo-ISO.svg" alt="Logo of ISO">
+					<ul>
+						<li>ISO 14001:2015</li>
+						<li>ISO 9001:2015</li>
+					</ul>
+				</div>
+				<div class="col-6">
+					<img src="img/common/logo-IATF_edit.svg" alt="Logo of IATF">
+					<ul>
+						<li>IATF 16949:2016</li>
+					</ul>
+				</div>
+			</div>
 			<center><a href="#services" class="read_btn" target="_blank">Read More</a></center>
 		</div>
 		<div class="col-md-6" id="home-about_img">
@@ -133,7 +109,7 @@
 </section>
 
 </main>
-<footer class="mt-5 p-lg-4" id="footer"><nav><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#products">Products</a></li><li><a href="#csr">CSR</a></li><li><a href="#contact">Contact</a></li></ul></nav></footer>
+<footer class="mt-5 px-lg-5 p-4" id="footer"><nav><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#products">Products</a></li><li><a href="#csr">CSR</a></li><li><a href="#contact">Contact</a></li></ul></nav></footer>
 <script src="scripts.js"></script>
 </body>
 </html>

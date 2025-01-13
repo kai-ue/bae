@@ -118,6 +118,34 @@ img:hover{
 	border-radius: 10% / 5%;
 	background: var(--font_blue) url("img/common/pop_up.svg") no-repeat center / contain;
 }
+.contact_ul{
+	list-style-type: none;
+	padding-left: 0;
+}
+.contact_ul > li {
+	position: relative;
+	padding-left: 30px;
+}
+.contact_ul > li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%); /* Vertically center the icon */
+	font-family: "Material Icons";
+	font-size: 1.2rem;
+}
+.contact_ul > li:nth-child(1)::before {
+	content: "\e158";
+}
+.contact_ul > li:nth-child(2)::before {
+	content: "\e0b0";
+}
+.contact_ul > li:nth-child(3)::before {
+	top: 0.8rem !important;
+	content: "\e0c8";
+}
+
 
 /*  Header  */
 .dropdown-menu,
@@ -148,12 +176,12 @@ header.hidden {
 	padding: 0em;
 	/* background-color: rgb(255 255 255 / 53%); */
 }
-#header-logo img{
+#header-logo > img{
 	max-width: 100%;
 	height: 55px;
 	filter: drop-shadow(1px 1px 7px #000) brightness(2) grayscale(100%);
 }
-#header-logo:hover img{
+#header-logo:hover > img{
 	filter:  drop-shadow(1px 1px 7px #fff) brightness(1) grayscale(0);
 	transition: var(--transit);
 }
@@ -227,6 +255,9 @@ header.hidden {
 	position: relative;
 	margin-right: 20px; /* Add space between nav items */
 }
+.nav-link {
+	margin-right: 10px;
+}
 
 /* Navi Dropdown Menu Styles */
 .dropdown-menu{
@@ -250,10 +281,14 @@ header.hidden {
 	color: #fff;
 	background-color: var(--light_blue);
 }
+#rotateButton svg {
+  display: block; /* svgがインライン表示されないようにする */
+}
 .rotate-btn{
 	background: none;
 	border: none;
 	cursor: pointer;
+	margin: 0;
 	padding: 0;
 	transition: transform 0.4s ease;
 	transform-origin: center;
@@ -285,10 +320,46 @@ footer{
 }
 footer::after{
 	position: absolute;
-	bottom: 2px;
-	right: 2rem;
+	bottom: 0.3rem;
+	right: 1rem;
+	font-size: 0.8rem;
+	line-height: 0.8rem;
 	content: "\00A9 2025 Brother Auto parts & Engineering Co., Ltd. All Rights Reserved.";
 }
+footer > .row{
+	justify-content: space-between;
+}
+footer > .row > .col-md-2{
+	display: flex;
+	justify-content: center;
+}
+footer a{
+	color: #fff;
+}
+#footer-logo > a{
+	display: inline-block;
+	width: 100%;
+	padding: 0em;
+}
+#footer-logo_box img{
+	filter: /* drop-shadow(1px 1px 7px #000) */ brightness(10) grayscale(100%);
+}
+#footer-logo_iso{
+	width: 90%;
+	margin: 1rem auto;
+	display: flex;
+	justify-content: space-around;
+}
+#footer-logo_iso > img{
+	width: 23%;
+}
+#footer-logo_iso > span{
+	font-size: 0.8rem;
+	text-align: right;
+	line-height: 1rem;
+}
+
+
 
 /*   Index Page   */
 #hero {
