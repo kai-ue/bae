@@ -118,6 +118,7 @@ img:hover{
 	border-radius: 10% / 5%;
 	background: var(--font_blue) url("img/common/pop_up.svg") no-repeat center / contain;
 }
+nav > ul,
 .contact_ul{
 	list-style-type: none;
 	padding-left: 0;
@@ -338,6 +339,9 @@ footer a{
 }
 footer a:hover{
 	color: #ffa1d4;
+}
+footer h5{
+	font-weight: 900;
 }
 #footer-logo > a{
 	display: inline-block;
