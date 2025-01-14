@@ -111,7 +111,7 @@ img:hover{
 	border-radius: 20% / 50%;
 	box-shadow: 2px 3px 15px var(--trans_blue-dark);
 	background-image: url("img/common/pop_up.svg");
-	background-repeat: no-repeat,
+	background-repeat: no-repeat;
 	background-position: bottom -5rem left -5rem;
 }
 .read_btn:hover{
@@ -119,7 +119,7 @@ img:hover{
 	color: #ffffff00;
 	border-radius: 10% / 5%;
 	background-color: var(--font_blue);
-	background-position: center / contain;
+	background-position: center;
 }
 nav > ul,
 .contact_ul{
