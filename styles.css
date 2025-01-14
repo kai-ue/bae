@@ -110,13 +110,16 @@ img:hover{
 	text-decoration: none;
 	border-radius: 20% / 50%;
 	box-shadow: 2px 3px 15px var(--trans_blue-dark);
+	background-image: url("img/common/pop_up.svg");
+	background-repeat: no-repeat,
 	background-position: bottom -5rem left -5rem;
 }
 .read_btn:hover{
 	padding:12px;
 	color: #ffffff00;
 	border-radius: 10% / 5%;
-	background: var(--font_blue) url("img/common/pop_up.svg") no-repeat center / contain;
+	background-color: var(--font_blue);
+	background-position: center / contain;
 }
 nav > ul,
 .contact_ul{
