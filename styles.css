@@ -665,7 +665,6 @@ footer h5{
 		-webkit-backdrop-filter: blur(3px);
 	}
 	.collapse.navbar-collapse.show{
-		position: absolute;
 		z-index: 1001;
 	}
 	.navbar-nav {
