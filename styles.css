@@ -336,6 +336,9 @@ footer > .row > .col-md-2{
 footer a{
 	color: #fff;
 }
+footer a:hover{
+	color: #ffa1d4;
+}
 #footer-logo > a{
 	display: inline-block;
 	width: 100%;
