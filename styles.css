@@ -149,7 +149,6 @@ nav > ul,
 
 
 /*  Header  */
-.dropdown-menu,
 header{
 	left: 0;
 	margin: 0;
@@ -262,11 +261,13 @@ header.hidden {
 
 /* Navi Dropdown Menu Styles */
 .dropdown-menu{
-	display: none; /* Hide the dropdown by default */
+	display: none;
 	position: absolute;
 	top: 100%;
 	list-style-type: none;
-	3px 3px 26px rgb(0 0 0 / 77%)
+	background-color: #0000004d;
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(3px);
 	min-width: 180px;
 }
 #li-products:hover .dropdown-menu,
@@ -653,6 +654,7 @@ footer h5{
 		display: block;
 		order: 4;
 	}
+	.collapse.navbar-collapse.show,
 	#navbarNav{
 		background-color: #0000004d;
 		backdrop-filter: blur(3px); /* Apply blur to the content behind the header */
