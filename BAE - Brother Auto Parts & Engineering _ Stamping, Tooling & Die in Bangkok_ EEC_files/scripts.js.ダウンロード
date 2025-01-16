@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		const rotateButton = document.getElementById('rotateButton');
 		if (rotateButton) {
 			rotateButton.addEventListener('click', function (event) {
-				event.preventDefault();  // 250116 additional
 				event.stopPropagation(); // Prevent click from propagating to window click listener
 				this.classList.toggle('rotate-180');
 				const dropdown = document.getElementById('dropdownMenu');
