@@ -48,6 +48,15 @@ img:hover{
 }
 
 /*  Common  */
+
+.kai_contain{
+	width: 100%;
+	max-width: 1140px;
+    padding-right: var(--bs-gutter-x, .75rem);
+    padding-left: var(--bs-gutter-x, .75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
 .pstn_rel_dis_blck{
 	position: relative;
 	display: block;
