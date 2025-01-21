@@ -23,7 +23,7 @@
 
 <section id="hero" class="bodr_bx 中心">
 	<figure class="video-container">
-		<video autoplay loop muted playsinline poster="img/img-index/hero_img.jpg">
+		<video autoplay loop muted playsinline poster="img/img-index/hero_img.avif">
 			<source src="img/img-index/video-hero_index.mp4" type="video/mp4">
 		</video>
 
@@ -40,7 +40,7 @@
 </section>
 
 <section class="container p-lg-5 bodr_bx" id="home-about">
-	<div class="row p-4">
+	<div class="row px-4">
 		<div class="col-md-6">
 			<h2>About Us</h2>
 			<p>Brother Auto Parts & Engineering (BAE) is a leading first-tier manufacturer of stamping parts, proudly serving the Thai automotive industry for over 30 years.</p>
@@ -92,24 +92,63 @@
 	</div>
 </section>
 
-<section class="container p-lg-5" id="home-cta">
-	<div class="row mx-4">
-		<div class="col-md" id="home_cta-img">
+<section class="px-lg-5 pt-0 pb-4 bodr_bx" id="home-award">
+	<div class="container">
+		<div class="row p-4">
+			<div class="col-md-6">
+				<h1>Supplier Awards</h1>
+				<h2>Proof of Our Quality</h2>
+			</div>
+			<div class="col-md-6">
+				<p>BAE has been honorably recognized with numerous awards for its outstanding excellence as a supplier to the following companies.</p>
+				
+				<div id="awrd_com_row" class="row mb-lg-3"></div>
+			</div>
 		</div>
-		<div class="col-md p-4" id="home_cta-txt">
-			<h3>Grow Your Business with Us!</h3> 
-			<p>
-				With over 30 years of proven expertise, BAE delivers exceptional skills, quality, competitive pricing, and superior customer experience as a first-tier supplier.<br>
-				We seek partners to leverage our strengths and drive mutual growth.<br>
-				Let’s connect and explore the possibilities together!
-			</p>			
-			<a href="#contact" class="cta_btn">Get in Touch!</a>
+		<center><a href="#services" class="read_btn" target="_blank">Read More</a></center>
+	</div>
+</section>
+
+<section id="home-cta" class="py-4">
+	<div class="container p-4 p-lg-5" >
+		<div class="row mx-lg-4">
+			<div class="col-md" id="home_cta-img">
+			</div>
+			<div class="col-md p-4" id="home_cta-txt">
+				<h3>Grow Your Business with Us!</h3> 
+				<p>
+					With over 30 years of proven expertise, BAE delivers exceptional skills, quality, competitive pricing, and superior customer experience as a first-tier supplier.<br>
+					We seek partners to leverage our strengths and drive mutual growth.<br>
+					Let’s connect and explore the possibilities together!
+				</p>			
+				<a href="#contact" class="cta_btn">Get in Touch!</a>
+			</div>
 		</div>
 	</div>
 </section>
 
 </main>
-<footer class="mt-5 px-lg-5 p-4" id="footer"><nav><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#products">Products</a></li><li><a href="#csr">CSR</a></li><li><a href="#contact">Contact</a></li></ul></nav></footer>
+<footer class="px-lg-5 p-4" id="footer"><nav><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#products">Products</a></li><li><a href="#csr">CSR</a></li><li><a href="#contact">Contact</a></li></ul></nav></footer>
 <script src="scripts.js"></script>
+<script>
+	const $container = document.getElementById('awrd_com_row');
+	const path_Client = "img/img-index/img-crsl-client_gal/logo-";
+	const $arrClient = [
+		{ title: 'Mitsubishi Motors (Thailand) Co., Ltd.', file_name: `${path_Client}MMTh.svg`, link_add: 'https://www.mitsubishi-motors.co.th/th?rd=true' },
+		{ title: 'H-ONE Parts (Thailand) Co., Ltd.', file_name: `${path_Client}H_one.svg`, link_add: 'https://www.h1-co.jp/eng/' },
+		{ title: 'Bridgestone Tire Manufacturing (Thailand) Co., Ltd.', file_name: `${path_Client}Bridgestone.svg`, link_add: 'https://www.bridgestone.co.th/en' },
+	];
+	$arrClient.forEach( $arrClient => {
+		const $innerHTML = `
+			<div class="home-awd_com py-2">
+				<a href="${$arrClient.link_add}" target="_blank">
+					<img class="" src="${$arrClient.file_name}" alt="${$arrClient.title}">
+					<div class="caption">${$arrClient.title}</div>
+				</a>
+			</div>
+		`;
+		$container.innerHTML += $innerHTML;
+	});
+</script>
 </body>
 </html>

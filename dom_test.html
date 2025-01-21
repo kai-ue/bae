@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サンプル 2</title>
+</head>
+<body>
+    <table id="user-table" border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+	<div id="home-award_comp" class="row mb-lg-3"></div>
+    <script>
+		const $container = document.getElementById('home-award_comp');
+		const path_Client = "img/img-index/img-crsl-client_gal/logo-";
+        const $arrClient = [
+							{ title: 'Mitsubishi Motors (Thailand) Co., Ltd.', file_name: `${path_Client}MMTh.svg`, link_add: 'https://www.mitsubishi-motors.co.th/th?rd=true' },
+							{ title: 'H-ONE Parts (Thailand) Co., Ltd.', file_name: `${path_Client}H_one.png`, link_add: 'https://www.h1-co.jp/eng/' },
+							{ title: 'Bridgestone Tire Manufacturing (Thailand) Co., Ltd.', file_name: `${path_Client}Bridgestone.svg`, link_add: 'https://www.bridgestone.co.th/en' },
+						];
+        
+        $arrClient.forEach( $arrClient => {
+            const $innerHTML = `
+                <div class="col-4">
+									<a href="${$arrClient.link_add}" target="_blank">
+										<img src="${$arrClient.file_name}" alt="${$arrClient.title}">
+										<div class="caption">${$arrClient.title}</div>
+									</a>
+								</div>
+				
+            `;
+            $container.innerHTML += $innerHTML;
+			
+		
+        });
+    </script>
+</body>
+</html>

@@ -77,10 +77,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	const $sec = document.getElementById("home-products");
 	const $dir_path = "img/img-index/col_3_img-";
 	const $data = [
-		{ shop: 'Tooling & Die', file_name: 'tooling_die.jpg' },
-		{ shop: 'Stamping', file_name: 'stamping.jpg' },
-		{ shop: 'Welding', file_name: 'welding.jpg' },
-		{ shop: 'Plating', file_name: 'plating.jpg' },
+		{ shop: 'Tooling & Die', file_name: 'tooling_die.avif' },
+		{ shop: 'Stamping', file_name: 'stamping.avif' },
+		{ shop: 'Welding', file_name: 'welding.avif' },
+		{ shop: 'Plating', file_name: 'plating.avif' },
 	];
 
 	function populateArray() {
@@ -104,24 +104,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	const path_Pro_gal = "img/img-index/img-crsl-pro_gal/";
 	const $arrProGal = [
-		{ title: 'Parts1 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
-		{ title: 'Parts2 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
-		{ title: 'Parts3 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
-		{ title: 'Parts4 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
-		{ title: 'Parts5 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
-		{ title: 'Parts6 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
-		{ title: 'Parts7 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
-		{ title: 'Parts8 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
-		{ title: 'Parts9 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
-		{ title: 'Parts10 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
-		{ title: 'Parts11 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
-		{ title: 'Parts12 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.jpg` },
+		{ title: 'Parts1 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts2 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts3 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts4 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts5 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts6 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts7 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts8 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts9 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts10 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts11 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts12 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
 	];
 
 	const path_Client = "img/img-index/img-crsl-client_gal/logo-";
 	const $arrClient = [
 		{ title: 'Mitsubishi Motors (Thailand) Co., Ltd.', file_name: `${ path_Client }MMTh.svg`, link_add: 'https://www.mitsubishi-motors.co.th/th?rd=true' },
-		{ title: 'H-ONE Parts (Thailand) Co., Ltd.', file_name: `${ path_Client }H_one.png`, link_add: 'https://www.h1-co.jp/eng/' },
+		{ title: 'H-ONE Parts (Thailand) Co., Ltd.', file_name: `${ path_Client }H_one.svg`, link_add: 'https://www.h1-co.jp/eng/' },
 		{ title: 'Hitachi Consumer Products (Thailand) Ltd.', file_name: `${ path_Client }Hitachi.svg`, link_add: 'https://www.hitachi-homeappliances.com/th-en/' },
 		{ title: 'NHK Spring (Thailand) Co., Ltd.', file_name: `${ path_Client }Nhk.svg`, link_add: 'https://www.nhkspg.co.th/th/' },
 		{ title: 'Copeland (Thailand) Ltd.', file_name: `${ path_Client }Emerson.png`, link_add: 'https://www.copeland.com/en-th/tools-resources/facilities/thailand' },
