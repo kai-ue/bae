@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+	// Universal functions: Header/Footer fetching, language translation
 	function preloadContent() {
 		const components = [
 			{ url: 'Components/header.html', id: 'header' },
@@ -17,14 +18,48 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
-	// Attach the header events (navbar toggle, dropdown, and scroll effects)
+	function loadLanguageScript(language, callback) {
+		const script = document.createElement("script");
+		script.src = `locale/${language}.js`;
+		script.onload = () => {
+			callback(window.currentTranslations); // Use the loaded translations
+		};
+		document.body.appendChild(script);
+	}
+	function initializeLanguage() {
+		const savedLanguage = localStorage.getItem("language") || "en";
+
+		loadLanguageScript(savedLanguage, (translations) => {
+			updateContent(translations);
+		});
+
+		const languageSelector = document.getElementById("lang-sel");
+		if (languageSelector) {
+			languageSelector.addEventListener("change", (event) => {
+				const selectedLanguage = event.target.value;
+				localStorage.setItem("language", selectedLanguage);
+				loadLanguageScript(selectedLanguage, (translations) => {
+					updateContent(translations);
+				});
+			});
+		}
+	}
+	function updateContent(translations) {
+		document.querySelectorAll("[id]").forEach((element) => {
+			const key = element.id;
+			if (translations[key]) {
+				element.innerHTML = translations[key]; // Use innerHTML for HTML content
+			}
+		});
+	}
+
+	// Header-specific functionalities
 	function attachHeaderEvents() {
 		const navbarToggler = document.getElementById('navbar-toggler');
 		const navbarCollapse = document.getElementById('navbarNav');
-		const navbarNav = document.querySelector('.navbar-nav');
 		const header = document.getElementById('header');
-		let lastScrollY = window.scrollY; // Track the last scroll position
-		let isScrollingDown = false; // Track scroll direction
+		let lastScrollY = window.scrollY;
+		let isScrollingDown = false;
 
 		if (navbarToggler) {
 			navbarToggler.addEventListener('click', function () {
@@ -33,27 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		}
 
-		const rotateButton = document.getElementById('rotateButton');
-		if (rotateButton) {
-			rotateButton.addEventListener('click', function (event) {
-				event.preventDefault();  // 250116 additional
-				event.stopPropagation(); // Prevent click from propagating to window click listener
-				this.classList.toggle('rotate-180');
-				const dropdown = document.getElementById('dropdownMenu');
-				dropdown.classList.toggle('show');
-			});
-		}
-
-		// Close the dropdown if the user clicks outside of the button or dropdown
-		window.addEventListener('click', function (event) {
-			const dropdown = document.getElementById('dropdownMenu');
-			const button = document.getElementById('rotateButton');
-			if (dropdown && button && !button.contains(event.target) && !dropdown.contains(event.target)) {
-				dropdown.classList.remove('show');
-				button.classList.remove('rotate-180');
-			}
-		});
-
 		// Scroll effect: Hide header on scroll down, show on scroll up
 		window.addEventListener('scroll', () => {
 			if (window.scrollY > lastScrollY) {
@@ -61,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					isScrollingDown = true;
 					setTimeout(() => {
 						if (isScrollingDown) header.classList.add('hidden');
-					}, 200); // 200ms delay
+					}, 200);
 				}
 			} else {
 				isScrollingDown = false;
@@ -70,25 +84,55 @@ document.addEventListener('DOMContentLoaded', function () {
 			lastScrollY = window.scrollY;
 		});
 	}
+	
+	/*
+	const languageSelect = document.getElementById('lang-sel');
+	languageSelect.addEventListener('change', function() {
+		const selectedOption = this.options[this.selectedIndex];
+		const flagUrl = selectedOption.getAttribute('data-flag');
+		this.style.backgroundImage = `url(${flagUrl})`;
+	});
+	// Trigger change event to initialize background
+	languageSelect.dispatchEvent(new Event('change'));
+	*/
 
-	preloadContent();
+	// Page-specific functions
+	function initializePageSpecificFunctions() {
+		const currentPage = document.body.dataset.page;
 
-	// Populate the products section with dynamic content
+		switch (currentPage) {
+			case 'index':
+				populateHomeProducts();
+				populateCarousel('crsl-pro_gal', $arrProGal);
+				populateCarousel('crsl-client', $arrClient);
+				Awrd_com_row();
+
+				break;
+
+			case 'about':
+				// Add About page-specific functionality here
+				break;
+
+			// Add more cases for other pages if needed
+		}
+	}
+
+	// Home Page-specific: Populate products and carousels
 	const $sec = document.getElementById("home-products");
 	const $dir_path = "img/img-index/col_3_img-";
 	const $data = [
-		{ shop: 'Tooling & Die', file_name: 'tooling_die.avif' },
-		{ shop: 'Stamping', file_name: 'stamping.avif' },
-		{ shop: 'Welding', file_name: 'welding.avif' },
-		{ shop: 'Plating', file_name: 'plating.avif' },
+		{ shop: 'Tooling & Die', file_name: 'tooling_die.avif', link: 'https://www.brother-autoparts.com/#/Tooling' },
+		{ shop: 'Stamping', file_name: 'stamping.avif', link: 'https://www.brother-autoparts.com/#/Stamping&welding' },
+		{ shop: 'Welding', file_name: 'welding.avif', link: 'https://www.brother-autoparts.com/#/Stamping&welding' },
+		{ shop: 'Plating', file_name: 'plating.avif', link: 'https://www.brother-autoparts.com/#/PlatingProduct' },
 	];
 
-	function populateArray() {
+	function populateHomeProducts() {
 		let $parent = '<div class="row">';
 		$data.forEach(value => {
 			$parent += `
 			<div class="col-md-3 col-6 p-1px">
-				<a class="fill_tile pstn_rel_dis_blck" href="#home-products" title="${value.shop}">
+				<a class="fill_tile pstn_rel_dis_blck" href="${value.link}" title="${value.shop}" target="_blank">
 					<img class="img-fluid" src="${$dir_path}${value.file_name}" alt="${value.shop}">
 					<div>
 						<h3>${value.shop}</h3>
@@ -100,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		$parent += '</div>';
 		$sec.innerHTML += $parent;
 	}
-	populateArray();
 
 	const path_Pro_gal = "img/img-index/img-crsl-pro_gal/";
 	const $arrProGal = [
@@ -186,10 +229,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		wrapper.appendChild(prevButton);
 		wrapper.appendChild(nextButton);
 	}
-
-	populateCarousel('crsl-pro_gal', $arrProGal);
-	populateCarousel('crsl-client', $arrClient);
-
 	// Initialize index for carousel movement
 	let index1 = 0;
 
@@ -219,4 +258,31 @@ document.addEventListener('DOMContentLoaded', function () {
 		modal.style.display = "none"; // Hide the modal
 	}
 	document.getElementById("closeModal").addEventListener("click", closeModal);
+	
+	function Awrd_com_row(){
+		const $container = document.getElementById('awrd_com_row');
+		const path_Client = "img/img-index/img-crsl-client_gal/logo-";
+		const $arrAwrd_com = [
+			{ title: 'Mitsubishi Motors (Thailand) Co., Ltd.', file_name: `${path_Client}MMTh.svg`, link_add: 'https://www.mitsubishi-motors.co.th/th?rd=true' },
+			{ title: 'H-ONE Parts (Thailand) Co., Ltd.', file_name: `${path_Client}H_one.svg`, link_add: 'https://www.h1-co.jp/eng/' },
+			{ title: 'Bridgestone Tire Manufacturing (Thailand) Co., Ltd.', file_name: `${path_Client}Bridgestone.svg`, link_add: 'https://www.bridgestone.co.th/en' },
+		];
+
+		$arrAwrd_com.forEach(client => {
+			const $innerHTML = `
+				<div class="home-awd_com py-2">
+					<a href="${client.link_add}" target="_blank">
+						<img class="" src="${client.file_name}" alt="${client.title}">
+						<div class="caption">${client.title}</div>
+					</a>
+				</div>
+			`;
+			$container.innerHTML += $innerHTML;
+		});
+	}
+
+	// Initialize the script
+	preloadContent();
+	initializeLanguage();
+	initializePageSpecificFunctions();
 });

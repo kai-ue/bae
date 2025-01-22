@@ -119,7 +119,7 @@ img:hover{
 	text-decoration: none;
 	border-radius: 20% / 50%;
 	box-shadow: 2px 3px 15px var(--trans_blue-dark);
-	background-image: url("img/common/pop_up.svg");
+	background-image: url("../img/common/pop_up.svg");
 	background-repeat: no-repeat;
 	background-position: bottom -5rem left -5rem;
 }
@@ -393,7 +393,7 @@ footer h5{
 	min-height: 300px;
 }
 #hero > .video-container{
-	background: #000 url( img/img-index/hero_img.avif ) no-repeat center center/ cover;
+	background: #000 url( ../img/img-index/hero_img.avif ) no-repeat center center/ cover;
 }
 .video-container {
 	position: relative;
@@ -444,7 +444,7 @@ footer h5{
 	color: #fff;
 }	
 #home-about{
-	background: #fff url("img/img-index/home-about_bg_img.avif") no-repeat right / contain;
+	background: #fff url("../img/img-index/home-about_bg_img.avif") no-repeat right / contain;
 }
 #home-about > row{
 	min-height: 300px;
@@ -601,8 +601,8 @@ footer h5{
 
 /*   Home Award   */
 #home-award{
-	height: 50vh;
-	background: url( img/img-index/award.avif ) no-repeat center bottom/ contain,
+	height: 60vh;
+	background: url( ../img/img-index/award.avif ) no-repeat center bottom/ contain,
 		radial-gradient(ellipse at bottom, #15479C, transparent),
 		radial-gradient(ellipse at bottom, #94bbe9, #bfe9ff);
 	color: #fff;
@@ -622,7 +622,16 @@ footer h5{
 	width: 31%;
 	position: relative;
 }
-#home-award > .container > center > .read_btn,
+#home-award > .container{
+	position: relative;
+    height: 100%;
+}
+#home-award > .container > .read_btn{
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+}
+#home-award > .container > .read_btn,
 .home-awd_com{
 	color: #fff;
 	border: 1px solid transparent;
@@ -631,7 +640,7 @@ footer h5{
 	backdrop-filter: blur(4px);
 	box-shadow: 3px 4px 20px var(--trans_blue-dark);
 }
-#home-award > .container > center > .read_btn:hover{
+#home-award > .container > .read_btn:hover{
 	border-radius: 0% / 0%;
 	color: transparent;
 	background-color: var(--trans_blue-light);
@@ -643,13 +652,13 @@ footer h5{
 
 /*   Home CTA   */
 #home-cta{
-	background:linear-gradient(rgb(255 255 255 / 78%), rgb(255 255 255 / 50%)), url(img/img-index/hero_img.avif) no-repeat center center / cover;
+	background:linear-gradient(rgb(255 255 255 / 78%), rgb(255 255 255 / 50%)), url(../img/img-index/hero_img.avif) no-repeat center center / cover;
 }
 #home-cta > .container > .row{
 	box-shadow: 3px 4px 20px #000000b3;
 }
 #home_cta-img{
-	background: #fff url("img/img-index/home_cta-img.avif") no-repeat center center/cover;
+	background: #fff url("../img/img-index/home_cta-img.avif") no-repeat center center/cover;
 }
 #home_cta-txt{
 	color: #fff;

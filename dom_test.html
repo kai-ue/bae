@@ -1,46 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>サンプル 2</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-language Website</title>  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+        .custom-select-option {
+      display: flex;
+      align-items: center;
+    }
+    .flag-icon {
+      width: 20px;
+      height: 15px;
+      margin-right: 10px;
+    }
+  
+</style>
 </head>
 <body>
-    <table id="user-table" border="1">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Location</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-	<div id="home-award_comp" class="row mb-lg-3"></div>
-    <script>
-		const $container = document.getElementById('home-award_comp');
-		const path_Client = "img/img-index/img-crsl-client_gal/logo-";
-        const $arrClient = [
-							{ title: 'Mitsubishi Motors (Thailand) Co., Ltd.', file_name: `${path_Client}MMTh.svg`, link_add: 'https://www.mitsubishi-motors.co.th/th?rd=true' },
-							{ title: 'H-ONE Parts (Thailand) Co., Ltd.', file_name: `${path_Client}H_one.png`, link_add: 'https://www.h1-co.jp/eng/' },
-							{ title: 'Bridgestone Tire Manufacturing (Thailand) Co., Ltd.', file_name: `${path_Client}Bridgestone.svg`, link_add: 'https://www.bridgestone.co.th/en' },
-						];
-        
-        $arrClient.forEach( $arrClient => {
-            const $innerHTML = `
-                <div class="col-4">
-									<a href="${$arrClient.link_add}" target="_blank">
-										<img src="${$arrClient.file_name}" alt="${$arrClient.title}">
-										<div class="caption">${$arrClient.title}</div>
-									</a>
-								</div>
-				
-            `;
-            $container.innerHTML += $innerHTML;
-			
-		
-        });
-    </script>
+  <header>
+    <h1 id="title">Welcome to Our Company</h1>
+    <p id="description">We provide the best services for you.</p>
+  </header>
+  
+      <div class="form-group">
+    <label for="languageSelector">Select Language</label>
+    <!-- Native Select Dropdown -->
+    <select class="form-select" id="languageSelector">
+      <option value="en" data-flag="img/common/logo-ISO.svg">English</option>
+      <option value="jp" data-flag="img/common/logo-ISO.svg">Japanese</option>
+      <option value="fr" data-flag="img/common/logo-ISO.svg">French</option>
+    </select>
+  </div>
+  
+  
+  <footer>
+    <button id="contact">Contact Us</button>
+    <select id="languageSelector" class="styled-select">
+      <option value="en">English</option>
+      <option value="jp">JaP</option>
+    </select>
+  </footer>
+  <script>
+  const languageSelector = document.getElementById("languageSelector");
+
+  languageSelector.addEventListener("change", (event) => {
+    const selectedLang = event.target.value;
+    const selectedOption = event.target.options[event.target.selectedIndex];
+    const flagIcon = selectedOption.getAttribute("data-flag");
+    console.log("Language selected:", selectedLang);
+    console.log("Flag icon:", flagIcon); // You can trigger language change functionality here
+  });
+</script>
+  
+  <script src="demo-script.js"></script>
 </body>
 </html>

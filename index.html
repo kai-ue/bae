@@ -13,12 +13,19 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel='stylesheet'href='https://fonts.googleapis.com/css?family=Cairo'>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="asset/styles.css">
 	<style>
 	</style>
 </head>
-<body>
-<header id="header" class="bodr_bx"><nav><ul class="navbar-nav" style="flex-direction: row;"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#products">Products</a></li><li><a href="#csr">CSR</a></li><li><a href="#contact">Contact</a></li></ul></nav></header>
+<body data-page="index">
+<header id="header" class="bodr_bx">
+	<nav><ul class="navbar-nav" style="flex-direction: row;"><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#products">Products</a></li><li><a href="#csr">CSR</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+	<select id="lang-sel" class="bodr_bx">
+		<option value="en" data-flag="img/common/flag/flag_uk.svg">&nbsp;&nbsp;&nbsp;&nbsp;EN</option>
+		<option value="th" data-flag="img/common/flag/flag_th.svg">&nbsp;&nbsp;&nbsp;&nbsp;TH</option>
+		<option value="jp" data-flag="img/common/flag/flag_jp.svg">&nbsp;&nbsp;&nbsp;&nbsp;JP</option>
+	</select>
+</header>
 <main>
 
 <section id="hero" class="bodr_bx 中心">
@@ -31,7 +38,7 @@
 			<span>
 			</span>
 			<span>
-				<h1>Die design to Mass production:<br>One-stop Stamping solution</h1>
+				<h1 id="hero_slogan">Die design to Mass production:<br>One-stop Stamping solution</h1>
 				<p>With 30+ years of proven experience in the Thai automotive<br>industry, BAE meets all your needs for stamping parts.</p>
 				<a href="#contact" class="cta_btn">Request a Quote</a>
 			</span>
@@ -105,7 +112,7 @@
 				<div id="awrd_com_row" class="row mb-lg-3"></div>
 			</div>
 		</div>
-		<center><a href="#services" class="read_btn" target="_blank">Read More</a></center>
+		<a href="#services" class="read_btn" target="_blank">Read More</a>
 	</div>
 </section>
 
@@ -129,26 +136,9 @@
 
 </main>
 <footer class="px-lg-5 p-4" id="footer"><nav><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#products">Products</a></li><li><a href="#csr">CSR</a></li><li><a href="#contact">Contact</a></li></ul></nav></footer>
-<script src="scripts.js"></script>
+<script src="asset/script.js"></script>
 <script>
-	const $container = document.getElementById('awrd_com_row');
-	const path_Client = "img/img-index/img-crsl-client_gal/logo-";
-	const $arrClient = [
-		{ title: 'Mitsubishi Motors (Thailand) Co., Ltd.', file_name: `${path_Client}MMTh.svg`, link_add: 'https://www.mitsubishi-motors.co.th/th?rd=true' },
-		{ title: 'H-ONE Parts (Thailand) Co., Ltd.', file_name: `${path_Client}H_one.svg`, link_add: 'https://www.h1-co.jp/eng/' },
-		{ title: 'Bridgestone Tire Manufacturing (Thailand) Co., Ltd.', file_name: `${path_Client}Bridgestone.svg`, link_add: 'https://www.bridgestone.co.th/en' },
-	];
-	$arrClient.forEach( $arrClient => {
-		const $innerHTML = `
-			<div class="home-awd_com py-2">
-				<a href="${$arrClient.link_add}" target="_blank">
-					<img class="" src="${$arrClient.file_name}" alt="${$arrClient.title}">
-					<div class="caption">${$arrClient.title}</div>
-				</a>
-			</div>
-		`;
-		$container.innerHTML += $innerHTML;
-	});
+
 </script>
 </body>
 </html>
