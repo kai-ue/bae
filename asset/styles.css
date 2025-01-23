@@ -15,9 +15,14 @@ html, body {
 	padding: 0;
 	overflow-x: hidden;
 }
-body{
-	font-family:'Cairo' !important;
+html[lang="jp"] > body,
+html[lang="en"] > body{
+ 	font-family:'Cairo' !important;
 	font-weight: 100;
+}
+html[lang="th"] > body{
+	font-family: "Noto Sans Thai" !important;
+	font-weight: 200;
 }
 a{
 	text-decoration: none;

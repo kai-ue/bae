@@ -17,9 +17,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				});
 		});
 	}
-
+	
 	function initializeLanguage() {
 		const savedLanguage = localStorage.getItem("language") || "en";
+		
+		// Set the <html> lang attribute
+		document.documentElement.lang = savedLanguage;
 
 		loadLanguageScript(savedLanguage, (translations) => {
 			updateContent(translations);
@@ -30,6 +33,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			languageSelector.addEventListener("change", (event) => {
 				const selectedLanguage = event.target.value;
 				localStorage.setItem("language", selectedLanguage);
+				
+				// Update the <html> lang attribute
+				document.documentElement.lang = selectedLanguage;
+				
 				loadLanguageScript(selectedLanguage, (translations) => {
 					updateContent(translations);
 				});
