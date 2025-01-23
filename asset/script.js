@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-	// Universal functions: Header/Footer fetching, language translation
 	function preloadContent() {
 		const components = [
 			{ url: 'Components/header.html', id: 'header' },
@@ -12,20 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
 					document.getElementById(component.id).innerHTML = data;
 
 					if (component.id === 'header') {
-						attachHeaderEvents();
+						attachHeaderEvents(); // Initialize header-specific functionality
+						initializeLanguage(); // Initialize language only after header is loaded
 					}
 				});
 		});
 	}
 
-	function loadLanguageScript(language, callback) {
-		const script = document.createElement("script");
-		script.src = `locale/${language}.js`;
-		script.onload = () => {
-			callback(window.currentTranslations); // Use the loaded translations
-		};
-		document.body.appendChild(script);
-	}
 	function initializeLanguage() {
 		const savedLanguage = localStorage.getItem("language") || "en";
 
@@ -44,6 +36,14 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		}
 	}
+	function loadLanguageScript(language, callback) {
+		const script = document.createElement("script");
+		script.src = `locale/${language}.js`;
+		script.onload = () => {
+			callback(window.currentTranslations); // Use the loaded translations
+		};
+		document.body.appendChild(script);
+	}
 	function updateContent(translations) {
 		document.querySelectorAll("[id]").forEach((element) => {
 			const key = element.id;
@@ -53,14 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
-	// Header-specific functionalities
 	function attachHeaderEvents() {
 		const navbarToggler = document.getElementById('navbar-toggler');
 		const navbarCollapse = document.getElementById('navbarNav');
-		const header = document.getElementById('header');
-		let lastScrollY = window.scrollY;
-		let isScrollingDown = false;
-
 		if (navbarToggler) {
 			navbarToggler.addEventListener('click', function () {
 				navbarCollapse.classList.toggle('show');
@@ -68,33 +63,39 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		}
 
+		const header = document.getElementById('header');
+		let lastScrollY = window.scrollY; // Store the last scroll position
+		let isScrollingDown = false;
+
+		if (!header) {
+				console.warn("Header not found!");
+				return; // Exit if the header doesn't exist
+		}
+		// Ensure the CSS class "hidden" exists and does what it should
+		if (!document.styleSheets[0].rules.some(rule => rule.selectorText === '.hidden')) {
+				console.warn('CSS class `.hidden` is not defined.');
+		}
+
 		// Scroll effect: Hide header on scroll down, show on scroll up
 		window.addEventListener('scroll', () => {
-			if (window.scrollY > lastScrollY) {
+			const currentScrollY = window.scrollY;
+
+			if (currentScrollY > lastScrollY && currentScrollY > 100) { 
+				// Scrolling down and scroll position is significant
 				if (!isScrollingDown) {
 					isScrollingDown = true;
-					setTimeout(() => {
-						if (isScrollingDown) header.classList.add('hidden');
-					}, 200);
+					header.classList.add('hidden');
 				}
-			} else {
+			} else if (currentScrollY < lastScrollY || currentScrollY <= 100) { 
+						// Scrolling up or near top of page
 				isScrollingDown = false;
 				header.classList.remove('hidden');
 			}
-			lastScrollY = window.scrollY;
+			lastScrollY = currentScrollY; // Update last scroll position
 		});
 	}
-	
-	/*
-	const languageSelect = document.getElementById('lang-sel');
-	languageSelect.addEventListener('change', function() {
-		const selectedOption = this.options[this.selectedIndex];
-		const flagUrl = selectedOption.getAttribute('data-flag');
-		this.style.backgroundImage = `url(${flagUrl})`;
-	});
-	// Trigger change event to initialize background
-	languageSelect.dispatchEvent(new Event('change'));
-	*/
+	// Initialize the script
+	preloadContent();
 
 	// Page-specific functions
 	function initializePageSpecificFunctions() {
