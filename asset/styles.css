@@ -46,6 +46,9 @@ img:hover{
 	-ms-transition: 0.3s ease;
 	transition: 0.3s ease;
 }
+option{
+	background-color: rgba(0, 0, 0, 0.5);
+}
 
 /*  Common  */
 
