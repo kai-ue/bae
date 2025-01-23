@@ -628,7 +628,7 @@ footer h5{
 }
 #home-award > .container > .read_btn{
 	position: absolute;
-	left: 50%;
+	left: 2rem;
 	bottom: 0;
 }
 #home-award > .container > .read_btn,
@@ -796,7 +796,6 @@ footer h5{
 		vertical-align: top;
 	}
 	#home-award{
-		height: auto;
 		background-size: cover;
 	}
 	.home-awd_com .caption{
@@ -825,9 +824,6 @@ footer h5{
 	#home_cta-img{
 		height: 15rem;
 	}
-	#home-award{
-		text-align: center;
-	}
 }
 
 /* Mobile devices (max-width: 576px) */
@@ -844,5 +840,17 @@ footer h5{
 	.cta_btn {
 		padding: 5px 10px;
 		font-size: 4vw;
+	}
+	#home-award{
+		text-align: center;
+	}
+	#home-award > .container > .row.p-4{
+		height: 35vh;
+		flex-direction: column;
+		justify-content: space-around;
+	}
+	#home-award > .container > .read_btn{
+		left: auto;
+		bottom: 1rem;
 	}
 }
