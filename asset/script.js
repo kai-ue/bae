@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-	// Universal functions: Header/Footer fetching, language translation
 	function preloadContent() {
 		const components = [
 			{ url: 'Components/header.html', id: 'header' },
@@ -12,20 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
 					document.getElementById(component.id).innerHTML = data;
 
 					if (component.id === 'header') {
-						attachHeaderEvents();
+						attachHeaderEvents(); // Initialize header-specific functionality
+						initializeLanguage(); // Initialize language only after header is loaded
 					}
 				});
 		});
 	}
 
-	function loadLanguageScript(language, callback) {
-		const script = document.createElement("script");
-		script.src = `locale/${language}.js`;
-		script.onload = () => {
-			callback(window.currentTranslations); // Use the loaded translations
-		};
-		document.body.appendChild(script);
-	}
 	function initializeLanguage() {
 		const savedLanguage = localStorage.getItem("language") || "en";
 
@@ -44,6 +36,14 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		}
 	}
+	function loadLanguageScript(language, callback) {
+		const script = document.createElement("script");
+		script.src = `locale/${language}.js`;
+		script.onload = () => {
+			callback(window.currentTranslations); // Use the loaded translations
+		};
+		document.body.appendChild(script);
+	}
 	function updateContent(translations) {
 		document.querySelectorAll("[id]").forEach((element) => {
 			const key = element.id;
@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
-	// Header-specific functionalities
 	function attachHeaderEvents() {
 		const navbarToggler = document.getElementById('navbar-toggler');
 		const navbarCollapse = document.getElementById('navbarNav');
@@ -84,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			lastScrollY = window.scrollY;
 		});
 	}
+	preloadContent();
 	
 	/*
 	const languageSelect = document.getElementById('lang-sel');
@@ -280,9 +280,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			$container.innerHTML += $innerHTML;
 		});
 	}
-
-	// Initialize the script
-	preloadContent();
-	initializeLanguage();
 	initializePageSpecificFunctions();
 });
+
