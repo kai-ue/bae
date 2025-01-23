@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		}
 	}
-
 	function loadLanguageScript(language, callback) {
 		const script = document.createElement("script");
 		script.src = `locale/${language}.js`;
@@ -45,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		};
 		document.body.appendChild(script);
 	}
-
 	function updateContent(translations) {
 		document.querySelectorAll("[id]").forEach((element) => {
 			const key = element.id;
@@ -54,6 +52,16 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 	}
+	/*
+	const languageSelect = document.getElementById('lang-sel');
+	languageSelect.addEventListener('change', function() {
+		const selectedOption = this.options[this.selectedIndex];
+		const flagUrl = selectedOption.getAttribute('data-flag');
+		this.style.backgroundImage = url(${flagUrl});
+	});
+	// Trigger change event to initialize background
+	languageSelect.dispatchEvent(new Event('change'));
+	*/
 
 	function attachHeaderEvents() {
 		const navbarToggler = document.getElementById('navbar-toggler');
