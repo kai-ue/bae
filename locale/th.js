@@ -7,8 +7,8 @@ window.currentTranslations = {
 	word_products: "ผลิตภัณฑ์",
 	word_pro_serv: "สินค้าและบริการ",
 	word_contact: "ติดต่อเรา",
-	word_tool: "Tooling & Die",
-	word_stamp: "Stamping",
-	word_weld: "Welding",
-	word_plate: "Plating",
+	word_tool: "เครื่องมือและแม่พิมพ์",
+	word_stamp: "การปั๊ม",
+	word_weld: "การเชื่อม",
+	word_plate: "การชุบ",
 };
