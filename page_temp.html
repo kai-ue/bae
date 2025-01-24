@@ -138,5 +138,84 @@
 </main>
 <footer class="px-lg-5 p-4" id="footer"><nav><ul><li><a id="word_home" href="/home">Home</a></li><li><a id="word_about" href="/about">About</a></li><li><a id="word_products" href="/products">Products</a></li><li><a href="/csr">CSR</a></li><li><a id="word_contact" href="/contact">Contact</a></li></ul></nav></footer>
 <script src="asset/script.js"></script>
+<script>
+		
+	function initializeLanguage() {
+    const savedLanguage = localStorage.getItem("language") || "en";
+
+    // Set the <html> lang attribute
+    document.documentElement.lang = savedLanguage;
+
+    // Get the current page from the <body> data attribute
+    const currentPage = document.body.getAttribute("data-page");
+
+    loadLanguageScript(savedLanguage, (translations) => {
+        updateContent(translations, currentPage);
+        updateMeta(translations, currentPage);
+    });
+
+    const languageSelector = document.getElementById("lang-sel");
+    if (languageSelector) {
+        languageSelector.addEventListener("change", (event) => {
+            const selectedLanguage = event.target.value;
+            localStorage.setItem("language", selectedLanguage);
+
+            // Update the <html> lang attribute
+            document.documentElement.lang = selectedLanguage;
+
+            loadLanguageScript(selectedLanguage, (translations) => {
+                updateContent(translations, currentPage);
+                updateMeta(translations, currentPage);
+            });
+        });
+    }
+}
+
+function loadLanguageScript(language, callback) {
+    const script = document.createElement("script");
+    script.src = `locale/${language}.js`; // Load the correct language file (e.g., en.js, th.js)
+    script.onload = () => {
+        callback(window.currentTranslations); // Use the loaded translations
+    };
+    document.body.appendChild(script);
+}
+function updateContent(translations, page) {
+    // Update common elements
+    if (translations.common) {
+        document.querySelectorAll("[data-common-id]").forEach((element) => {
+            const key = element.getAttribute("data-common-id");
+            if (translations.common[key]) {
+                element.innerHTML = translations.common[key]; // Apply common translations
+            }
+        });
+    }
+    // Update page-specific elements
+    if (translations[page]) {
+        document.querySelectorAll("[id]").forEach((element) => {
+            const key = element.id;
+            if (translations[page][key]) {
+                element.innerHTML = translations[page][key]; // Apply page-specific translations
+            }
+        });
+    }
+}
+
+function updateMeta(translations, page) {
+    if (translations[page]) {
+        // Update the <title>
+        if (translations[page].title) {
+            document.title = translations[page].title;
+        }
+
+        // Update the <meta name="description">
+        const metaDescription = document.querySelector('meta[name="description"]');
+        if (metaDescription && translations[page].description) {
+            metaDescription.setAttribute("content", translations[page].description);
+        }
+    }
+}
+initializeLanguage();
+</script>
+
 </body>
 </html>
