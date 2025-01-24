@@ -393,12 +393,12 @@ footer h5{
 	line-height: 1rem;
 }
 
-
-
 /*   Index Page   */
 #hero {
-	width: 100%;
 	position: relative;
+	width: 100%;
+	height: 80vh;
+	max-height: 900px;
 	min-height: 300px;
 }
 #hero > .video-container{
@@ -814,10 +814,6 @@ footer h5{
 
 /* Tablets (portrait orientation) (max-width: 768px) */
 @media (max-width: 768px) {
-	#hero {
-		height: calc(60vh + 55px);
-		min-height: 250px;
-	}
 	.crsl-item {
 		width: 50%;
 	}
