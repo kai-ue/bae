@@ -167,7 +167,6 @@ nav > ul,
 	content: "\e0c8";
 }
 
-
 /*  Header  */
 header{
 	left: 0;
@@ -397,8 +396,14 @@ footer h5{
 #hero {
 	position: relative;
 	width: 100%;
-	height: 80vh;
+	height: calc(90vh + 55px); 
 	max-height: 900px;
+	min-height: 300px;
+	background: #cfe1fe no-repeat center center/ cover;
+	z-index: 0;
+}
+#hero.secondary {
+	height: 50vh;
 	min-height: 300px;
 }
 #hero > .video-container{
@@ -436,11 +441,11 @@ footer h5{
 	margin-right: 0.5vw;
 	background-color: var(--trans_blue-light);
 }
-#hero_text h1{
+#hero_slogan{
 	color: #fff;
 	margin-bottom: 10px;
 }
-#hero_text p{
+#hero_tag{
 	font-size: 2vw;
 	margin-bottom: 20px;
 }
@@ -684,6 +689,25 @@ footer h5{
 	background-color: #ff8fffd4;
 	color: #fff;
 }
+
+/*   About Us   */
+body[data-page="about"] #hero{
+	background-image: url( "../img/img-about/hero_img-about.avif" );
+}
+body[data-page="about"] #hero::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(-45deg, #5389DC, rgb(234 185 200));
+	opacity: .4;
+	pointer-events: none;
+	z-index: 1;
+	mix-blend-mode: hard-light;
+}
+
 
 @keyframes pulse {
 	0% {
