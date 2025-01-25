@@ -85,19 +85,11 @@
 </section>
 
 <section class="kai_contain p-lg-4" id="home-parts_map">
-<h1>TEST JS</h1>
-	<div id="svg-container"></div>
-
-<script>
-    fetch('img/common/parts_mapping/parts_mapping.svg')
-        .then(response => response.text())
-        .then(svgContent => {
-            document.getElementById('svg-container').innerHTML = svgContent;
-        })
-        .catch(err => console.error('Failed to load SVG:', err));
-</script>
-
-
+	<div class="absl-t0-l0 col-4">
+		<h1 data-common-id="expertise">Our Expertise</h1>
+		<p data-common-id="strong_brkt">We have extensive experience in the <b>Automotive Industry</b>, especially in <b>Supporting parts such as Brackets.</b><p>
+	</div>
+	<div id="parts_mapping_container"></div>
 </section>
 
 <section class="kai_contain p-lg-4 text-center" id="home-pro_gal">

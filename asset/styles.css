@@ -74,6 +74,13 @@ option{
 	align-items: center;
 	justify-content: center;
 }
+.absl-t0-l0{
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: calc(1.5rem + 1vw);
+	z-index: 900;
+}
 .fill_tile{
 	overflow: hidden;
 }
@@ -488,6 +495,9 @@ footer h5{
 	width: 75%;	
 }
 
+#home-parts_map{
+	position: relative;
+}
 
 /*  carousel  */
 #home-pro_gal,

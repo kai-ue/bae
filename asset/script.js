@@ -130,8 +130,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			lastScrollY = window.scrollY;
 		});
 	}
+	
 	// Initialize the script
 	preloadContent();
+	initializeLanguage();
 
 	// Page-specific functions
 	function initializePageSpecificFunctions() {
@@ -140,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		switch (currentPage) {
 			case 'index':
 				populateHomeProducts();
+				loadSVG('img/common/parts_mapping/parts_mapping.svg', 'parts_mapping_container');
 				populateCarousel('crsl-pro_gal', $arrProGal);
 				populateCarousel('crsl-client', $arrClient);
 				Awrd_com_row();
@@ -180,6 +183,29 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 		$parent += '</div>';
 		$sec.innerHTML += $parent;
+	}
+	
+	// Lazy load function for SVG
+    function loadSVG(svgPath, containerId) {
+		const observer = new IntersectionObserver((entries, observer) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					fetch(svgPath)
+						.then(response => response.text())
+						.then(svgContent => {
+							document.getElementById(containerId).innerHTML = svgContent;
+							observer.disconnect(); // Stop observing once loaded
+						})
+						.catch(err => console.error('Failed to load SVG:', err));
+				}
+			});
+		});
+
+		// Observe the container
+		const container = document.getElementById(containerId);
+		if (container) {
+			observer.observe(container);
+		}
 	}
 
 	const path_Pro_gal = "img/img-index/img-crsl-pro_gal/";
