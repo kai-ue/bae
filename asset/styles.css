@@ -74,13 +74,6 @@ option{
 	align-items: center;
 	justify-content: center;
 }
-.absl-t0-l0{
-	display: inline-block;
-	position: absolute;
-	top: 0;
-	left: calc(1.5rem + 1vw);
-	z-index: 900;
-}
 .fill_tile{
 	overflow: hidden;
 }
@@ -498,6 +491,13 @@ footer h5{
 #home-parts_map{
 	position: relative;
 }
+#parts_map-slogan{
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: calc(1.5rem + 1vw);
+	z-index: 900;
+}
 
 /*  carousel  */
 #home-pro_gal,
@@ -843,6 +843,14 @@ body[data-page="about"] #hero::before {
 	}
 	.home-awd_com .caption{
 		width: 100%;
+	}
+	#parts_map-slogan{
+		position: relative;
+		display: flex;
+		width: 90%;
+		margin: 0 auto;
+		top: auto;
+		left: auto;
 	}
 }
 
