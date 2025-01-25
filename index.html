@@ -85,7 +85,18 @@
 </section>
 
 <section class="kai_contain p-lg-4" id="home-parts_map">
-	<img src="img/common/parts_mapping/parts_mapping.svg" alt="Showing which sections our products are used by a Car parts mapping">
+	<h1>TEST JS</h1>
+	<div id="svg-container"></div>
+
+<script>
+    fetch('img/common/parts_mapping/parts_mapping.svg')
+        .then(response => response.text())
+        .then(svgContent => {
+            document.getElementById('svg-container').innerHTML = svgContent;
+        })
+        .catch(err => console.error('Failed to load SVG:', err));
+</script>
+
 </section>
 
 <section class="kai_contain p-lg-4 text-center" id="home-pro_gal">
