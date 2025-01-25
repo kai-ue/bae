@@ -437,8 +437,8 @@ footer h5{
 }
 #hero_text > span:first-child{
 	display: inline-block;
-	width: calc(2rem + 1vw);
-	margin-right: 0.5vw;
+	width: calc(2rem + 1.5vw);
+	margin-right: 1vw;
 	background-color: var(--trans_blue-light);
 }
 #hero_slogan{
@@ -491,7 +491,7 @@ footer h5{
 #home-parts_map{
 	position: relative;
 }
-#parts_map-slogan{
+.head_left{
 	display: inline-block;
 	position: absolute;
 	top: 0;
@@ -502,6 +502,7 @@ footer h5{
 /*  carousel  */
 #home-pro_gal,
 #home-client{
+	position: relative;
 	overflow: hidden;
 }
 .carousel {
@@ -844,7 +845,7 @@ body[data-page="about"] #hero::before {
 	.home-awd_com .caption{
 		width: 100%;
 	}
-	#parts_map-slogan{
+	.head_left{
 		position: relative;
 		display: flex;
 		width: 90%;
@@ -887,6 +888,9 @@ body[data-page="about"] #hero::before {
 	.cta_btn {
 		padding: 5px 10px;
 		font-size: 4vw;
+	}
+	.head_left{
+		flex-direction: column;
 	}
 	#home-award{
 		text-align: center;
