@@ -501,9 +501,14 @@ footer h5{
 
 /*  carousel  */
 #home-pro_gal,
-#home-client{
+#home-client,
+#home-client > .kai_contain{
 	position: relative;
 	overflow: hidden;
+}
+#home-client{
+	width: 100%;
+	background:linear-gradient(rgb(255 255 255 / 78%), rgb(255 255 255 / 50%)), url(../img/img-index/hero_img.avif) no-repeat center center / cover;
 }
 .carousel {
 	position: relative;
@@ -656,6 +661,7 @@ footer h5{
 	left: 2rem;
 	bottom: 0;
 }
+#crsl-client > .crsl-item > a > img,
 #home-award > .container > .read_btn,
 .home-awd_com{
 	color: #fff;
