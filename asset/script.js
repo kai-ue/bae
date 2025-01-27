@@ -52,25 +52,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	initializePageSpecificFunctions();
 
 	// Trigger preloadContent() when navigating to other pages via History API
-	window.addEventListener('popstate', () => preloadContent());
+	window.addEventListener('popstate', function() {
+		preloadContent();
+		initializePageSpecificFunctions(); // re-initialize the page functions
+	});
 });
-
-function initializePageSpecificFunctions() {
-	const currentPage = document.body.dataset.page;
-
-	switch (currentPage) {
-		case 'index':
-			populateHomeProducts();
-			loadSVG('img/common/parts_mapping/parts_mapping.svg', 'parts_mapping_container');
-			populateCarousel('crsl-pro_gal', $arrProGal);
-			populateCarousel('crsl-client', $arrClient);
-			Awrd_com_row();
-			break;
-		case 'about':
-			// Add About page-specific functionality here
-			break;
-	}
-}
 
 	// Page-specific functions
 	function initializePageSpecificFunctions() {
