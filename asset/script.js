@@ -1,181 +1,67 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Function to preload common components like header and footer
-    function preloadContent() {
-        const components = [
-            { url: 'Components/header.html', id: 'header' },
-            { url: 'Components/footer.html', id: 'footer' }
-        ];
+	// Function to preload common components like header and footer
+	function preloadContent() {
+		const components = [
+			{ url: 'Components/header.html', id: 'header' },
+			{ url: 'Components/footer.html', id: 'footer' }
+		];
 
-        components.forEach(component => {
-            fetch(component.url)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById(component.id).innerHTML = data;
+		components.forEach(component => {
+			fetch(component.url)
+				.then(response => response.text())
+				.then(data => {
+					document.getElementById(component.id).innerHTML = data;
 
-                    if (component.id === 'header') {
-                        attachHeaderEvents();
-                        initializeLanguage(); // Initialize language after header is loaded
-                    }
-                })
-                .catch(error => console.error(`Failed to load ${component.id}:`, error));
-        });
-    }
-
-    // Function to initialize language settings
-    function initializeLanguage() {
-        const savedLanguage = localStorage.getItem("language") || "en";
-        document.documentElement.lang = savedLanguage;
-        const currentPage = document.body.getAttribute("data-page");
-
-        loadLanguageScript(savedLanguage, (translations) => {
-            updateContent(translations, currentPage);
-            updateMeta(translations, currentPage);
-        });
-
-        const languageSelector = document.getElementById("lang-sel");
-        if (languageSelector) {
-            languageSelector.addEventListener("change", (event) => {
-                const selectedLanguage = event.target.value;
-                localStorage.setItem("language", selectedLanguage);
-                document.documentElement.lang = selectedLanguage;
-
-                loadLanguageScript(selectedLanguage, (translations) => {
-                    updateContent(translations, currentPage);
-                    updateMeta(translations, currentPage);
-                });
-            });
-        }
-    }
-
-    // Function to initialize page-specific functions
-    function initializePageSpecificFunctions() {
-        const currentPage = document.body.dataset.page;
-
-        // Example of page-specific initializations
-        switch (currentPage) {
-            case 'index':
-                populateHomeProducts();
-                loadSVG('img/common/parts_mapping/parts_mapping.svg', 'parts_mapping_container');
-                populateCarousel('crsl-pro_gal', $arrProGal);
-                populateCarousel('crsl-client', $arrClient);
-                Awrd_com_row();
-                break;
-
-            case 'about':
-                // Add About page-specific functionality here
-                break;
-
-            // Add more cases for other pages if needed
-        }
-    }
-
-    // Call preloadContent only once on page load
-    preloadContent();
-    
-    // Call page-specific functions on page load
-    initializePageSpecificFunctions();
-
-    // Handle page changes when navigating via History API (back, forward)
-    window.addEventListener('popstate', function() {
-        preloadContent(); // Reload the common components (header, footer, etc.)
-        initializePageSpecificFunctions(); // Re-initialize page-specific functions
-    });
-
-    // Handle page changes when navigating via links
-    window.addEventListener('click', function (e) {
-        const link = e.target.closest('a');
-        if (link && link.href) {
-            // Check if the link is pointing to the same domain and if it's a non-hash URL
-            const currentHost = window.location.hostname;
-            const linkHost = new URL(link.href).hostname;
-            if (currentHost === linkHost) {
-                e.preventDefault(); // Prevent default link behavior
-                const newUrl = link.href;
-
-                // Push new state to History API
-                history.pushState(null, '', newUrl);
-
-                // Call functions to load the new page content
-                preloadContent();
-                initializePageSpecificFunctions();
-            }
-        }
-    });
-});
-
-// Function to preload content (components like header and footer)
-function preloadContent() {
-    const components = [
-        { url: 'Components/header.html', id: 'header' },
-        { url: 'Components/footer.html', id: 'footer' }
-    ];
-
-    components.forEach(component => {
-        fetch(component.url)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById(component.id).innerHTML = data;
-                if (component.id === 'header') {
-                    attachHeaderEvents();
-                    initializeLanguage();
-                }
-            })
-            .catch(error => console.error(`Failed to load ${component.id}:`, error));
-    });
-}
-
-
-	// Home Page-specific: Populate products and carousels
-	const $sec = document.getElementById("home-products");
-	const $dir_path = "img/img-index/col_3_img-";
-	const $data = [
-		{ shop: 'Tooling & Die', file_name: 'tooling_die.avif', link: 'https://www.brother-autoparts.com/#/Tooling' },
-		{ shop: 'Stamping', file_name: 'stamping.avif', link: 'https://www.brother-autoparts.com/#/Stamping&welding' },
-		{ shop: 'Welding', file_name: 'welding.avif', link: 'https://www.brother-autoparts.com/#/Stamping&welding' },
-		{ shop: 'Plating', file_name: 'plating.avif', link: 'https://www.brother-autoparts.com/#/PlatingProduct' },
-	];
-
-	function populateHomeProducts() {
-		let $parent = '<div class="row">';
-		$data.forEach(value => {
-			$parent += `
-			<div class="col-md-3 col-6 p-1px">
-				<a class="fill_tile pstn_rel_dis_blck" href="${value.link}" title="${value.shop}" target="_blank">
-					<img class="img-fluid" src="${$dir_path}${value.file_name}" alt="${value.shop}">
-					<div>
-						<h3>${value.shop}</h3>
-					</div>
-				</a>
-			</div>
-			`;
+					if (component.id === 'header') {
+						attachHeaderEvents(); // Initialize header events after header is loaded
+						initializeLanguage(); // Initialize language after header is loaded
+					}
+				})
+				.catch(error => console.error(`Failed to load ${component.id}:`, error));
 		});
-		$parent += '</div>';
-		$sec.innerHTML += $parent;
 	}
-	
-	// Lazy load function for SVG
-    function loadSVG(svgPath, containerId) {
-		const observer = new IntersectionObserver((entries, observer) => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					fetch(svgPath)
-						.then(response => response.text())
-						.then(svgContent => {
-							document.getElementById(containerId).innerHTML = svgContent;
-							observer.disconnect(); // Stop observing once loaded
-						})
-						.catch(err => console.error('Failed to load SVG:', err));
-				}
+
+	// Function to handle navigation links and dynamically load page content
+	function loadPageContent(pageUrl) {
+		// Use fetch to load the new page's content (for simplicity, you can load the body of the page)
+		fetch(pageUrl)
+			.then(response => response.text())
+			.then(data => {
+				// Extract and update the body content
+				const newContent = data.match(/<body[^>]*>([\s\S]*?)<\/body>/)[1];
+				document.body.innerHTML = newContent;
+
+				// Reload header/footer content (since it's part of every page)
+				preloadContent();
+
+				// Update the history without reloading the page
+				history.pushState({ path: pageUrl }, '', pageUrl);
+
+				// Reinitialize page-specific functions after content change
+				initializePageSpecificFunctions();
+			})
+			.catch(error => console.error('Error loading new page:', error));
+	}
+
+	// Attach events to navbar links for SPA-like behavior
+	function attachHeaderEvents() {
+		const navbarLinks = document.querySelectorAll('.navbar-nav a'); // Select all links in the navbar
+		navbarLinks.forEach(link => {
+			link.addEventListener('click', function (event) {
+				event.preventDefault(); // Prevent the default link behavior (no page reload)
+				const targetUrl = link.getAttribute('href'); // Get the link's target URL
+				loadPageContent(targetUrl); // Load the new page's content dynamically
 			});
 		});
-
-		// Observe the container
-		const container = document.getElementById(containerId);
-		if (container) {
-			observer.observe(container);
-		}
 	}
 
+	// Handle page changes when navigating via History API (back, forward)
+	window.addEventListener('popstate', function () {
+		const currentPath = window.location.pathname;
+		loadPageContent(currentPath);
+	});
+	preloadContent();
+	
 	const path_Pro_gal = "img/img-index/img-crsl-pro_gal/";
 	const $arrProGal = [
 		{ title: 'Parts1 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
@@ -207,6 +93,78 @@ function preloadContent() {
 		{ title: 'Innova Rubber Co., Ltd.', file_name: `${ path_Client }Innova_rubber.png`, link_add: 'https://www.ircthailand.com/th/home' },
 		{ title: 'Prospira (Thailand) Co., Ltd.', file_name: `${ path_Client }Prospira.svg`, link_add: 'https://prospira.com/' },
 	];
+	
+	initializePageSpecificFunctions();
+	function initializePageSpecificFunctions() {
+		const currentPage = document.body.dataset.page;
+
+		switch (currentPage) {
+			case 'index':
+				populateHomeProducts();
+				loadSVG('img/common/parts_mapping/parts_mapping.svg', 'parts_mapping_container');
+				populateCarousel('crsl-pro_gal', $arrProGal);
+				populateCarousel('crsl-client', $arrClient);
+				Awrd_com_row();
+				break;
+
+			case 'about':
+				// Add About page-specific functionality here
+				break;
+
+			// Add more cases for other pages if needed
+		}
+	}
+
+	// Add any other functions like populateHomeProducts, loadSVG, etc.
+	function populateHomeProducts() {
+		const $sec = document.getElementById("home-products");
+		const $dir_path = "img/img-index/col_3_img-";
+		const $data = [
+			{ shop: 'Tooling & Die', file_name: 'tooling_die.avif', link: 'https://www.brother-autoparts.com/#/Tooling' },
+			{ shop: 'Stamping', file_name: 'stamping.avif', link: 'https://www.brother-autoparts.com/#/Stamping&welding' },
+			{ shop: 'Welding', file_name: 'welding.avif', link: 'https://www.brother-autoparts.com/#/Stamping&welding' },
+			{ shop: 'Plating', file_name: 'plating.avif', link: 'https://www.brother-autoparts.com/#/PlatingProduct' },
+		];
+
+		let $parent = '<div class="row">';
+		$data.forEach(value => {
+			$parent += `
+			<div class="col-md-3 col-6 p-1px">
+				<a class="fill_tile pstn_rel_dis_blck" href="${value.link}" title="${value.shop}" target="_blank">
+					<img class="img-fluid" src="${$dir_path}${value.file_name}" alt="${value.shop}">
+					<div>
+						<h3>${value.shop}</h3>
+					</div>
+				</a>
+			</div>
+			`;
+		});
+		$parent += '</div>';
+		$sec.innerHTML += $parent;
+	}
+	
+	// Lazy load function for SVG
+	function loadSVG(svgPath, containerId) {
+		const observer = new IntersectionObserver((entries, observer) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					fetch(svgPath)
+						.then(response => response.text())
+						.then(svgContent => {
+							document.getElementById(containerId).innerHTML = svgContent;
+							observer.disconnect(); // Stop observing once loaded
+						})
+						.catch(err => console.error('Failed to load SVG:', err));
+				}
+			});
+		});
+
+		// Observe the container
+		const container = document.getElementById(containerId);
+		if (container) {
+			observer.observe(container);
+		}
+	}
 
 	function populateCarousel(carouselId, data) {
 		const wrapper = document.getElementById(`${carouselId}-wrapper`);
@@ -311,4 +269,9 @@ function preloadContent() {
 			$container.innerHTML += $innerHTML;
 		});
 	}
+});
+
+
+
+	
 
