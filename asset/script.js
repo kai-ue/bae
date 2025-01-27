@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			{ url: 'Components/header.html', id: 'header' },
 			{ url: 'Components/footer.html', id: 'footer' }
 		];
+
 		components.forEach(component => {
 			fetch(component.url)
 				.then(response => response.text())
@@ -11,17 +12,16 @@ document.addEventListener('DOMContentLoaded', function () {
 					document.getElementById(component.id).innerHTML = data;
 
 					if (component.id === 'header') {
-						attachHeaderEvents(); // Initialize header-specific functionality
-						initializeLanguage(); // Initialize language only after header is loaded
+						attachHeaderEvents();
+						initializeLanguage(); // Initialize language after header is loaded
 					}
-				});
+				})
+				.catch(error => console.error(`Failed to load ${component.id}:`, error));
 		});
 	}
-	
+
 	function initializeLanguage() {
 		const savedLanguage = localStorage.getItem("language") || "en";
-
-		// Set the <html> lang attribute
 		document.documentElement.lang = savedLanguage;
 		const currentPage = document.body.getAttribute("data-page");
 
@@ -35,8 +35,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			languageSelector.addEventListener("change", (event) => {
 				const selectedLanguage = event.target.value;
 				localStorage.setItem("language", selectedLanguage);
-
-				// Update the <html> lang attribute
 				document.documentElement.lang = selectedLanguage;
 
 				loadLanguageScript(selectedLanguage, (translations) => {
@@ -46,94 +44,33 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		}
 	}
-	function loadLanguageScript(language, callback) {
-		const script = document.createElement("script");
-		script.src = `locale/${language}.js`; // Load the correct language file (e.g., en.js, th.js)
-		script.onload = () => {
-			callback(window.currentTranslations); // Use the loaded translations
-		};
-		document.body.appendChild(script);
-	}
-	function updateContent(translations, page) {
-		if (translations.common) {
-			document.querySelectorAll("[data-common-id]").forEach((element) => {
-				const key = element.getAttribute("data-common-id");
-				if (translations.common[key]) {
-					element.innerHTML = translations.common[key]; // Apply common translations
-				}
-			});
-		}
-		if (translations[page]) {
-			document.querySelectorAll("[id]").forEach((element) => {
-				const key = element.id;
-				if (translations[page][key]) {
-					element.innerHTML = translations[page][key]; // Apply page-specific translations
-				}
-			});
-		}
-	}
-	function updateMeta(translations, page) {
-		if (translations.meta) {
-			const metaTitle = document.querySelector("meta[name='title']");
-			const metaDescription = document.querySelector("meta[name='description']");
-			const metaKeywords = document.querySelector("meta[name='keywords']");
 
-			if (metaTitle && translations.meta.title) {
-				metaTitle.setAttribute("content", translations.meta.title);
-			}
-			if (metaDescription && translations.meta.description) {
-				metaDescription.setAttribute("content", translations.meta.description);
-			}
-			if (metaKeywords && translations.meta.keywords) {
-				metaKeywords.setAttribute("content", translations.meta.keywords);
-			}
-		}
-	}
-	/*
-	const languageSelect = document.getElementById('lang-sel');
-	languageSelect.addEventListener('change', function() {
-		const selectedOption = this.options[this.selectedIndex];
-		const flagUrl = selectedOption.getAttribute('data-flag');
-		this.style.backgroundImage = url(${flagUrl});
-	});
-	// Trigger change event to initialize background
-	languageSelect.dispatchEvent(new Event('change'));
-	*/
-
-	function attachHeaderEvents() {
-		const navbarToggler = document.getElementById('navbar-toggler');
-		const navbarCollapse = document.getElementById('navbarNav');
-		const header = document.getElementById('header');
-		let lastScrollY = window.scrollY;
-		let isScrollingDown = false;
-
-		if (navbarToggler) {
-			navbarToggler.addEventListener('click', function () {
-				navbarCollapse.classList.toggle('show');
-				navbarToggler.classList.toggle('change');
-			});
-		}
-
-		// Scroll effect: Hide header on scroll down, show on scroll up
-		window.addEventListener('scroll', () => {
-			if (window.scrollY > lastScrollY) {
-				if (!isScrollingDown) {
-					isScrollingDown = true;
-					setTimeout(() => {
-						if (isScrollingDown) header.classList.add('hidden');
-					}, 200);
-				}
-			} else {
-				isScrollingDown = false;
-				header.classList.remove('hidden');
-			}
-			lastScrollY = window.scrollY;
-		});
-	}
-	
-	// Initialize the script
+	// Call preloadContent only once
 	preloadContent();
-	initializeLanguage();
+
+	// Page-specific function initialization
+	initializePageSpecificFunctions();
+
+	// Trigger preloadContent() when navigating to other pages via History API
+	window.addEventListener('popstate', () => preloadContent());
+});
+
+function initializePageSpecificFunctions() {
+	const currentPage = document.body.dataset.page;
+
+	switch (currentPage) {
+		case 'index':
+			populateHomeProducts();
+			loadSVG('img/common/parts_mapping/parts_mapping.svg', 'parts_mapping_container');
+			populateCarousel('crsl-pro_gal', $arrProGal);
+			populateCarousel('crsl-client', $arrClient);
+			Awrd_com_row();
+			break;
+		case 'about':
+			// Add About page-specific functionality here
+			break;
+	}
+}
 
 	// Page-specific functions
 	function initializePageSpecificFunctions() {
@@ -343,5 +280,4 @@ document.addEventListener('DOMContentLoaded', function () {
 			$container.innerHTML += $innerHTML;
 		});
 	}
-	initializePageSpecificFunctions();
-});
+
