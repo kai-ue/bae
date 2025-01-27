@@ -1,84 +1,129 @@
 document.addEventListener('DOMContentLoaded', function () {
-	function preloadContent() {
-		const components = [
-			{ url: 'Components/header.html', id: 'header' },
-			{ url: 'Components/footer.html', id: 'footer' }
-		];
+    // Function to preload common components like header and footer
+    function preloadContent() {
+        const components = [
+            { url: 'Components/header.html', id: 'header' },
+            { url: 'Components/footer.html', id: 'footer' }
+        ];
 
-		components.forEach(component => {
-			fetch(component.url)
-				.then(response => response.text())
-				.then(data => {
-					document.getElementById(component.id).innerHTML = data;
+        components.forEach(component => {
+            fetch(component.url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(component.id).innerHTML = data;
 
-					if (component.id === 'header') {
-						attachHeaderEvents();
-						initializeLanguage(); // Initialize language after header is loaded
-					}
-				})
-				.catch(error => console.error(`Failed to load ${component.id}:`, error));
-		});
-	}
+                    if (component.id === 'header') {
+                        attachHeaderEvents();
+                        initializeLanguage(); // Initialize language after header is loaded
+                    }
+                })
+                .catch(error => console.error(`Failed to load ${component.id}:`, error));
+        });
+    }
 
-	function initializeLanguage() {
-		const savedLanguage = localStorage.getItem("language") || "en";
-		document.documentElement.lang = savedLanguage;
-		const currentPage = document.body.getAttribute("data-page");
+    // Function to initialize language settings
+    function initializeLanguage() {
+        const savedLanguage = localStorage.getItem("language") || "en";
+        document.documentElement.lang = savedLanguage;
+        const currentPage = document.body.getAttribute("data-page");
 
-		loadLanguageScript(savedLanguage, (translations) => {
-			updateContent(translations, currentPage);
-			updateMeta(translations, currentPage);
-		});
+        loadLanguageScript(savedLanguage, (translations) => {
+            updateContent(translations, currentPage);
+            updateMeta(translations, currentPage);
+        });
 
-		const languageSelector = document.getElementById("lang-sel");
-		if (languageSelector) {
-			languageSelector.addEventListener("change", (event) => {
-				const selectedLanguage = event.target.value;
-				localStorage.setItem("language", selectedLanguage);
-				document.documentElement.lang = selectedLanguage;
+        const languageSelector = document.getElementById("lang-sel");
+        if (languageSelector) {
+            languageSelector.addEventListener("change", (event) => {
+                const selectedLanguage = event.target.value;
+                localStorage.setItem("language", selectedLanguage);
+                document.documentElement.lang = selectedLanguage;
 
-				loadLanguageScript(selectedLanguage, (translations) => {
-					updateContent(translations, currentPage);
-					updateMeta(translations, currentPage);
-				});
-			});
-		}
-	}
+                loadLanguageScript(selectedLanguage, (translations) => {
+                    updateContent(translations, currentPage);
+                    updateMeta(translations, currentPage);
+                });
+            });
+        }
+    }
 
-	// Call preloadContent only once
-	preloadContent();
+    // Function to initialize page-specific functions
+    function initializePageSpecificFunctions() {
+        const currentPage = document.body.dataset.page;
 
-	// Page-specific function initialization
-	initializePageSpecificFunctions();
+        // Example of page-specific initializations
+        switch (currentPage) {
+            case 'index':
+                populateHomeProducts();
+                loadSVG('img/common/parts_mapping/parts_mapping.svg', 'parts_mapping_container');
+                populateCarousel('crsl-pro_gal', $arrProGal);
+                populateCarousel('crsl-client', $arrClient);
+                Awrd_com_row();
+                break;
 
-	// Trigger preloadContent() when navigating to other pages via History API
-	window.addEventListener('popstate', function() {
-		preloadContent();
-		initializePageSpecificFunctions(); // re-initialize the page functions
-	});
+            case 'about':
+                // Add About page-specific functionality here
+                break;
+
+            // Add more cases for other pages if needed
+        }
+    }
+
+    // Call preloadContent only once on page load
+    preloadContent();
+    
+    // Call page-specific functions on page load
+    initializePageSpecificFunctions();
+
+    // Handle page changes when navigating via History API (back, forward)
+    window.addEventListener('popstate', function() {
+        preloadContent(); // Reload the common components (header, footer, etc.)
+        initializePageSpecificFunctions(); // Re-initialize page-specific functions
+    });
+
+    // Handle page changes when navigating via links
+    window.addEventListener('click', function (e) {
+        const link = e.target.closest('a');
+        if (link && link.href) {
+            // Check if the link is pointing to the same domain and if it's a non-hash URL
+            const currentHost = window.location.hostname;
+            const linkHost = new URL(link.href).hostname;
+            if (currentHost === linkHost) {
+                e.preventDefault(); // Prevent default link behavior
+                const newUrl = link.href;
+
+                // Push new state to History API
+                history.pushState(null, '', newUrl);
+
+                // Call functions to load the new page content
+                preloadContent();
+                initializePageSpecificFunctions();
+            }
+        }
+    });
 });
 
-	// Page-specific functions
-	function initializePageSpecificFunctions() {
-		const currentPage = document.body.dataset.page;
+// Function to preload content (components like header and footer)
+function preloadContent() {
+    const components = [
+        { url: 'Components/header.html', id: 'header' },
+        { url: 'Components/footer.html', id: 'footer' }
+    ];
 
-		switch (currentPage) {
-			case 'index':
-				populateHomeProducts();
-				loadSVG('img/common/parts_mapping/parts_mapping.svg', 'parts_mapping_container');
-				populateCarousel('crsl-pro_gal', $arrProGal);
-				populateCarousel('crsl-client', $arrClient);
-				Awrd_com_row();
+    components.forEach(component => {
+        fetch(component.url)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById(component.id).innerHTML = data;
+                if (component.id === 'header') {
+                    attachHeaderEvents();
+                    initializeLanguage();
+                }
+            })
+            .catch(error => console.error(`Failed to load ${component.id}:`, error));
+    });
+}
 
-				break;
-
-			case 'about':
-				// Add About page-specific functionality here
-				break;
-
-			// Add more cases for other pages if needed
-		}
-	}
 
 	// Home Page-specific: Populate products and carousels
 	const $sec = document.getElementById("home-products");
