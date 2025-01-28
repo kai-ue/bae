@@ -43,6 +43,80 @@ document.addEventListener('DOMContentLoaded', function () {
 			.catch(error => console.error('Error loading new page:', error));
 	}
 
+	function initializeLanguage() {
+		const savedLanguage = localStorage.getItem("language") || "en";
+
+		// Set the <html> lang attribute
+		document.documentElement.lang = savedLanguage;
+
+		// Get the current page from the <body> data attribute
+		const currentPage = document.body.getAttribute("data-page");
+
+		loadLanguageScript(savedLanguage, (translations) => {
+			updateContent(translations, currentPage);
+			updateMeta(translations, currentPage);
+		});
+
+		const languageSelector = document.getElementById("lang-sel");
+		if(languageSelector) {
+			languageSelector.addEventListener("change", (event) => {
+				const selectedLanguage = event.target.value;
+				localStorage.setItem("language", selectedLanguage);
+
+				// Update the <html> lang attribute
+				document.documentElement.lang = selectedLanguage;
+
+				loadLanguageScript(selectedLanguage, (translations) => {
+					updateContent(translations, currentPage);
+					updateMeta(translations, currentPage);
+				});
+			});
+		}
+	}
+	function loadLanguageScript(language, callback) {
+		const script = document.createElement("script");
+		script.src = `locale/${language}.js`; // Load the correct language file (e.g., en.js, th.js)
+		script.onload = () => {
+			callback(window.currentTranslations); // Use the loaded translations
+		};
+		document.body.appendChild(script);
+	}
+	function updateContent(translations, page) {
+		// Update common elements
+		if(translations.common) {
+			document.querySelectorAll("[data-common-id]").forEach((element) => {
+				const key = element.getAttribute("data-common-id");
+				if(translations.common[key]) {
+					element.innerHTML = translations.common[key]; // Apply common translations
+				}
+			});
+		}
+		// Update page-specific elements
+		if(translations[page]) {
+			document.querySelectorAll("[id]").forEach((element) => {
+				const key = element.id;
+				if(translations[page][key]) {
+					element.innerHTML = translations[page][key]; // Apply page-specific translations
+				}
+			});
+		}
+	}
+
+	function updateMeta(translations, page) {
+		if(translations[page]) {
+			// Update the <title>
+			if(translations[page].title) {
+				document.title = translations[page].title;
+			}
+
+			// Update the <meta name="description">
+			const metaDescription = document.querySelector('meta[name="description"]');
+			if(metaDescription && translations[page].description) {
+				metaDescription.setAttribute("content", translations[page].description);
+			}
+		}
+	}
+
 	// Attach events to navbar links for SPA-like behavior
 	function attachHeaderEvents() {
 		const navbarLinks = document.querySelectorAll('.navbar-nav a'); // Select all links in the navbar
