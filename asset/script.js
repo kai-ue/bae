@@ -45,12 +45,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	function highlightActiveLink(pageUrl) {
 		const navLinks = document.querySelectorAll('.nav-item > .nav-link');
 		navLinks.forEach(link => link.classList.remove('active'));
-		const matchingLink = Array.from(navLinks).find(link => {
-			return new URL(link.href, location.origin).pathname === pageUrl;
+		navLinks.forEach(link => {
+			if (new URL(link.href, location.origin).pathname === pageUrl) {
+				link.classList.add('active');
+			}
 		});
-		if(matchingLink) {
-			matchingLink.classList.add('active');
-		}
 	}
 
 	function initializeLanguage() {
