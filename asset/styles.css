@@ -232,8 +232,7 @@ header{
 
 /*   Need to change   */
 
-.nav-item > a::after,
-.nav-item.active > a::after{
+a.nav-link::after{
 	content: "";
 	position: absolute;
 	bottom: 0;
@@ -245,14 +244,14 @@ header{
 	pointer-events: none;
 	opacity: 0;
 }
-.nav-item > a:hover,
-.nav-item.active a{
+a.nav-link:hover,
+a.nav-link.active::after{
 	background-color: none;
 	color: var(--light_blue);
 	text-shadow: 1px 1px 7px #fff;
 }
 .nav-item > a:hover::after,
-.nav-item.active > a::after{
+a.nav-link.active::after{
 	width: 100%;
 	opacity: 1;
 	transition: var(--transit);

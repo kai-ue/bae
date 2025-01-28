@@ -12,10 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
 				.then(data => {
 					document.getElementById(component.id).innerHTML = data;
 
-					if (component.id === 'header') {
-						attachHeaderEvents(); // Initialize header events after header is loaded
-						initializeLanguage(); // Initialize language after header is loaded
-					}
+					attachHeaderEvents();
+					initializeLanguage();
+					highlightActiveLink(window.location.pathname);
 				})
 				.catch(error => console.error(`Failed to load ${component.id}:`, error));
 		});
@@ -39,8 +38,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 				// Reinitialize page-specific functions after content change
 				initializePageSpecificFunctions();
+				highlightActiveLink(pageUrl);
 			})
 			.catch(error => console.error('Error loading new page:', error));
+	}
+	function highlightActiveLink(pageUrl) {
+		const navLinks = document.querySelectorAll('.nav-item > .nav-link');
+		navLinks.forEach(link => link.classList.remove('active'));
+		const matchingLink = Array.from(navLinks).find(link => {
+			return new URL(link.href, location.origin).pathname === pageUrl;
+		});
+		if(matchingLink) {
+			matchingLink.classList.add('active');
+		}
 	}
 
 	function initializeLanguage() {
@@ -101,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		}
 	}
-
 	function updateMeta(translations, page) {
 		if(translations[page]) {
 			// Update the <title>
@@ -119,16 +128,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// Attach events to navbar links for SPA-like behavior
 	function attachHeaderEvents() {
-		const navbarLinks = document.querySelectorAll('.navbar-nav a'); // Select all links in the navbar
+		const navbarLinks = document.querySelectorAll('.nav-link');
 		navbarLinks.forEach(link => {
 			link.addEventListener('click', function (event) {
-				event.preventDefault(); // Prevent the default link behavior (no page reload)
-				const targetUrl = link.getAttribute('href'); // Get the link's target URL
-				loadPageContent(targetUrl); // Load the new page's content dynamically
+				event.preventDefault();
+				const targetUrl = link.getAttribute('href');
+				loadPageContent(targetUrl);
 			});
 		});
 	}
-
 	// Handle page changes when navigating via History API (back, forward)
 	window.addEventListener('popstate', function () {
 		const currentPath = window.location.pathname;
