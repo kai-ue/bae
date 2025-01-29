@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 					attachHeaderEvents();
 					initializeLanguage();
+					NavClickEvent();
 					highlightActiveLink(window.location.pathname);
 				})
 				.catch(error => console.error(`Failed to load ${component.id}:`, error));
@@ -124,7 +125,40 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		}
 	}
+	function NavClickEvent() {
+		const navbarToggler = document.getElementById('navbar-toggler');
+		const navbarCollapse = document.getElementById('navbarNav');
+		const navbarNav = document.querySelector('.navbar-nav');
 
+		// Toggle mobile navigation on navbar toggler click
+		if (navbarToggler) {
+			navbarToggler.addEventListener('click', function () {
+				navbarCollapse.classList.toggle('show');
+				navbarToggler.classList.toggle('change'); // Hamburger icon animation
+			});
+		}
+
+		// Handle the rotate button and dropdown menu visibility
+		const rotateButton = document.getElementById('rotateButton');
+		if (rotateButton) {
+			rotateButton.addEventListener('click', function (event) {
+				event.stopPropagation(); // Prevent click from propagating to window click listener
+				this.classList.toggle('rotate-180');
+				const dropdown = document.getElementById('dropdownMenu');
+				dropdown.classList.toggle('show');
+			});
+		}
+
+		// Close the dropdown if the user clicks outside of the button or dropdown
+		window.addEventListener('click', function (event) {
+			const dropdown = document.getElementById('dropdownMenu');
+			const button = document.getElementById('rotateButton');
+			if (dropdown && button && !button.contains(event.target) && !dropdown.contains(event.target)) {
+				dropdown.classList.remove('show');
+				button.classList.remove('rotate-180');
+			}
+		});
+	}
 	// Attach events to navbar links for SPA-like behavior
 	function attachHeaderEvents() {
 		const navbarLinks = document.querySelectorAll('.nav-link');

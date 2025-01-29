@@ -290,8 +290,6 @@ a.nav-link{
 	top: 100%;
 	list-style-type: none;
 	background-color: rgba(0, 0, 0, 0.7);
-	backdrop-filter: blur(3px);
-	-webkit-backdrop-filter: blur(3px);
 	min-width: 180px;
 	z-index: 1050;
 }
@@ -368,6 +366,9 @@ footer a:hover{
 }
 footer h5{
 	font-weight: 900;
+}
+footer ul:where(:not([class])) {
+	display: inline-block;
 }
 footer .nav-link{
 	padding: 0;
@@ -830,8 +831,6 @@ body[data-page="about"] #hero::before {
 	.collapse.navbar-collapse.show,
 	#navbarNav{
 		background-color: rgba(0, 0, 0, 0.7);
-		backdrop-filter: blur(3px);
-		-webkit-backdrop-filter: blur(3px);
 	}
 	.collapse.navbar-collapse.show{
 		z-index: 1001;
