@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				.catch(error => console.error(`Failed to load ${component.id}:`, error));
 		});
 	}
-
+	
 	// Function to handle navigation links and dynamically load page content
 	function loadPageContent(pageUrl) {
 		// Use fetch to load the new page's content (for simplicity, you can load the body of the page)
@@ -33,13 +33,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 				// Reload header/footer content (since it's part of every page)
 				preloadContent();
-
 				// Update the history without reloading the page
 				history.pushState({ path: pageUrl }, '', pageUrl);
+				
+				const pageName = pageUrl.split('/').pop().replace('.html', ''); // Extract page name
+				document.body.setAttribute("data-page", pageName);
 
 				// Reinitialize page-specific functions after content change
 				initializePageSpecificFunctions();
 				highlightActiveLink(pageUrl);
+				
+				setTimeout(() => {
+					document.documentElement.scrollTop = 0; // For most browsers
+					document.body.scrollTop = 0; // For Safari
+					window.scrollTo({ top: 0, behavior: "smooth" }); // Smooth scrolling
+				}, 10);
 			})
 			.catch(error => console.error('Error loading new page:', error));
 	}
@@ -166,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			link.addEventListener('click', function (event) {
 				event.preventDefault();
 				const targetUrl = link.getAttribute('href');
-				loadPageContent(targetUrl);
+				//Kai loadPageContent(targetUrl);
 			});
 		});
 	}
@@ -175,6 +183,39 @@ document.addEventListener('DOMContentLoaded', function () {
 		const currentPath = window.location.pathname;
 		loadPageContent(currentPath);
 	});
+	
+/*	function handleHeaderScroll() {
+		function handleHeaderScroll() {
+		let ticking = false;
+
+		// Use a cross-browser approach to get the scroll position
+		function getScrollPosition() {
+			return document.documentElement.scrollTop || document.body.scrollTop;
+		}
+
+		let lastScrollY = getScrollPosition(); // Get the initial scroll position
+		const header = document.getElementById("header");
+
+		window.addEventListener('scroll', () => {
+			if(!ticking) {
+				requestAnimationFrame(() => {
+					let currentScrollY = getScrollPosition(); // Get updated scroll position
+
+					if(currentScrollY > lastScrollY) {
+						header.classList.add('hidden');
+					} else {
+						header.classList.remove('hidden');
+					}
+
+					lastScrollY = currentScrollY;
+					ticking = false;
+				});
+				ticking = true;
+			}
+		});
+	}
+	} */
+	
 	preloadContent();
 	
 	const path_Pro_gal = "img/img-index/img-crsl-pro_gal/";
