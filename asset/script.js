@@ -102,8 +102,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	function updateContent(translations, page) {
 		// Update common elements
 		if(translations.common) {
-			document.querySelectorAll("[data-common-id]").forEach((element) => {
-				const key = element.getAttribute("data-common-id");
+			document.querySelectorAll("[lang-id]").forEach((element) => {
+				const key = element.getAttribute("lang-id");
 				if(translations.common[key]) {
 					element.innerHTML = translations.common[key]; // Apply common translations
 				}
@@ -250,6 +250,33 @@ document.addEventListener('DOMContentLoaded', function () {
 		{ title: 'Prospira (Thailand) Co., Ltd.', file_name: `${ path_Client }Prospira.svg`, link_add: 'https://prospira.com/' },
 	];
 	
+	const $arrComProf1 = [
+		["Company Name", "Brother Auto Parts & Engineering Co., Ltd.", "business"],
+		["Registered date", "September 23, 1993", "event"],
+		["Business/ Products", "<ul><li>Tooling & Die: Design and Produce</li><li>Stamping</li><li>Welding: Arc and Spot</li><li>Plating: EDP, Zinc, Zinc-nickel </li></ul>", "precision_manufacturing"],
+		["Certificates", "IATF16949:2016, ISO9001:2015, ISO14001:2015", "verified"],
+		["Website", "<a href='http://www.brother-autoparts.com' target='_blank'>www.brother-autoparts.com</a>", "language"]
+	];
+	const $arrComProf2 = [
+		["Factory 1 / HQ", "10 Soi Ramindra 117, Yeak 2, Ramindra Rd., <br>Minburi, Minburi, Bangkok", "factory"],
+		["Area", "6,400 m²", "arrows_output"],
+		["Employees", "95 persons", "group"],
+		["", "", ""],
+		["Factory 2", "77/7 Moo 13, Saladaeng, Bangnumpraew, <br>Chachoengsao", "factory"],
+		["Area", "68,800 m²", "arrows_output"],
+		["Employees", "95 persons", "group"],
+	];
+	
+	const path_img_cert = "img/img-about/certificate/";
+	const $arrCert = [
+		{ title: 'IATF16949:2016 Factory 1', file_name: `${path_img_cert}IATF16949-2016_Factory_1.avif`, link_add: `${path_img_cert}IATF16949-2016_Factory_1.avif` },
+		{ title: 'ISO9001:2015 Factory 1', file_name: `${path_img_cert}ISO9001-2015_Factory_1.avif`, link_add: `${path_img_cert}ISO9001-2015_Factory_1.avif` },
+		{ title: 'IATF16949:2016 Factory 2', file_name: `${path_img_cert}IATF16949-2016_Factory_2.avif`, link_add: `${path_img_cert}IATF16949-2016_Factory_2.avif` },
+		{ title: 'IATF16949:2016 Factory 2 (2)', file_name: `${path_img_cert}IATF16949-2016_Factory_2_(2).avif`, link_add: `${path_img_cert}IATF16949-2016_Factory_2_(2).avif` },
+		{ title: 'ISO9001:2015 Factory 2', file_name: `${path_img_cert}ISO9001-2015_Factory_2.avif`, link_add: `${path_img_cert}ISO9001-2015_Factory_2.avif` },
+		{ title: 'ISO14001:2015 Factory 2', file_name: `${path_img_cert}ISO14001-2015_Factory_2.avif`, link_add: `${path_img_cert}ISO14001-2015_Factory_2.avif` },
+	];
+	
 	initializePageSpecificFunctions();
 	function initializePageSpecificFunctions() {
 		const currentPage = document.body.dataset.page;
@@ -264,7 +291,11 @@ document.addEventListener('DOMContentLoaded', function () {
 				break;
 
 			case 'about':
-				// Add About page-specific functionality here
+				generateTable('about-ComProf1', $arrComProf1);
+				generateTable('about-ComProf2', $arrComProf2);
+				populateCarousel('crsl-cert', $arrCert);
+				loadSVG('img/img-about/org_chart.svg', 'org_ch_container');
+				
 				break;
 
 			// Add more cases for other pages if needed
@@ -288,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			<div class="col-md-3 col-6 p-1px">
 				<a class="fill_tile pstn_rel_dis_blck" href="${value.link}" title="${value.shop}" target="_blank">
 					<img class="img-fluid" src="${$dir_path}${value.file_name}" alt="${value.shop}">
-					<div>
+					<div class="中心">
 						<h3>${value.shop}</h3>
 					</div>
 				</a>
@@ -336,14 +367,14 @@ document.addEventListener('DOMContentLoaded', function () {
 			linkElement.href = value.link_add;
 
 			// Check carousel type and handle target behavior
-			if (carouselId === 'crsl-pro_gal') {
+			if (carouselId === 'crsl-client') {
+				linkElement.target = "_blank";
+			} else {
 				linkElement.removeAttribute('target');
 				linkElement.addEventListener('click', (event) => {
 					event.preventDefault();
 					openModal(value.file_name);
 				});
-			} else {
-				linkElement.target = "_blank";
 			}
 
 			const imgElement = document.createElement('img');
@@ -424,6 +455,33 @@ document.addEventListener('DOMContentLoaded', function () {
 			`;
 			$container.innerHTML += $innerHTML;
 		});
+	}
+	
+	function generateTable( tableWrapID, data ) {
+		const $tableWrap = document.getElementById( tableWrapID );
+		let table = document.createElement("table");
+		table.setAttribute("border", "1");
+		table.setAttribute("cellpadding", "5");
+		let i = 1;
+
+		data.forEach(rowData => {
+			let tr = document.createElement("tr");
+
+			let th = document.createElement("th");
+			th.setAttribute("lang-id", `tr${i}_th`);
+			th.setAttribute("class", "font_blue");
+			th.innerHTML = `<span class='material-symbols-outlined'>${rowData[2]}</span>&nbsp; ${rowData[0]}`;
+			tr.appendChild(th);
+
+			let td = document.createElement("td");
+			td.setAttribute("lang-id", `tr${i}_td`);
+			td.innerHTML = rowData[1];
+			tr.appendChild(td);
+
+			table.appendChild(tr);
+			i++;
+		});
+		$tableWrap.appendChild(table);
 	}
 });
 
