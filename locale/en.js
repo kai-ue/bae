@@ -2,6 +2,7 @@ window.currentTranslations = {
 	common: {
 		word_home: "Home",
 		word_about: "About",
+		word_about_us: "About Us",
 		word_products: "Products",
 		word_pro_serv: "Products & Services",
 		word_contact: "Contact",
@@ -9,6 +10,9 @@ window.currentTranslations = {
 		word_stamp: "Stamping",
 		word_weld: "Welding",
 		word_plate: "Plating",
+		word_suplr_awd: "Supplier Awards",
+		txt_suplr_awd: "BAE has been honorably recognized with numerous awards for its outstanding excellence as a supplier to the following companies.",
+		suplr_awd_tag: "Proof of Our Quality",
 	},
 	index: {
 		title: "BAE - Brother Auto Parts & Engineering | Stamping, Tooling & Die in Bangkok/ EEC",

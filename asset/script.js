@@ -111,8 +111,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 		// Update page-specific elements
 		if(translations[page]) {
-			document.querySelectorAll("[id]").forEach((element) => {
-				const key = element.id;
+			document.querySelectorAll("[lang-id]").forEach((element) => {
+				const key = element.getAttribute("lang-id");
 				if(translations[page][key]) {
 					element.innerHTML = translations[page][key]; // Apply page-specific translations
 				}
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const $arrComProf1 = [
 		["Company Name", "Brother Auto Parts & Engineering Co., Ltd.", "business"],
 		["Registered date", "September 23, 1993", "event"],
-		["Business/ Products", "<ul><li>Tooling & Die: Design and Produce</li><li>Stamping</li><li>Welding: Arc and Spot</li><li>Plating: EDP, Zinc, Zinc-nickel </li></ul>", "precision_manufacturing"],
+		["Business/ Products", "<ul class='mb-0'><li>Tooling & Die: Design and Produce</li><li>Stamping</li><li>Welding: Arc and Spot</li><li>Plating: EDP, Zinc, Zinc-nickel </li></ul>", "precision_manufacturing"],
 		["Certificates", "IATF16949:2016, ISO9001:2015, ISO14001:2015", "verified"],
 		["Website", "<a href='http://www.brother-autoparts.com' target='_blank'>www.brother-autoparts.com</a>", "language"]
 	];
@@ -276,6 +276,20 @@ document.addEventListener('DOMContentLoaded', function () {
 		{ title: 'ISO9001:2015 Factory 2', file_name: `${path_img_cert}ISO9001-2015_Factory_2.avif`, link_add: `${path_img_cert}ISO9001-2015_Factory_2.avif` },
 		{ title: 'ISO14001:2015 Factory 2', file_name: `${path_img_cert}ISO14001-2015_Factory_2.avif`, link_add: `${path_img_cert}ISO14001-2015_Factory_2.avif` },
 	];
+
+	const $arrAwdMmth = [
+		["Award of Quality", "2013, 2018"],
+	];
+	const $arrAwdBri = [
+		["Best Quality Award", "2016"],
+	];
+	const $arrAwdHone = [
+		["Best Quality Award", "2020, 2021, 2022, 2023"],
+		["Best Delivery Award", "2012, 2018, 2021"],
+		["Best Cost Award", "2021"],
+		["Best Improvement Project", "2012"],
+		["Cost Reduction Award", "2007, 2010"],
+	];
 	
 	initializePageSpecificFunctions();
 	function initializePageSpecificFunctions() {
@@ -295,6 +309,11 @@ document.addEventListener('DOMContentLoaded', function () {
 				generateTable('about-ComProf2', $arrComProf2);
 				populateCarousel('crsl-cert', $arrCert);
 				loadSVG('img/img-about/org_chart.svg', 'org_ch_container');
+				populateCarousel('crsl-client', $arrClient);
+				generateTable('wrap_Awd-Mmth', $arrAwdMmth);
+				generateTable('wrap_Awd-Bri', $arrAwdBri);
+				generateTable('wrap_Awd-Hone', $arrAwdHone);
+				
 				
 				break;
 
@@ -320,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				<a class="fill_tile pstn_rel_dis_blck" href="${value.link}" title="${value.shop}" target="_blank">
 					<img class="img-fluid" src="${$dir_path}${value.file_name}" alt="${value.shop}">
 					<div class="中心">
-						<h3>${value.shop}</h3>
+						<h3 class="h2_wh_shadow">${value.shop}</h3>
 					</div>
 				</a>
 			</div>
@@ -469,8 +488,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			let th = document.createElement("th");
 			th.setAttribute("lang-id", `tr${i}_th`);
-			th.setAttribute("class", "font_blue");
-			th.innerHTML = `<span class='material-symbols-outlined'>${rowData[2]}</span>&nbsp; ${rowData[0]}`;
+			if (tableWrapID.startsWith("about-ComProf")) {
+				th.setAttribute("class", "font_blue");
+				th.innerHTML = `<span class='material-symbols-outlined'>${rowData[2]}</span>&nbsp; ${rowData[0]}`;
+			} else {
+				th.innerHTML = rowData[0];
+			}
 			tr.appendChild(th);
 
 			let td = document.createElement("td");

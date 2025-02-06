@@ -5,6 +5,7 @@ window.currentTranslations = {
 		hero_slogan: "การออกแบบแม่พิมพ์เพื่อการชุบผิว<br>โซลูชันชิ้นส่วนปั๊มแบบครบวงจร",
 		word_home: "หน้าหลัก",
 		word_about: "เกี่ยวกับเรา",
+		word_about_us: "เกี่ยวกับเรา",
 		word_products: "ผลิตภัณฑ์",
 		word_pro_serv: "สินค้าและบริการ",
 		word_contact: "ติดต่อเรา",

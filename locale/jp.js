@@ -2,6 +2,7 @@ window.currentTranslations = {
 	common: {
 		word_home: "Home",
 		word_about: "会社概要",
+		word_about_us: "会社概要",
 		word_products: "製品",
 		word_pro_serv: "製品 & サービス",
 		word_contact: "お問合せ",
