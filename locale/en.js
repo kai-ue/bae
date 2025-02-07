@@ -39,6 +39,7 @@ window.currentTranslations = {
 		title: "Products & Services - Brother Auto Parts & Engineering (BAE)",
 		description: "Explore the wide range of products and services offered by Brother Auto Parts & Engineering (BAE), including precision automotive stamping, tooling, die manufacturing, welding, and plating services.",
 		keywords: "products and services, automotive stamping, tooling, die manufacturing, welding, plating, contract manufacturing, precision engineering",
+		prod-sec1_h: "Our Manufacturing Capabilities",
 	},
 	csr: {
 		title: "CSR - Brother Auto Parts & Engineering (BAE)",
