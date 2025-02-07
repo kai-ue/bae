@@ -10,6 +10,7 @@
 	--trans_blue-light: #3575ff9e;
 	--trans_blue-dark: #405d9bd4;
 	--transit: 0.3s ease;
+	--light_pink: #ffa1d4;
 }
 html, body {
 	width: 100%;
@@ -403,7 +404,7 @@ footer a{
 	color: #fff;
 }
 footer a:hover{
-	color: #ffa1d4;
+	color: var(--light_pink);;
 }
 footer h5{
 	font-weight: 900;
@@ -515,6 +516,9 @@ footer ul:where(:not([class])) {
 }
 #home-about_img > img{
 	width: 75%;	
+}
+#home-products > h2[lang-id="word_pro_serv"] > br{
+	display: none;
 }
 #home-parts_map{
 	position: relative;
@@ -725,7 +729,7 @@ div[id^="wrap_Awd-"] tr,
 	backdrop-filter: blur(4px);
 	box-shadow: 3px 4px 20px var(--trans_blue-dark);
 }
-#home-award > .container > .read_btn:hover{
+:is(#home-award) .read_btn:hover{
 	border-radius: 0% / 0%;
 	color: transparent;
 	background-color: var(--trans_blue-light);
@@ -777,7 +781,7 @@ body[data-page="about"] #hero::before {
  url("../img/img-about/331494_0.avif") no-repeat right bottom / 50%;
 }
 #about-history > .row.p-lg-4 > .col-md-4{
-    background: #ffffff00 url("../img/img-about/entrance.avif") no-repeat bottom / contain;
+    background: #ffffff00 url("../img/img-about/entrance.avif") no-repeat center / contain;
 }
 #about-history object{
     filter: drop-shadow(5px 5px 12px rgba(77, 47, 30, 0.8));
@@ -912,8 +916,8 @@ html[lang="jp"] #org_ch_container::after {
 :is(#about-csr) .read_btn{
 	background-color: #fff;
 }
-#home-about .read_btn:hover{
-	background-color: red;
+:is(#about-csr)  .read_btn:hover{
+	background-color: var(--light_pink);
 }
 
 
@@ -995,8 +999,7 @@ html[lang="jp"] #org_ch_container::after {
 		display: block;
 		border: none;
 		background: transparent;
-		margin-left: 10px;
-		padding: 0;
+		margin-left: 1.2rem;
 		cursor: pointer;
 		order: 3;
 	}
@@ -1093,6 +1096,15 @@ html[lang="jp"] #org_ch_container::after {
 		background-position: bottom;
 		background-size: 768px;
 	}
+	#about-history > .row.p-lg-4 > .col-md-4{
+		min-height: 40vh;
+		background-position: 50% 15vh;
+		background-size: 100% auto;
+		background-clip: padding-box;
+	}
+	#wrap_Awd-Mmth::before, #wrap_Awd-Bri::before, #wrap_Awd-Hone::before{
+		background-position: top center;
+	}
 }
 
 /* Mobile devices (max-width: 576px) */
@@ -1143,8 +1155,8 @@ html[lang="jp"] #org_ch_container::after {
 		height: 3.5rem;
 	}
 	#org_ch_container::after {
-		top: 0;
-		left: 0;
+		top: 1rem;
+		left: 1rem;
 		font-size: 1.5rem;
 	}
 }

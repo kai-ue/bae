@@ -24,7 +24,7 @@ window.currentTranslations = {
 		keywords: "会社概要, タイの製造業者, 自動車業界, 契約製造業者, プレス, 治具, 製造経験, BAE",
 		hero_slogan: "会社概要",
 	},
-	pro_serv: {
+	products: {
 		title: "製品・サービス - Brother Auto Parts & Engineering (BAE)",
 		description: "Brother Auto Parts & Engineering (BAE)が提供するさまざまな製品とサービスをご覧ください。自動車用精密プレス、ツーリング、ダイ製造、溶接、メッキサービスを含みます。",
 		keywords: "製品とサービス, 自動車プレス, 治具, 金型製造, 溶接, メッキ表面処理, 契約製造, 精密エンジニアリング",
