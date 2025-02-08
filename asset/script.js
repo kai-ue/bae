@@ -291,6 +291,39 @@ document.addEventListener('DOMContentLoaded', function () {
 		["Cost Reduction Award", "2007, 2010"],
 	];
 	
+	const path_img_icon = "img/common/icon/icon_";
+	const $arrCapability = [
+		{
+			icon: `${ path_img_icon }die.svg`,
+			title: "Tooling & Die",
+			h_lang_id: "word_tool",
+			items: ["Tooling & Die", "Checking Fixture", "Jig Assembly", "Maintenance Tools"],
+			lang_id: "ul_tooling"
+		},
+		{
+			icon: `${ path_img_icon }stamping.svg`,
+			title: "Stamping",
+			h_lang_id: "word_stamp",
+			items: ["Press Machines", "Progressive Die", "Single Die", "High Precision Stamping"],
+			lang_id: "ul_stamping"
+		},
+		{
+			icon: `${ path_img_icon }welding.svg`,
+			title: "Welding",
+			h_lang_id: "word_weld",
+			items: ["Robot Welding", "Spot Welding"],
+			lang_id: "ul_welding"
+		},
+		{
+			icon: `${ path_img_icon }plateing.svg`,
+			title: "Plateing",
+			h_lang_id: "word_plate",
+			items: ["EDP", "Zinc (Zn)", "Nickel (Ni)", "Chromium (Cr3+, Cr6+)"],
+			lang_id: "ul_plating"
+		}
+	];
+
+	
 	initializePageSpecificFunctions();
 	function initializePageSpecificFunctions() {
 		const currentPage = document.body.dataset.page;
@@ -314,6 +347,10 @@ document.addEventListener('DOMContentLoaded', function () {
 				generateTable('wrap_Awd-Bri', $arrAwdBri);
 				generateTable('wrap_Awd-Hone', $arrAwdHone);
 				
+				break;
+			
+			case 'products':
+				populateCard( "prod-sec1_card", $arrCapability );
 				
 				break;
 
@@ -505,6 +542,49 @@ document.addEventListener('DOMContentLoaded', function () {
 			i++;
 		});
 		$tableWrap.appendChild(table);
+	}
+	
+	function populateCard(wrapperId, dataArray) {
+
+		const wrapper = document.getElementById(wrapperId);
+		if(!wrapper) {
+			console.error(`Element with ID '${wrapperId}' not found.`);
+			return;
+		}
+		wrapper.innerHTML = "";
+
+		dataArray.forEach((capability, index) => {
+			const colDiv = document.createElement("div");
+			colDiv.className = "col-6 col-md-3";
+
+			const iconDiv = document.createElement("div");
+			const img = document.createElement("img");
+			img.src = capability.icon;
+			img.alt = `Icon of ${capability.title}`;
+			iconDiv.appendChild(img);
+
+			const textDiv = document.createElement("div");
+			const title = document.createElement("h5");
+			title.textContent = capability.title;
+			title.setAttribute("lang-id", capability.h_lang_id);
+			title.classList.add("font_blue");
+
+			const ul = document.createElement("ul");
+			ul.setAttribute("lang-id", capability.lang_id);
+
+			capability.items.forEach(item => {
+				const li = document.createElement("li");
+				li.textContent = item;
+				ul.appendChild(li);
+			});
+
+			textDiv.appendChild(title);
+			textDiv.appendChild(ul);
+			colDiv.appendChild(iconDiv);
+			colDiv.appendChild(textDiv);
+
+			wrapper.appendChild(colDiv);
+		});
 	}
 });
 

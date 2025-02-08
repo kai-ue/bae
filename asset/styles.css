@@ -92,7 +92,7 @@ option{
 	position: relative;
 	display: block;
 }
-.中心{
+.中心中心{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -918,6 +918,16 @@ html[lang="jp"] #org_ch_container::after {
 }
 :is(#about-csr)  .read_btn:hover{
 	background-color: var(--light_pink);
+}
+
+/*   Products & Services   */
+body[data-page="products"] #hero{
+	background-image: url( "../img/img-about/hero_img-about.avif" );
+}
+#prod-sec1_card :where(.col-6.col-md-3 h5.font_blue){
+	font-size: 1.5rem;
+	font-weight: 900;
+	text-align: center;
 }
 
 
