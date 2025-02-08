@@ -26,7 +26,7 @@ window.currentTranslations = {
 		description: "Learn more about Brother Auto Parts & Engineering (BAE), a trusted partner for automotive and industrial manufacturing needs. With decades of experience, we specialize in precision stamping, tooling, and contract manufacturing.",
 		keywords: "about us, Thai manufacturing company, automotive industry, contract manufacturer, precision stamping, tooling expertise, manufacturing experience, BAE",
 		hero_slogan: "About Us",
-		history_h: "",
+		history_h: "History",
 		history_p: "From historical record back to about 70 years ago the company started the business case for Kroll Emie Pluto. With offices located around Ratchathewi, Bangkok. Our main customers are the plate bumper cars for example HONDA Motor vehicle mudguard side. We have won the trust from customers both small and large continues to date. " +
 			"Year 2534 registered company and began operations the metal plate. Company registered as Bunnag plate Kroll Limited Emie Pluto and the year 2536 the company registered and established businesses, automotive components and the Tool & Dies, Stamping Dies, Stamping Part, Assembly Part, Assembly. Jig, Checking Fixture, Electro Plating & EDP work are responsible on behalf of Brothers Auto Partners & Engineering Systems Limited, office located at 10, Soi Ramintra 117 (Soi Charoen separate development, 2), Ramindra Road 14 km Road Minburi Minburi district, Bangkok 10510. " +
 			"Today the company has won the trust from our customer as in automotive components, power and others with international quality. " +
@@ -39,7 +39,7 @@ window.currentTranslations = {
 		title: "Products & Services - Brother Auto Parts & Engineering (BAE)",
 		description: "Explore the wide range of products and services offered by Brother Auto Parts & Engineering (BAE), including precision automotive stamping, tooling, die manufacturing, welding, and plating services.",
 		keywords: "products and services, automotive stamping, tooling, die manufacturing, welding, plating, contract manufacturing, precision engineering",
-		prod-sec1_h: "Our Manufacturing Capabilities",
+		prod_sec1_h: "Our Manufacturing Capabilities",
 	},
 	csr: {
 		title: "CSR - Brother Auto Parts & Engineering (BAE)",
