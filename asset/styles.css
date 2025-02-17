@@ -67,6 +67,9 @@ option{
 .font_wh{
 	color: #fff;
 }
+.font_w100{
+	font-weight: 100;
+}
 h1.font_wh{
 	text-shadow: 2px 2px 1.2rem rgba(0, 0, 0, 0.8);
 }
@@ -747,20 +750,14 @@ div[id^="wrap_Awd-"] tr,
 #home-cta{
 	background:linear-gradient(rgb(255 255 255 / 78%), rgb(255 255 255 / 50%)), url(../img/img-index/hero_img.avif) no-repeat center center / cover;
 }
+#prod-cta_row,
+#about-csr_row,
 #home-cta > .container > .row{
 	background-color: var(--fill_blue);
 	box-shadow: 3px 4px 20px #000000b3;
 }
 #home_cta-img{
 	background: #fff url("../img/img-index/home_cta-img.avif") no-repeat center center/cover;
-}
-#home-cta_btn{
-	background-color: #fff;
-    color: var(--font_blue);
-}
-#home-cta_btn:hover{
-	background-color: #ff8fffd4;
-	color: #fff;
 }
 
 /*   About Us   */
@@ -856,10 +853,10 @@ html[lang="jp"] #org_ch_container::after {
 	background-color: rgba(0, 0, 0, 0.07);
 	z-index: 1;
 }
-#about-award > container{
+/* #about-award > .container{
 	position: relative;
 	z-index: 2;
-}
+} */
 #wrap_Awd-Mmth,
 #wrap_Awd-Bri,
 #wrap_Awd-Hone{
@@ -898,17 +895,14 @@ html[lang="jp"] #org_ch_container::after {
 #about-csr{
 	background:linear-gradient(rgb(255 255 255 / 78%), rgb(255 255 255 / 50%)), url(../img/img-csr/green_lawn.avif) no-repeat center center / cover;
 }
-#about-csr_row{
-	background-color: var(--fill_blue);
-	box-shadow: 3px 4px 20px #000000b3;
+:where(#about-csr > h2[lang-id="sus_csr"]) > br {
+	display: none;
 }
-#about-csr_row > :where(:nth-child(1)) {
+:where( #about-csr_row > div:first-child) {
 	background: url(../img/img-csr/tree_plant.avif) no-repeat bottom / cover;
 }
-#about-csr_row > :where(:nth-child(2)) {
+:where(#about-csr_row > div:nth-child(2)) {
 	background: url(../img/img-csr/solar.avif) no-repeat bottom / cover;
-}
-#about-csr_row > :where(:nth-child(3)) {
 }
 :is(#about-csr) .read_btn{
 	background-color: #fff;
@@ -979,7 +973,6 @@ h5[lang-id="prod_sec1_tag"]{
 	z-index: 100;
 }
 #prod-sec_dynamic > .col-sm-6 > h3[lang-id="dynamic_tag"]{
-	font-weight: 100;
 	line-height: 2.5rem;
 	text-shadow: 1px 1px 8px #000;
 }
@@ -998,6 +991,31 @@ h5[lang-id="prod_sec1_tag"]{
 #prod-pro_gal > h2.head_left{
 	top: -40% !important;
 }
+#prod-cta{
+	background:linear-gradient(rgb(255 255 255 / 50%), rgb(255 255 255 / 10%)), url(../img/img-prod/drawing.avif) no-repeat center bottom / cover;
+}
+:where( #prod-cta_row > div:nth-child(2)) {
+	background: url(../img/img-prod/check_jig_w_client.avif) no-repeat bottom / cover;
+}
+:is(#prod-cta, #home-cta) .cta_btn{
+	background-color: #fff;
+	color: var(--font_blue);
+}
+:is(#prod-cta, #home-cta) .cta_btn:hover{
+	color: #fff;
+	text-shadow: 1px 1px 8px #000;
+	background-color: var(--light_pink);
+}
+
+/*   Sustainability & CSR   */
+body[data-page="csr"] #hero{
+	background-image: url(../img/img-csr/tree_in_factory.avif);
+}
+#csr-sec1 > div.row.p-lg-4 > .col-md-4{
+	min-height: 17rem;
+	background: #ffffff00 url(../img/img-csr/seedling.avif) no-repeat center / cover;
+}
+
 
 
 @keyframes pulse {
@@ -1161,6 +1179,7 @@ h5[lang-id="prod_sec1_tag"]{
 	#home-about_img > img {
 		margin: 2rem 0 7.5rem;
 	}
+	#prod-cta_row > :where(div:nth-child(2)),
 	#about-csr_row > :is(:nth-child(1), :nth-child(2)),
 	#home_cta-img{
 		height: 15rem;

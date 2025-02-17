@@ -13,6 +13,13 @@ window.currentTranslations = {
 		word_suplr_awd: "Supplier Awards",
 		txt_suplr_awd: "BAE has been honorably recognized with numerous awards for its outstanding excellence as a supplier to the following companies.",
 		suplr_awd_tag: "Proof of Our Quality",
+		expertise: "Our&nbsp;Expertise",
+		strong_brkt: "We have extensive experience in the <b>Automotive Industry</b>, especially in <b>Supporting parts such as Brackets.</b>",
+		pro_gal: "Products Gallery",
+		our_client: "Our Clients",
+		sus_csr: "Sustainability & <br>CSR",
+		csr_h: "Committed to Enriching Society",
+		csr_p: "At BAE, fostering mutual prosperity with society is central to how we do business. Through initiatives like tree planting and solar power grid installations, we take meaningful steps to create a better environment and reduce carbon emissions. Partner with us to drive growth that benefits businesses, communities, and the planet.",
 	},
 	index: {
 		title: "BAE - Brother Auto Parts & Engineering | Stamping, Tooling & Die in Bangkok/ EEC",
@@ -28,8 +35,8 @@ window.currentTranslations = {
 		hero_slogan: "About Us",
 		history_h: "History",
 		history_p: "From historical record back to about 70 years ago the company started the business case for Kroll Emie Pluto. With offices located around Ratchathewi, Bangkok. Our main customers are the plate bumper cars for example HONDA Motor vehicle mudguard side. We have won the trust from customers both small and large continues to date. " +
-			"Year 2534 registered company and began operations the metal plate. Company registered as Bunnag plate Kroll Limited Emie Pluto and the year 2536 the company registered and established businesses, automotive components and the Tool & Dies, Stamping Dies, Stamping Part, Assembly Part, Assembly. Jig, Checking Fixture, Electro Plating & EDP work are responsible on behalf of Brothers Auto Partners & Engineering Systems Limited, office located at 10, Soi Ramintra 117 (Soi Charoen separate development, 2), Ramindra Road 14 km Road Minburi Minburi district, Bangkok 10510. " +
-			"Today the company has won the trust from our customer as in automotive components, power and others with international quality. " +
+			"Year 2534 registered company and began operations the metal plate. Company registered as Bunnag plate Kroll Limited Emie Pluto and the year 2536 the company registered and established businesses, automotive components and the Tool & Dies, Stamping Dies, Stamping Part, Assembly Part, Assembly. Jig, Checking Fixture, Electro Plating & EDP work are responsible on behalf of Brothers Auto Partners & Engineering Systems Limited, office located at 10, Soi Ramintra 117 (Soi Charoen separate development, 2), Ramindra Road 14 km Road Minburi Minburi district, Bangkok 10510." +
+			"Today the company has won the trust from our customer as in automotive components, power and others with international quality." +
 			"From that day to this day. We have developed technology and innovation. Development personnel. And processes to equivalent international standards such as Japan. And we have won the trust from customers to produce parts exported to many countries including the United States.",
 		word_ComProf: "Company Profile",
 		word_cert: "Quality<br>&#32;Certificates",
@@ -42,9 +49,9 @@ window.currentTranslations = {
 		prod_sec1_h: "Our Manufacturing <br>Capabilities",
 		prod_sec1_tag: "One-Stop Solution: A Full Range of Manufacturing Processes <br>for Producing Stamping Parts for Automotive Components.",
 		dynamic_h: "Dynamic Form",
-		dynamic_tag: "Achieving a wide variety of deep, 
-			fluid, and precise shapes through stamping. 
-			Meeting diverse requirements across industries, including automotive, electronics."
+		dynamic_tag: "Achieving a wide variety of deep, " +
+			"fluid, and precise shapes through stamping." +
+			"Meeting diverse requirements across industries, including automotive, electronics.",
 	},
 	csr: {
 		title: "CSR - Brother Auto Parts & Engineering (BAE)",
