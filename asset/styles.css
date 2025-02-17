@@ -1,4 +1,4 @@
-	/* Kai's */
+/* Kai's */
 
 @import url('https://fonts.googleapis.com/css2?family=Cairo&family=Noto+Sans+Thai:wght@200..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
@@ -67,6 +67,9 @@ option{
 .font_wh{
 	color: #fff;
 }
+h1.font_wh{
+	text-shadow: 2px 2px 1.2rem rgba(0, 0, 0, 0.8);
+}
 .h2_wh_shadow{
 	color: #fff;
 	text-shadow: 2px 2px 10px #000;
@@ -92,7 +95,11 @@ option{
 	position: relative;
 	display: block;
 }
-.中心中心{
+.flx_cen{
+	display: flex;
+	align-items: center;
+}
+.中心{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -180,16 +187,14 @@ option{
 	background-repeat: no-repeat;
 	background-position: bottom -5rem left -5rem;
 }
-:is(#home-about) .read_btn{
-	margin-top: 1.5rem;
-}
 .read_btn:hover{
-	padding:12px;
 	color: #ffffff00;
-	border-radius: 10% / 5%;
 	background-position: center;
 }
-:is(#home-about) .read_btn:hover{
+:where(#home-about) .read_btn{
+	margin-top: 1.5rem;
+}
+:where(#home-about) .read_btn:hover{
 	background-color: var(--font_blue);
 }
 nav > ul,
@@ -268,6 +273,9 @@ header{
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
+
+
+/*   
 #lang-en {
 	background-image: url('C:\Users\kaika\Documents\BAE\Website\img\common\flag-en.svg');
 }
@@ -278,8 +286,7 @@ header{
 	background-image: url('C:\Users\kaika\Documents\BAE\Website\img\common\flag-jp.svg');
 }
 
-
-/*   Need to change   */
+---	 Need to change  ---*/
 
 a.nav-link::after{
 	content: "";
@@ -369,8 +376,7 @@ a.nav-link{
 .rotate-btn.rotate-180{
 	transform: rotate(180deg);
 }
-.rotate-btn:hover svg path,
-.rotate-btn.rotate-180 svg path{
+:where(.rotate-btn:hover, .rotate-btn.rotate-180) svg path {
 	stroke: var(--light_blue);
 }
 .rotate-btn svg path{
@@ -466,8 +472,6 @@ footer ul:where(:not([class])) {
 	
     text-align: left;
 	white-space: nowrap;
-	text-shadow: 0 0 0.9rem #000;
-    color: white;
     z-index: 100;
 }
 #hero_text > span:first-child{
@@ -802,10 +806,6 @@ body[data-page="about"] #hero::before {
 	width: 100%;
 	background: radial-gradient(ellipse farthest-corner at 5% 5%, #fefffc, #dfdfd3, #77969b);
 }
-#about-cert > .kai_contain > .txt_right{
-	display: flex;
-	align-items: center;
-}
 #about-cert .spc_btw > img{
 	height: 4rem;
 	filter: drop-shadow(1px 1px 7px #fff);
@@ -902,9 +902,6 @@ html[lang="jp"] #org_ch_container::after {
 	background-color: var(--fill_blue);
 	box-shadow: 3px 4px 20px #000000b3;
 }
-#about-csr_row > :is(:nth-child(1), :nth-child(2)) {
-	
-}
 #about-csr_row > :where(:nth-child(1)) {
 	background: url(../img/img-csr/tree_plant.avif) no-repeat bottom / cover;
 }
@@ -922,14 +919,85 @@ html[lang="jp"] #org_ch_container::after {
 
 /*   Products & Services   */
 body[data-page="products"] #hero{
-	background-image: url( "../img/img-about/hero_img-about.avif" );
+	background-image: url( ../img/img-index/hero_img.avif );
+}
+#prod-sec1 > div.flx_cen{
+	width: fit-content;
+	margin: 0 auto;
+}
+h2[lang-id="prod_sec1_h"]{
+	padding-right: 1rem;
+	border-right: 2px solid var(--fill_blue);
+}
+h5[lang-id="prod_sec1_tag"]{
+	padding-left: 1rem;
 }
 #prod-sec1_card :where(.col-6.col-md-3 h5.font_blue){
 	font-size: 1.5rem;
 	font-weight: 900;
 	text-align: center;
 }
-
+#prod-sec1_card :where(.col-6.col-md-3 > div:nth-child(2) > ul){
+	width: max-content;
+}
+#prod-sec1_card :where(.col-6.col-md-3 > div:nth-child(2) > .read_btn){
+	display: block;
+	width: max-content;
+	margin: 0 auto;
+}
+#prod-sec1_card :where(.col-6.col-md-3 > div:nth-child(2) > .read_btn):hover{
+	background-color: var(--font_blue);
+}
+#prod-sec_dynamic{
+	width: 100%;
+	position: relative;
+}
+#prod-sec_dynamic > .row{
+	max-width: 1200px;
+}
+#prod-sec_dynamic object[data="img/img-prod/img_dynamic.svg"]{
+	width: 90%;	
+	filter: drop-shadow(7px 5px 17px rgba(0, 0, 0, 0.6));
+}
+#prod-sec_dynamic::before{
+	content: "";
+	position: absolute;
+	top: 10%;
+	bottom: 20%;
+    left: 0;
+	right: 0;
+	background-image: radial-gradient(at 0% 100%, #e5ecf6, #c5cadd, #626574);
+	z-index: -1;
+}
+#prod-sec_dynamic > div:first-child{
+	position: absolute;
+	top: 40%;
+    left: calc(2rem + 1.5vw);
+    transform: translate(0, -40%);
+	display: flex;
+	flex-wrap: wrap;
+	z-index: 100;
+}
+#prod-sec_dynamic > .col-sm-6 > h3[lang-id="dynamic_tag"]{
+	font-weight: 100;
+	line-height: 2.5rem;
+	text-shadow: 1px 1px 8px #000;
+}
+#prod-sec_dynamic > .col-sm-6 > .row > object:where(:first-child, :nth-child(2)) {
+	width: 22%;
+}
+#prod-sec_dynamic > .col-sm-6 > .row > object:last-child{
+	width: 56%;
+}
+#prod-sec_dynamic > .col-sm-6 > .row > object{
+	filter: drop-shadow(5px 6px 7px rgba(0, 0, 0, 0.8));
+}
+#prod-pro_gal{
+	position: relative;
+}
+#prod-pro_gal > h2.head_left{
+	top: -40% !important;
+}
 
 
 @keyframes pulse {
@@ -964,6 +1032,9 @@ body[data-page="products"] #hero{
 	}
 	.rotate-btn:hover + .dropdown-menu {
 		display: block;
+	}
+	#prod-sec_dynamic > div:first-child{
+		left: auto;
 	}
 }
 
@@ -1063,6 +1134,17 @@ body[data-page="products"] #hero{
 		top: auto;
 		left: auto;
 	}
+	[lang-id="prod_sec1_tag"] > br{
+		display: none;
+	}
+	#prod-sec_dynamic > .col-sm-6 > h3[lang-id="dynamic_tag"]{
+		line-height: 1.2;
+	}
+	#prod-pro_gal > h2.head_left{
+		top: -60% !important;
+		width: auto;
+		left: auto;
+	}
 }
 
 /* Tablets (portrait orientation) (max-width: 768px) */
@@ -1115,6 +1197,12 @@ body[data-page="products"] #hero{
 	#wrap_Awd-Mmth::before, #wrap_Awd-Bri::before, #wrap_Awd-Hone::before{
 		background-position: top center;
 	}
+	h2[lang-id="prod_sec1_h"] > br{
+		display: none;
+	}
+	#prod-sec1_card > div:last-child{
+		padding-bottom: 0 !important;
+	}
 }
 
 /* Mobile devices (max-width: 576px) */
@@ -1132,6 +1220,7 @@ body[data-page="products"] #hero{
 		padding: 5px 10px;
 		font-size: 4vw;
 	}
+	#prod-sec1 > div.flx_cen,
 	#about-cert > .kai_contain > .txt_right,
 	.head_left{
 		flex-direction: column;
@@ -1168,5 +1257,34 @@ body[data-page="products"] #hero{
 		top: 1rem;
 		left: 1rem;
 		font-size: 1.5rem;
+	}
+	#prod-sec1 > div.flx_cen:where(h2, h5){
+		width: 100%;
+	}
+	h2[lang-id="prod_sec1_h"]{
+		padding-right: 0;
+		border-right: 0;
+	}
+	h5[lang-id="prod_sec1_tag"]{
+		padding-left: 0;
+	}
+	#prod-sec_dynamic::before{
+		top: 0%;
+		bottom: 10%;
+	}
+	#prod-sec_dynamic > div:first-child{
+		position: relative;
+		top: 0;
+		left: 0;
+		transform: none;
+	}
+	#prod-sec_dynamic > .col-sm-6 > .row > object{
+		margin: 1rem auto;
+	}
+	#prod-sec_dynamic > .col-sm-6 > .row > object:where(:first-child, :nth-child(2)) {
+		width: 50%;
+	}
+	#prod-sec_dynamic > .col-sm-6 > .row > object:last-child{
+		width: 100%;
 	}
 }

@@ -13,8 +13,6 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="asset/styles.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<style>
-	</style>
 </head>
 <body data-page="products">
 <header id="header" class="bodr_bx">
@@ -28,7 +26,7 @@
 </header>
 <main>
 
-<section id="hero" class="secondary bodr_bx 中心">
+<section id="hero" class="secondary bodr_bx">
 	<div id="hero_text">
 		<span>
 		</span>
@@ -38,36 +36,52 @@
 	</div>
 </section>
 
-<section class="kai_contain p-3 px-md-5 bodr_bx" id="prod-sec1">
-	<h2 lang-id="prod_sec1_h">Our Manufacturing Capabilities</h2>
-	<div id="prod-sec1_card" class="row p-lg-4 spc_btw">
+<section class="kai_contain pt-3 pb-0 px-3 px-md-5 bodr_bx" id="prod-sec1">
+	<div class="flx_cen py-3">
+		<h2 lang-id="prod_sec1_h" class="txt_right">Our Manufacturing <br>Capabilities</h2>
+		<h5 lang-id="prod_sec1_tag">One-Stop Solution: A Full Range of Manufacturing Processes <br>for Producing Stamping Parts for Automotive Components.</h5>
+	</div>
+	<div id="prod-sec1_card" class="row p-lg-2 spc_btw">
 	</div>
 </section>
 
-<section class="kai_contain py-4 px-md-2 bodr_bx" id="about-ComProf">
-	<h2 lang-id="word_ComProf" class="text-center">Company Profile</h2>
-	<div class="row p-lg-4">
-		<div id="about-ComProf1" class="col-md-6"></div>
-		<div id="about-ComProf2" class="col-md-6"></div>
+<section class="kai_contain p-4" id="home-parts_map">
+	<div class="col-lg-4 head_left">
+		<h2 lang-id="expertise" style="margin-right: 1rem;">Our&nbsp;Expertise</h1>
+		<h5 lang-id="strong_brkt" class="font_blue">We have extensive experience in the <b>Automotive Industry</b>, especially in <b>Supporting parts such as Brackets.</b></h5>
+	</div>
+	
+	<div id="parts_mapping_container" class="my-3"></div>
+</section>
+	
+<section id="prod-sec_dynamic" class="px-4">
+	<div class="col-sm-6">
+		<h1 lang-id="dynamic_h" class="font_wh">Dynamic Form</h1>
+		<h3 lang-id="dynamic_tag" class="font_wh">
+			Achieving a wide variety of deep, 
+			fluid, and precise shapes through stamping. 
+			Meeting diverse requirements across industries, including automotive, electronics.
+		</h3>
+		<div class="row">
+			<object type="image/svg+xml" data="img/common/parts/parts_1.svg"></object>
+			<object type="image/svg+xml" data="img/common/parts/60493_LH.svg"></object>
+			<object type="image/svg+xml" data="img/common/parts/DSC00089.svg"></object>
+		</div>
+	</div>
+
+	<div class="row mx-auto">
+		<div class="col-sm-4">
+		</div>
+		<div class="col-sm-8 txt_right">
+			<object type="image/svg+xml" data="img/img-prod/img_dynamic.svg"></object>
+		</div>
 	</div>
 </section>
 
-<section id="about-cert">
-	<div class="kai_contain p-4 flx_col_cen">
-		<div class="txt_right">
-			<h2 lang-id="word_cert" class="">Quality<br>&#32;Certificates</h2>
-			<div class="spc_btw">
-				<img src="img/common/logo-ISO.svg" alt="Logo of ISO">
-				<img src="img/common/logo-IATF_edit.svg" alt="Logo of IATF">
-				<span>Certified<br>by </span>
-				<a href="https://ursfe.com.sg/" target="_blank">
-					<img src="img/common/logo-URS.svg" alt="Logo of URS, certification body">
-				</a>
-			</div>
-		</div>
-		<div class="carousel" id="crsl-cert-wrapper">
-			<div class="carousel-images" id="crsl-cert"></div>
-		</div>
+<section class="kai_contain px-md-4 pb-md-4" id="prod-pro_gal">
+	<h2 class="head_left">Products Gallery</h2>
+	<div class="carousel text-center" id="crsl-pro_gal-wrapper">
+		<div class="carousel-images" id="crsl-pro_gal"></div>
 	</div>
 </section>
 
@@ -75,10 +89,6 @@
 	<span id="closeModal" onclick="closeModal()">×</span>
 	<img id="modalImage" src="" alt="Enlarged Image">
 </div>
-
-<section class="kai_contain p-4 p-md-5" id="about-org_ch">
-	<div id="org_ch_container" class="py-4 p-md-5"></div>
-</section>
 
 <section id="home-client">
 	<div class="kai_contain p-lg-4 text-center">
@@ -89,40 +99,16 @@
 	</div>
 </section>
 
-<section class="pstn_rel_dis_blck p-3 px-md-5 bodr_bx" id="about-award">
-	<div class="kai-container">
-		<h1 lang-id="word_suplr_awd" class="h2_wh_shadow">Supplier Awards</h1>
-		<div class="row p-lg-4">
-			<div class="col-lg-3">
-				<p lang-id="txt_suplr_awd">
-					BAE has been honorably recognized with numerous awards for its outstanding excellence as a supplier to the following companies.
-				</p>
-			</div>
-			<div class="col-md-5 col-lg-4">
-				<div id="wrap_Awd-Mmth"></div>
-				<br>
-				<div id="wrap_Awd-Bri"></div>
-			</div>
-			<div class="col-md-7  col-lg-5">
-				<div id="wrap_Awd-Hone"></div>
-			</div>
-		</div>
-		
-	</div>
-</section>
 
 <section id="about-csr" class="p-3 p-md-5">
-	<h2 class="text-center">Sustainability & CSR</h2>
 	<div class="container p-4" >
 		<div id="about-csr_row" class="row mx-lg-4">
-			<div class="col">
-			</div>
-			<div class="col">
-			</div>
 			<div class="font_wh col-md p-4" id="home_cta-txt">
-				<h3 class="font_wh">Committed to Enriching Society</h3>
-				<p>At BAE, fostering mutual prosperity with society is central to how we do business. Through initiatives like tree planting and solar power grid installations, we take meaningful steps to create a better environment and reduce carbon emissions. Partner with us to drive growth that benefits businesses, communities, and the planet.</p>
-				<center><a href="#services" class="read_btn" target="_blank">Read More</a></center>
+				<h2 class="font_wh">Share Your Drawing for a Feasibility Assessment!</h2>
+				<h3 class="font_wh">Have a project in mind? Feel free to consult us—even at the idea or draft stage!</h3>
+				<center><a href="#services" class="cta_btn" target="_blank">Request a Quote</a></center>
+			</div>
+			<div class="col-md">
 			</div>
 		</div>
 	</div>

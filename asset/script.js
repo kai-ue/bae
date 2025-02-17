@@ -298,28 +298,32 @@ document.addEventListener('DOMContentLoaded', function () {
 			title: "Tooling & Die",
 			h_lang_id: "word_tool",
 			items: ["Tooling & Die", "Checking Fixture", "Jig Assembly", "Maintenance Tools"],
-			lang_id: "ul_tooling"
+			lang_id: "ul_tooling",
+			url: "tooling.html"
 		},
 		{
 			icon: `${ path_img_icon }stamping.svg`,
 			title: "Stamping",
 			h_lang_id: "word_stamp",
-			items: ["Press Machines", "Progressive Die", "Single Die", "High Precision Stamping"],
-			lang_id: "ul_stamping"
+			items: ["45 - 600 ton", "Total 50 units", "Progressive 11 units", "Press Tending Robots"],
+			lang_id: "ul_stamping",
+			url: "stamping.html"
 		},
 		{
 			icon: `${ path_img_icon }welding.svg`,
 			title: "Welding",
 			h_lang_id: "word_weld",
-			items: ["Robot Welding", "Spot Welding"],
-			lang_id: "ul_welding"
+			items: ["Arc Welding Robots", "Spot Welding"],
+			lang_id: "ul_welding",
+			url: "welding.html"
 		},
 		{
 			icon: `${ path_img_icon }plateing.svg`,
 			title: "Plateing",
 			h_lang_id: "word_plate",
 			items: ["EDP", "Zinc (Zn)", "Nickel (Ni)", "Chromium (Cr3+, Cr6+)"],
-			lang_id: "ul_plating"
+			lang_id: "ul_plating",
+			url: "plateing.html"
 		}
 	];
 
@@ -351,6 +355,9 @@ document.addEventListener('DOMContentLoaded', function () {
 			
 			case 'products':
 				populateCard( "prod-sec1_card", $arrCapability );
+				loadSVG('img/common/parts_mapping/parts_mapping.svg', 'parts_mapping_container');
+				populateCarousel('crsl-pro_gal', $arrProGal);
+				populateCarousel('crsl-client', $arrClient);
 				
 				break;
 
@@ -359,6 +366,15 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	// Add any other functions like populateHomeProducts, loadSVG, etc.
+	function setReadBtn(url, txt) {
+		const readBtn = document.createElement("a");
+		readBtn.href = url;
+		readBtn.className = "read_btn";
+		readBtn.target = "_blank";
+		readBtn.textContent = txt;
+		return readBtn;
+	}
+	
 	function populateHomeProducts() {
 		const $sec = document.getElementById("home-products");
 		const $dir_path = "img/img-index/col_3_img-";
@@ -555,7 +571,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		dataArray.forEach((capability, index) => {
 			const colDiv = document.createElement("div");
-			colDiv.className = "col-6 col-md-3";
+			colDiv.className = "col-6 col-md-3 py-3";
 
 			const iconDiv = document.createElement("div");
 			const img = document.createElement("img");
@@ -564,6 +580,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			iconDiv.appendChild(img);
 
 			const textDiv = document.createElement("div");
+			textDiv.classList.add("py-3");
 			const title = document.createElement("h5");
 			title.textContent = capability.title;
 			title.setAttribute("lang-id", capability.h_lang_id);
@@ -571,15 +588,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			const ul = document.createElement("ul");
 			ul.setAttribute("lang-id", capability.lang_id);
+			ul.classList.add("mx-auto");
 
 			capability.items.forEach(item => {
 				const li = document.createElement("li");
 				li.textContent = item;
 				ul.appendChild(li);
 			});
-
+			
+			const readBtn = setReadBtn(capability.url, "Read More");
+		
 			textDiv.appendChild(title);
 			textDiv.appendChild(ul);
+			textDiv.appendChild(readBtn);
+			
 			colDiv.appendChild(iconDiv);
 			colDiv.appendChild(textDiv);
 
