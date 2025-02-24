@@ -38,18 +38,46 @@
 
 <section class="kai_contain p-3 px-md-5 bodr_bx" id="csr-sec1">
 	<div class="row p-lg-4">
-		<div class="col-md-4 p-4">
+		<div class="col-md-4 p-3">
 		</div>
-		<div class="col-md-8 p-4 px-md-5">
+		<div class="col-md-8 p-3 px-md-5">
 			<h2 lang-id="csr_h">Committed to Enriching Society</h2>
 			<span lang-id="csr_">
 			<p>At BAE, we believe that business success should go hand in hand with societal well-being. As our company grows, so should the communities around us. We align our operations with society’s needs, ensuring our impact extends beyond profits to sustainable development.</p>
 			<p>Our commitment to sustainability includes environmental efforts like tree planting and planned solar power installations. But it goes further—we embrace ethical business practices, responsible manufacturing, and initiatives that foster shared prosperity. By integrating social responsibility into our operations, we strive to create lasting value for both our company and society.</p>
 			</span>
 		</div>
-
 	</div>
 </section>
+
+<style>
+:where(#csr-tree_plant > div.flex-grow-1){
+	background: linear-gradient(rgb(26 129 211 / 37%), rgb(249 9 82 / 0%)), url(../img/img-csr/tree_plant_sec_bg.jpg) no-repeat bottom / cover;
+}
+:where(#csr-tree_plant > div:nth-child(2)){
+	background: url(../img/img-csr/tree_plant_sec_thumbnail.jpg) no-repeat bottom / cover;
+}
+:where(#csr-tree_plant > div.flex-grow-1 > div.mx-auto){
+	background-color: rgba(47,176,103, .5);
+}
+</style>
+
+<section id="csr-tree_plant" class="d-flex">
+	<div class="flex-grow-1">
+		<div class="mx-auto my-5 p-4" style="width:70%;">
+			<h1 lang-id="word_tree_plant" class="font_wh">Tree Planting</h1>
+			<input type="checkbox" id="read_btn">
+			<p class="read_more-lg font_wh">BAE values environmental sustainability and community well-being. Our team, including the MD and Deputy MD, planted tree seedlings in the vast field of Factory 2 in Chachoengsao province.
+
+Over time, these trees have grown strong, transforming the once-barren land into a thriving green space. As many of our employees call this province home, we see this not just as environmental action but as nurturing the community itself—providing not only livelihoods but also a healthier, greener place to live for future generations.
+</p>
+			<label for="read_btn" class="read_more_label"></label>
+		</div>
+	</div>
+	<div class="col-md-4 p-3 md_h15">
+	</div>
+</section>
+
 
 <section class="kai_contain py-4 px-md-2 bodr_bx" id="about-ComProf">
 	<h2 lang-id="word_ComProf" class="text-center">Company Profile</h2>
@@ -59,24 +87,6 @@
 	</div>
 </section>
 
-<section id="about-cert">
-	<div class="kai_contain p-4 flx_col_cen">
-		<div class="txt_right flx_cen">
-			<h2 lang-id="word_cert" class="">Quality<br>&#32;Certificates</h2>
-			<div class="spc_btw">
-				<img src="img/common/logo-ISO.svg" alt="Logo of ISO">
-				<img src="img/common/logo-IATF_edit.svg" alt="Logo of IATF">
-				<span>Certified<br>by </span>
-				<a href="https://ursfe.com.sg/" target="_blank">
-					<img src="img/common/logo-URS.svg" alt="Logo of URS, certification body">
-				</a>
-			</div>
-		</div>
-		<div class="carousel" id="crsl-cert-wrapper">
-			<div class="carousel-images" id="crsl-cert"></div>
-		</div>
-	</div>
-</section>
 
 <div id="imageModal" class="modal">
 	<span id="closeModal" onclick="closeModal()">×</span>
