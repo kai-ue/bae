@@ -5,52 +5,59 @@ document.addEventListener('DOMContentLoaded', function () {
 			{ url: 'Components/header.html', id: 'header' },
 			{ url: 'Components/footer.html', id: 'footer' }
 		];
+		let loadedComponents = 0;
 
 		components.forEach(component => {
 			fetch(component.url)
 				.then(response => response.text())
 				.then(data => {
 					document.getElementById(component.id).innerHTML = data;
-
-					attachHeaderEvents();
-					initializeLanguage();
-					NavClickEvent();
-					highlightActiveLink(window.location.pathname);
+					
+					/*  1. preloadContent() first loads header.html.
+						2. Once header.html is successfully inserted, it calls: attachHeaderEvents(), NavClickEvent()
+						3. It ensures all event listeners only attach when the elements exist. */
+						
+					loadedComponents++;
+					if (component.id === 'header') {
+						console.log("Header loaded, initializing scripts...");
+						attachHeaderEvents(); // Attach click events for nav
+						NavClickEvent(); // Attach click events for navbar toggler
+					}
+					if (loadedComponents === components.length) {
+						initializeLanguage(); // Language setup
+						highlightActiveLink(window.location.pathname);
+					}
 				})
 				.catch(error => console.error(`Failed to load ${component.id}:`, error));
 		});
 	}
-	
+
 	// Function to handle navigation links and dynamically load page content
 	function loadPageContent(pageUrl) {
-		// Use fetch to load the new page's content (for simplicity, you can load the body of the page)
 		fetch(pageUrl)
 			.then(response => response.text())
 			.then(data => {
-				// Extract and update the body content
 				const newContent = data.match(/<body[^>]*>([\s\S]*?)<\/body>/)[1];
 				document.body.innerHTML = newContent;
 
-				// Reload header/footer content (since it's part of every page)
 				preloadContent();
-				// Update the history without reloading the page
 				history.pushState({ path: pageUrl }, '', pageUrl);
-				
-				const pageName = pageUrl.split('/').pop().replace('.html', ''); // Extract page name
+
+				const pageName = pageUrl.split('/').pop().replace('.html', '');
 				document.body.setAttribute("data-page", pageName);
 
-				// Reinitialize page-specific functions after content change
 				initializePageSpecificFunctions();
 				highlightActiveLink(pageUrl);
-				
+
 				setTimeout(() => {
-					document.documentElement.scrollTop = 0; // For most browsers
-					document.body.scrollTop = 0; // For Safari
-					window.scrollTo({ top: 0, behavior: "smooth" }); // Smooth scrolling
+					document.documentElement.scrollTop = 0;
+					document.body.scrollTop = 0;
+					window.scrollTo({ top: 0, behavior: "smooth" });
 				}, 10);
 			})
 			.catch(error => console.error('Error loading new page:', error));
 	}
+
 	function highlightActiveLink(pageUrl) {
 		const navLinks = document.querySelectorAll('.nav-item > .nav-link');
 		navLinks.forEach(link => link.classList.remove('active'));
@@ -63,11 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	function initializeLanguage() {
 		const savedLanguage = localStorage.getItem("language") || "en";
-
-		// Set the <html> lang attribute
 		document.documentElement.lang = savedLanguage;
-
-		// Get the current page from the <body> data attribute
 		const currentPage = document.body.getAttribute("data-page");
 
 		loadLanguageScript(savedLanguage, (translations) => {
@@ -76,12 +79,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 
 		const languageSelector = document.getElementById("lang-sel");
-		if(languageSelector) {
+		if (languageSelector) {
 			languageSelector.addEventListener("change", (event) => {
 				const selectedLanguage = event.target.value;
 				localStorage.setItem("language", selectedLanguage);
-
-				// Update the <html> lang attribute
 				document.documentElement.lang = selectedLanguage;
 
 				loadLanguageScript(selectedLanguage, (translations) => {
@@ -91,73 +92,72 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		}
 	}
+
 	function loadLanguageScript(language, callback) {
 		const script = document.createElement("script");
-		script.src = `locale/${language}.js`; // Load the correct language file (e.g., en.js, th.js)
+		script.src = `locale/${language}.js`;
 		script.onload = () => {
-			callback(window.currentTranslations); // Use the loaded translations
+			callback(window.currentTranslations);
 		};
 		document.body.appendChild(script);
 	}
+
 	function updateContent(translations, page) {
-		// Update common elements
-		if(translations.common) {
+		if (translations.common) {
 			document.querySelectorAll("[lang-id]").forEach((element) => {
 				const key = element.getAttribute("lang-id");
-				if(translations.common[key]) {
-					element.innerHTML = translations.common[key]; // Apply common translations
+				if (translations.common[key]) {
+					element.innerHTML = translations.common[key];
 				}
 			});
 		}
-		// Update page-specific elements
-		if(translations[page]) {
+		if (translations[page]) {
 			document.querySelectorAll("[lang-id]").forEach((element) => {
 				const key = element.getAttribute("lang-id");
-				if(translations[page][key]) {
-					element.innerHTML = translations[page][key]; // Apply page-specific translations
+				if (translations[page][key]) {
+					element.innerHTML = translations[page][key];
 				}
 			});
 		}
 	}
+
 	function updateMeta(translations, page) {
-		if(translations[page]) {
-			// Update the <title>
-			if(translations[page].title) {
+		if (translations[page]) {
+			if (translations[page].title) {
 				document.title = translations[page].title;
 			}
-
-			// Update the <meta name="description">
 			const metaDescription = document.querySelector('meta[name="description"]');
-			if(metaDescription && translations[page].description) {
+			if (metaDescription && translations[page].description) {
 				metaDescription.setAttribute("content", translations[page].description);
 			}
 		}
 	}
+
 	function NavClickEvent() {
 		const navbarToggler = document.getElementById('navbar-toggler');
 		const navbarCollapse = document.getElementById('navbarNav');
 		const navbarNav = document.querySelector('.navbar-nav');
 
-		// Toggle mobile navigation on navbar toggler click
 		if (navbarToggler) {
 			navbarToggler.addEventListener('click', function () {
+				console.log('Navbar toggler clicked');
+				const isExpanded = navbarToggler.getAttribute('aria-expanded') === 'true';
 				navbarCollapse.classList.toggle('show');
-				navbarToggler.classList.toggle('change'); // Hamburger icon animation
+				navbarToggler.classList.toggle('change');
+				navbarToggler.setAttribute('aria-expanded', !isExpanded);
 			});
 		}
 
-		// Handle the rotate button and dropdown menu visibility
 		const rotateButton = document.getElementById('rotateButton');
 		if (rotateButton) {
 			rotateButton.addEventListener('click', function (event) {
-				event.stopPropagation(); // Prevent click from propagating to window click listener
+				//event.stopPropagation();
 				this.classList.toggle('rotate-180');
 				const dropdown = document.getElementById('dropdownMenu');
 				dropdown.classList.toggle('show');
 			});
 		}
 
-		// Close the dropdown if the user clicks outside of the button or dropdown
 		window.addEventListener('click', function (event) {
 			const dropdown = document.getElementById('dropdownMenu');
 			const button = document.getElementById('rotateButton');
@@ -167,89 +167,57 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		});
 	}
-	// Attach events to navbar links for SPA-like behavior
+
 	function attachHeaderEvents() {
 		const navbarLinks = document.querySelectorAll('.nav-link');
 		navbarLinks.forEach(link => {
 			link.addEventListener('click', function (event) {
 				event.preventDefault();
 				const targetUrl = link.getAttribute('href');
-				//Kai loadPageContent(targetUrl);
+				loadPageContent(targetUrl);
 			});
 		});
 	}
-	// Handle page changes when navigating via History API (back, forward)
+
 	window.addEventListener('popstate', function () {
 		const currentPath = window.location.pathname;
 		loadPageContent(currentPath);
 	});
-	
-/*	function handleHeaderScroll() {
-		function handleHeaderScroll() {
-		let ticking = false;
 
-		// Use a cross-browser approach to get the scroll position
-		function getScrollPosition() {
-			return document.documentElement.scrollTop || document.body.scrollTop;
-		}
-
-		let lastScrollY = getScrollPosition(); // Get the initial scroll position
-		const header = document.getElementById("header");
-
-		window.addEventListener('scroll', () => {
-			if(!ticking) {
-				requestAnimationFrame(() => {
-					let currentScrollY = getScrollPosition(); // Get updated scroll position
-
-					if(currentScrollY > lastScrollY) {
-						header.classList.add('hidden');
-					} else {
-						header.classList.remove('hidden');
-					}
-
-					lastScrollY = currentScrollY;
-					ticking = false;
-				});
-				ticking = true;
-			}
-		});
-	}
-	} */
-	
 	preloadContent();
-	
+
 	const path_Pro_gal = "img/img-index/img-crsl-pro_gal/";
 	const $arrProGal = [
-		{ title: 'Parts1 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts2 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts3 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts4 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts5 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts6 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts7 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts8 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts9 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts10 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts11 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts12 Catalytic Converter Bracket', file_name: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif`, link_add: `${ path_Pro_gal }s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts1 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts2 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts3 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts4 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts5 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts6 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts7 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts8 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts9 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts10 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts11 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Parts12 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
 	];
 
 	const path_Client = "img/img-index/img-crsl-client_gal/logo-";
 	const $arrClient = [
-		{ title: 'Mitsubishi Motors (Thailand) Co., Ltd.', file_name: `${ path_Client }MMTh.svg`, link_add: 'https://www.mitsubishi-motors.co.th/th?rd=true' },
-		{ title: 'H-ONE Parts (Thailand) Co., Ltd.', file_name: `${ path_Client }H_one.svg`, link_add: 'https://www.h1-co.jp/eng/' },
-		{ title: 'Hitachi Consumer Products (Thailand) Ltd.', file_name: `${ path_Client }Hitachi.svg`, link_add: 'https://www.hitachi-homeappliances.com/th-en/' },
-		{ title: 'NHK Spring (Thailand) Co., Ltd.', file_name: `${ path_Client }Nhk.svg`, link_add: 'https://www.nhkspg.co.th/th/' },
-		{ title: 'Copeland (Thailand) Ltd.', file_name: `${ path_Client }Emerson.png`, link_add: 'https://www.copeland.com/en-th/tools-resources/facilities/thailand' },
-		{ title: 'Magna Automotive Technology (Thailand) Co., Ltd.', file_name: `${ path_Client }Magna.svg`, link_add: 'https://www.magna.com/' },
-		{ title: 'Walker Exhaust (Thailand) Co., Ltd.', file_name: `${ path_Client }Walker.svg`, link_add: 'https://www.walkerexhaust.com/' },
-		{ title: 'MAHLE Engine Components (Thailand) Co., Ltd.', file_name: `${ path_Client }Mahle.svg`, link_add: 'https://www.mahle.com/en/about-mahle/locations/1166.jsp' },
-		{ title: 'Techno Associe (Thailand) Co., Ltd.', file_name: `${ path_Client }Techno_associe.png`, link_add: 'https://www.technoassocie.co.jp/en/company/network/thailand/' },
-		{ title: 'Thai Kokoku Rubber Co., Ltd.', file_name: `${ path_Client }Kokoku.png`, link_add: 'https://www.kokoku-intech.com/en/' },
-		{ title: 'Innova Rubber Co., Ltd.', file_name: `${ path_Client }Innova_rubber.png`, link_add: 'https://www.ircthailand.com/th/home' },
-		{ title: 'Prospira (Thailand) Co., Ltd.', file_name: `${ path_Client }Prospira.svg`, link_add: 'https://prospira.com/' },
+		{ title: 'Mitsubishi Motors (Thailand) Co., Ltd.', file_name: `${path_Client}MMTh.svg`, link_add: 'https://www.mitsubishi-motors.co.th/th?rd=true' },
+		{ title: 'H-ONE Parts (Thailand) Co., Ltd.', file_name: `${path_Client}H_one.svg`, link_add: 'https://www.h1-co.jp/eng/' },
+		{ title: 'Hitachi Consumer Products (Thailand) Ltd.', file_name: `${path_Client}Hitachi.svg`, link_add: 'https://www.hitachi-homeappliances.com/th-en/' },
+		{ title: 'NHK Spring (Thailand) Co., Ltd.', file_name: `${path_Client}Nhk.svg`, link_add: 'https://www.nhkspg.co.th/th/' },
+		{ title: 'Copeland (Thailand) Ltd.', file_name: `${path_Client}Emerson.png`, link_add: 'https://www.copeland.com/en-th/tools-resources/facilities/thailand' },
+		{ title: 'Magna Automotive Technology (Thailand) Co., Ltd.', file_name: `${path_Client}Magna.svg`, link_add: 'https://www.magna.com/' },
+		{ title: 'Walker Exhaust (Thailand) Co., Ltd.', file_name: `${path_Client}Walker.svg`, link_add: 'https://www.walkerexhaust.com/' },
+		{ title: 'MAHLE Engine Components (Thailand) Co., Ltd.', file_name: `${path_Client}Mahle.svg`, link_add: 'https://www.mahle.com/en/about-mahle/locations/1166.jsp' },
+		{ title: 'Techno Associe (Thailand) Co., Ltd.', file_name: `${path_Client}Techno_associe.png`, link_add: 'https://www.technoassocie.co.jp/en/company/network/thailand/' },
+		{ title: 'Thai Kokoku Rubber Co., Ltd.', file_name: `${path_Client}Kokoku.png`, link_add: 'https://www.kokoku-intech.com/en/' },
+		{ title: 'Innova Rubber Co., Ltd.', file_name: `${path_Client}Innova_rubber.png`, link_add: 'https://www.ircthailand.com/th/home' },
+		{ title: 'Prospira (Thailand) Co., Ltd.', file_name: `${path_Client}Prospira.svg`, link_add: 'https://prospira.com/' },
 	];
-	
+
 	const $arrComProf1 = [
 		["Company Name", "Brother Auto Parts & Engineering Co., Ltd.", "business"],
 		["Registered date", "September 23, 1993", "event"],
@@ -257,6 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		["Certificates", "IATF16949:2016, ISO9001:2015, ISO14001:2015", "verified"],
 		["Website", "<a href='http://www.brother-autoparts.com' target='_blank'>www.brother-autoparts.com</a>", "language"]
 	];
+
 	const $arrComProf2 = [
 		["Factory 1 / HQ", "10 Soi Ramindra 117, Yeak 2, Ramindra Rd., <br>Minburi, Minburi, Bangkok", "factory"],
 		["Area", "6,400 m²", "arrows_output"],
@@ -266,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		["Area", "68,800 m²", "arrows_output"],
 		["Employees", "95 persons", "group"],
 	];
-	
+
 	const path_img_cert = "img/img-about/certificate/";
 	const $arrCert = [
 		{ title: 'IATF16949:2016 Factory 1', file_name: `${path_img_cert}IATF16949-2016_Factory_1.avif`, link_add: `${path_img_cert}IATF16949-2016_Factory_1.avif` },
@@ -280,9 +249,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	const $arrAwdMmth = [
 		["Award of Quality", "2013, 2018"],
 	];
+
 	const $arrAwdBri = [
 		["Best Quality Award", "2016"],
 	];
+
 	const $arrAwdHone = [
 		["Best Quality Award", "2020, 2021, 2022, 2023"],
 		["Best Delivery Award", "2012, 2018, 2021"],
@@ -290,11 +261,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		["Best Improvement Project", "2012"],
 		["Cost Reduction Award", "2007, 2010"],
 	];
-	
+
 	const path_img_icon = "img/common/icon/icon_";
 	const $arrCapability = [
 		{
-			icon: `${ path_img_icon }die.svg`,
+			icon: `${path_img_icon}die.svg`,
 			title: "Tooling & Die",
 			h_lang_id: "word_tool",
 			items: ["Tooling & Die", "Checking Fixture", "Jig Assembly", "Maintenance Tools"],
@@ -302,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			url: "tooling.html"
 		},
 		{
-			icon: `${ path_img_icon }stamping.svg`,
+			icon: `${path_img_icon}stamping.svg`,
 			title: "Stamping",
 			h_lang_id: "word_stamp",
 			items: ["45 - 600 ton", "Total 50 units", "Progressive 11 units", "Press Tending Robots"],
@@ -310,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			url: "stamping.html"
 		},
 		{
-			icon: `${ path_img_icon }welding.svg`,
+			icon: `${path_img_icon}welding.svg`,
 			title: "Welding",
 			h_lang_id: "word_weld",
 			items: ["Arc Welding Robots", "Spot Welding"],
@@ -318,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			url: "welding.html"
 		},
 		{
-			icon: `${ path_img_icon }plateing.svg`,
+			icon: `${path_img_icon}plateing.svg`,
 			title: "Plateing",
 			h_lang_id: "word_plate",
 			items: ["EDP", "Zinc (Zn)", "Nickel (Ni)", "Chromium (Cr3+, Cr6+)"],
@@ -327,7 +298,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	];
 
-	
 	initializePageSpecificFunctions();
 	function initializePageSpecificFunctions() {
 		const currentPage = document.body.dataset.page;
@@ -342,8 +312,8 @@ document.addEventListener('DOMContentLoaded', function () {
 				break;
 
 			case 'about':
-				generateTable('about-ComProf1', $arrComProf1);
-				generateTable('about-ComProf2', $arrComProf2);
+				generateTable('about-ComProf1', $arrComProf1, 'cp1');
+				generateTable('about-ComProf2', $arrComProf2, 'cp2');
 				populateCarousel('crsl-cert', $arrCert);
 				loadSVG('img/img-about/org_chart.svg', 'org_ch_container');
 				populateCarousel('crsl-client', $arrClient);
@@ -360,6 +330,17 @@ document.addEventListener('DOMContentLoaded', function () {
 				populateCarousel('crsl-client', $arrClient);
 				
 				break;
+				
+			case 'csr':
+				SolarSpec();
+				modalOnly('csr-iso_cert');
+				
+				break;
+				
+			case 'contact':	
+				ContactFormSubmit();
+				
+			break;
 
 			// Add more cases for other pages if needed
 		}
@@ -528,20 +509,19 @@ document.addEventListener('DOMContentLoaded', function () {
 			$container.innerHTML += $innerHTML;
 		});
 	}
-	
-	function generateTable( tableWrapID, data ) {
-		const $tableWrap = document.getElementById( tableWrapID );
+
+	function generateTable(tableWrapID, data, tableID) {
+		const $tableWrap = document.getElementById(tableWrapID);
 		let table = document.createElement("table");
 		table.setAttribute("border", "1");
 		table.setAttribute("cellpadding", "5");
-		let i = 1;
 
-		data.forEach(rowData => {
+		data.forEach((rowData, rowIndex) => {
 			let tr = document.createElement("tr");
 
 			let th = document.createElement("th");
-			th.setAttribute("lang-id", `tr${i}_th`);
-			if (tableWrapID.startsWith("about-ComProf")) {
+			th.setAttribute("lang-id", `${tableID}_tr${rowIndex + 1}_th`);
+			if(tableWrapID.startsWith("about-ComProf")) {
 				th.setAttribute("class", "font_blue");
 				th.innerHTML = `<span class='material-symbols-outlined'>${rowData[2]}</span>&nbsp; ${rowData[0]}`;
 			} else {
@@ -550,13 +530,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			tr.appendChild(th);
 
 			let td = document.createElement("td");
-			td.setAttribute("lang-id", `tr${i}_td`);
+			td.setAttribute("lang-id", `${tableID}_tr${rowIndex + 1}_td`);
 			td.innerHTML = rowData[1];
 			tr.appendChild(td);
 
 			table.appendChild(tr);
-			i++;
 		});
+		
 		$tableWrap.appendChild(table);
 	}
 	
@@ -608,9 +588,79 @@ document.addEventListener('DOMContentLoaded', function () {
 			wrapper.appendChild(colDiv);
 		});
 	}
-});
-
-
-
 	
+	function SolarSpec(){
+		const $container = document.getElementById('csr_solor_spec');
+		
+		const $arrSolarSpec = [
+			{ icon: 'energy_savings_leaf', title: 'Generate', val: '1,150', ext: 'kwh/day' },
+			{ icon: 'arrows_output', title: 'Covering', val: '517', ext: 'm²' },
+			{ icon: 'solar_power', title: 'Number of', val: '200', ext: 'panels' },
+		];
+		$arrSolarSpec.forEach(spec => {
+			const $innerHTML = `
+				<div class="col">
+					<h3 class='material-symbols-outlined'>${spec.icon}</h3><h5>${spec.title}</h5>
+					<h3>${spec.val}<sub>${spec.ext}</sub></h3>
+				</div>
+			`;
+			$container.innerHTML += $innerHTML;
+		});
+	}
+	
+	function modalOnly( aID ){
+		const linkElement = document.getElementById( aID);
+		const imgUrl = linkElement.href;
+		linkElement.addEventListener('click', (event) => {
+			event.preventDefault();
+			openModal( imgUrl );
+		});
+	}
 
+	function ContactFormSubmit() {
+		document.getElementById("contactForm").addEventListener("submit", function(event) {
+			event.preventDefault(); // Prevent actual form submission
+
+			// Reset error messages
+			document.querySelectorAll(".error-message").forEach(function(el) {
+				el.style.display = "none";
+			});
+
+			// Validate inputs
+			let isValid = true;
+
+			const formItems = [
+				{ id: "name", required: true },
+				{ id: "email", required: true, isEmail: true },
+				{ id: "inquiry", required: true },
+				{ id: "message", required: true },
+			];
+			const formData = {}; // Store form data for mailto link
+
+			formItems.forEach(item => {
+				const input = document.getElementById(item.id).value;
+				const errorElement = document.getElementById(`${item.id}-error`);
+
+				// Validate required fields and email format
+				if(
+					(item.required && !input) ||
+					(item.isEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input))
+				) {
+					errorElement.style.display = "block";
+					isValid = false;
+				}
+				formData[item.id] = input;
+			});
+
+			const compName = document.getElementById("comp_name").value;
+
+			// If all inputs are valid, proceed with form submission
+			if(isValid) {
+				const { name, email, inquiry, message } = formData;
+				const mailtoLink = `mailto:${inquiry}?subject=Inquiry from ${name}&body=Name: ${name}%0AEmail: ${email}%0ACompany name: ${compName}%0A%0AMessage:%0A${message}`;
+				window.location.href = mailtoLink;
+			}
+		});
+	}	
+	
+});

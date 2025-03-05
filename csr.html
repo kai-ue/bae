@@ -43,103 +43,100 @@
 		<div class="col-md-8 p-3 px-md-5">
 			<h2 lang-id="csr_h">Committed to Enriching Society</h2>
 			<span lang-id="csr_">
-			<p>At BAE, we believe that business success should go hand in hand with societal well-being. As our company grows, so should the communities around us. We align our operations with society’s needs, ensuring our impact extends beyond profits to sustainable development.</p>
-			<p>Our commitment to sustainability includes environmental efforts like tree planting and planned solar power installations. But it goes further—we embrace ethical business practices, responsible manufacturing, and initiatives that foster shared prosperity. By integrating social responsibility into our operations, we strive to create lasting value for both our company and society.</p>
+			<input type="checkbox" id="read_btn_1" class="read_more_check">
+			<p class="read_more-lg">At BAE, we believe that business success should go hand in hand with societal well-being. As our company grows, so should the communities around us. We align our operations with society’s needs, ensuring our impact extends beyond profits to sustainable development.<br>
+			Our commitment to sustainability includes environmental efforts like tree planting and planned solar power installations. But it goes further—we embrace ethical business practices, responsible manufacturing, and initiatives that foster shared prosperity. By integrating social responsibility into our operations, we strive to create lasting value for both our company and society.</p>
+			<label for="read_btn_1" class="read_more_label"></label>
 			</span>
 		</div>
 	</div>
 </section>
 
-<style>
-:where(#csr-tree_plant > div.flex-grow-1){
-	background: linear-gradient(rgb(26 129 211 / 37%), rgb(249 9 82 / 0%)), url(../img/img-csr/tree_plant_sec_bg.jpg) no-repeat bottom / cover;
-}
-:where(#csr-tree_plant > div:nth-child(2)){
-	background: url(../img/img-csr/tree_plant_sec_thumbnail.jpg) no-repeat bottom / cover;
-}
-:where(#csr-tree_plant > div.flex-grow-1 > div.mx-auto){
-	background-color: rgba(47,176,103, .5);
-}
-</style>
-
 <section id="csr-tree_plant" class="d-flex">
 	<div class="flex-grow-1">
-		<div class="mx-auto my-5 p-4" style="width:70%;">
+		<div class="mx-auto my-5 p-4 col-8">
 			<h1 lang-id="word_tree_plant" class="font_wh">Tree Planting</h1>
-			<input type="checkbox" id="read_btn">
+			<input type="checkbox" id="read_btn_2" class="read_more_check">
 			<p class="read_more-lg font_wh">BAE values environmental sustainability and community well-being. Our team, including the MD and Deputy MD, planted tree seedlings in the vast field of Factory 2 in Chachoengsao province.
-
-Over time, these trees have grown strong, transforming the once-barren land into a thriving green space. As many of our employees call this province home, we see this not just as environmental action but as nurturing the community itself—providing not only livelihoods but also a healthier, greener place to live for future generations.
-</p>
-			<label for="read_btn" class="read_more_label"></label>
+			Over time, these trees have grown strong, transforming the once-barren land into a thriving green space. As many of our employees call this province home, we see this not just as environmental action but as nurturing the community itself—providing not only livelihoods but also a healthier, greener place to live for future generations.
+			</p>
+			<label for="read_btn_2" class="read_more_label"></label>
 		</div>
 	</div>
-	<div class="col-md-4 p-3 md_h15">
+	<div class="col-md-4 md_h15">
 	</div>
 </section>
 
-
-<section class="kai_contain py-4 px-md-2 bodr_bx" id="about-ComProf">
-	<h2 lang-id="word_ComProf" class="text-center">Company Profile</h2>
-	<div class="row p-lg-4">
-		<div id="about-ComProf1" class="col-md-6"></div>
-		<div id="about-ComProf2" class="col-md-6"></div>
+<section id="csr-solar" class="d-flex">
+	<div class="col-md-6 md_h15">
+	</div>
+	<div class="col-md-6 p-3 p-md-5">
+		<h2 lang-id="">Solar Power System</h2>
+		<p lang-id="">BAE is implementing an On-grid Solar Power System at our Chachoengsao factory to enhance sustainability and reduce our carbon footprint. This system generates an average of 1,150 kWh per day, efficiently harnessing solar energy across 517 m² of rooftop space. Comprising 200 high-efficiency solar panels, it contributes to our commitment to greener manufacturing.</p>
+		<div id="csr_solor_spec" class="row text-center p-3 p-mid-0"></div>
 	</div>
 </section>
 
+<style>
+
+</style>
+
+<section id="csr-iso">
+	<div class="kai_contain p-3 px-md-5 bodr_bx">
+		<div class="row p-lg-4">
+			<div class="col-md-4 p-3 flx_col_cen pstn_rel_dis_blck">
+				<div class="spc_btw p-1">
+					<img src="img/common/logo-ISO.svg" alt="Logo of ISO">
+					<div>
+						ISO14001:2015<br>
+						BAE Factory 2
+					</div>
+				</div>
+				<a id="csr-iso_cert" class="中心" href="img/img-about/certificate/ISO14001-2015_Factory_2.avif">
+					<img src="img/img-about/certificate/ISO14001-2015_Factory_2.avif" alt="ISO14001:2015 Factory 2">
+				</a>
+			</div>
+			<div class="col-md-8 p-3 px-md-5">
+				<h2 lang-id="">Environmental Responsibility</h2>
+				<input type="checkbox" id="read_btn_3" class="read_more_check">
+				<div class="read_more-lg">
+					<p>
+						At BAE, we are committed to sustainable business practices that minimize our environmental footprint. As part of our dedication to corporate social responsibility, we have implemented a comprehensive Environmental Management System (EMS) and obtained ISO 14001:2015 certification.<br>
+						This certification reflects our continuous efforts to:</p>
+					<ul>
+						<li>Reduce waste and optimize resource efficiency</li>
+						<li>Comply with environmental regulations and exceed industry standards</li>
+						<li>Promote sustainable practices across our operations</li>
+						<li>Foster environmental awareness among employees and stakeholders</li>
+					</ul>
+					<p>By adhering to these principles, we strive to contribute to a cleaner, greener future while ensuring responsible manufacturing practices that align with global environmental goals.</p>
+				</div>
+				<label for="read_btn_3" class="read_more_label"></label>
+			</div>
+		</div>
+	</div>
+</section>
 
 <div id="imageModal" class="modal">
 	<span id="closeModal" onclick="closeModal()">×</span>
 	<img id="modalImage" src="" alt="Enlarged Image">
 </div>
 
-<section class="kai_contain p-5" id="about-org_ch">
-	<div id="org_ch_container" class="py-4 p-md-5"></div>
-</section>
 
-<section id="home-client">
-	<div class="kai_contain p-4 text-center">
-		<h2>Our Clients</h2>
-		<div class="carousel" id="crsl-client-wrapper">
-			<div class="carousel-images" id="crsl-client"></div>
-		</div>
-	</div>
-</section>
-
-<section class="pstn_rel_dis_blck p-3 px-md-5 bodr_bx" id="about-award">
-	<div class="kai-container">
-		<h1 lang-id="word_suplr_awd" class="h2_wh_shadow">Supplier Awards</h1>
-		<div class="row p-lg-4">
-			<div class="col-lg-3">
-				<p lang-id="txt_suplr_awd">
-					BAE has been honorably recognized with numerous awards for its outstanding excellence as a supplier to the following companies.
-				</p>
-			</div>
-			<div class="col-md-5 col-lg-4">
-				<div id="wrap_Awd-Mmth"></div>
-				<br>
-				<div id="wrap_Awd-Bri"></div>
-			</div>
-			<div class="col-md-7  col-lg-5">
-				<div id="wrap_Awd-Hone"></div>
-			</div>
-		</div>
-		
-	</div>
-</section>
-
-<section id="about-csr" class="p-3 p-md-5">
-	<h2 class="text-center">Sustainability & CSR</h2>
+<section id="csr-cta" class="p-3 p-md-5">
 	<div class="container p-4" >
-		<div id="about-csr_row" class="row mx-lg-4">
-			<div class="col">
+		<div id="csr-cta_row" class="row mx-lg-4 bl_row">
+			<div class="col-md p-4">
+				<h3 class="font_wh">Sustainable. Ethical. Reliable. Choose BAE as Your Manufacturing Partner!</h3>
+				<input type="checkbox" id="read_btn_4" class="read_more_check">
+				<p class="font_wh font_w100 read_more-lg">
+					Today’s businesses demand more than just quality—they seek responsible suppliers who align with their sustainability values.<br>
+					At BAE, we integrate eco-friendly practices, prioritize employee well-being, and adhere to international standards like ISO 14001.<br>
+					Let’s collaborate to build a more sustainable and responsible supply chain!</p>
+				<label for="read_btn_4" class="read_more_label"></label>
+				<center><a href="contact.html" class="cta_btn" target="_blank">Contact Us</a></center>
 			</div>
-			<div class="col">
-			</div>
-			<div class="font_wh col-md p-4" id="home_cta-txt">
-				<h3 class="font_wh">Committed to Enriching Society</h3>
-				<p>At BAE, fostering mutual prosperity with society is central to how we do business. Through initiatives like tree planting and solar power grid installations, we take meaningful steps to create a better environment and reduce carbon emissions. Partner with us to drive growth that benefits businesses, communities, and the planet.</p>
-				<center><a href="#services" class="read_btn" target="_blank">Read More</a></center>
+			<div class="col-md md_h15">
 			</div>
 		</div>
 	</div>

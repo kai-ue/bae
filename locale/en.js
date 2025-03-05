@@ -1,5 +1,7 @@
 window.currentTranslations = {
 	common: {
+		address_f1: "10 Soi Ramindra 117, Yeak 2, Ramindra Rd., Minburi, Minburi, Bangkok, Thailand 10510",
+		address_f2: "77/7 Moo 13 Saladaeng, Bangnumpraew, Chachoengsao, Thailand 24150",
 		word_home: "Home",
 		word_about: "About",
 		word_about_us: "About Us",
@@ -62,6 +64,7 @@ window.currentTranslations = {
 		title: "Contact Us - Brother Auto Parts & Engineering (BAE)",
 		description: "Get in touch with Brother Auto Parts & Engineering (BAE) for inquiries about our manufacturing capabilities, products, and services. We are here to help meet your automotive production needs.",
 		keywords: "contact us, Thai manufacturer, automotive parts supplier, precision manufacturing, contract manufacturer, BAE contact",
+		contact_us: "Contact Us",
 	},
 	tool: {
 		title: "Tooling & Die - Brother Auto Parts & Engineering (BAE)",
