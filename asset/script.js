@@ -18,10 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
 						3. It ensures all event listeners only attach when the elements exist. */
 						
 					loadedComponents++;
-					if (component.id === 'header') {
-						console.log("Header loaded, initializing scripts...");
-						attachHeaderEvents(); // Attach click events for nav
-						NavClickEvent(); // Attach click events for navbar toggler
+					if (component.id === 'header'|| component.id === 'footer') {
+						attachHeaderEvents();
+						NavClickEvent();
 					}
 					if (loadedComponents === components.length) {
 						initializeLanguage(); // Language setup
@@ -298,6 +297,19 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	];
 
+	const $arrToolingSec1 = [
+		["Faster Turnaround & Agile Response", "Quick adjustments, faster prototyping, and shorter lead times compared to outsourcing.", "speed"],
+		["Cost Efficiency", "Reduced dependency on external suppliers minimizes costs for development, modifications, and logistics.", "savings"],
+		["Seamless Integration", "Better alignment between tooling and production processes, ensuring smoother operations and fewer production issues.", "integration_instructions"],
+		["Higher Precision & Quality Control", "Direct oversight of design, fabrication, and testing ensures superior quality and consistency.", "verified"],
+	];
+	const $arrToolingSec2 = [
+		["Flexibility & Customization", "Easier modifications and optimizations based on project needs or unexpected changes.", "tune"],
+		["Better Product Knowledge", "Deep understanding of tooling and die requirements enhances part performance and manufacturability.", "school"],
+		["Efficient Maintenance & Troubleshooting", "Faster repairs, upgrades, and preventive maintenance to minimize downtime.", "build"],
+		["Stronger Intellectual Property Protection", "Keeping designs and processes in-house reduces the risk of IP leakage.", "security"]
+	];
+
 	initializePageSpecificFunctions();
 	function initializePageSpecificFunctions() {
 		const currentPage = document.body.dataset.page;
@@ -341,6 +353,12 @@ document.addEventListener('DOMContentLoaded', function () {
 				ContactFormSubmit();
 				
 			break;
+			
+			case 'tooling':
+				generateTable('table_tooling_sec1', $arrToolingSec1, 'tool_adv1');
+				generateTable('table_tooling_sec2', $arrToolingSec2, 'tool_adv2');
+				
+				break;
 
 			// Add more cases for other pages if needed
 		}
@@ -512,6 +530,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	function generateTable(tableWrapID, data, tableID) {
 		const $tableWrap = document.getElementById(tableWrapID);
+		const prefixes = ["about-ComProf", "table_tooling_sec"];
+		
 		let table = document.createElement("table");
 		table.setAttribute("border", "1");
 		table.setAttribute("cellpadding", "5");
@@ -521,9 +541,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			let th = document.createElement("th");
 			th.setAttribute("lang-id", `${tableID}_tr${rowIndex + 1}_th`);
-			if(tableWrapID.startsWith("about-ComProf")) {
+			if (prefixes.some(prefix => tableWrapID.startsWith(prefix))) {
 				th.setAttribute("class", "font_blue");
-				th.innerHTML = `<span class='material-symbols-outlined'>${rowData[2]}</span>&nbsp; ${rowData[0]}`;
+				th.innerHTML = `<span class='material-symbols-outlined'>${rowData[2]}</span>${rowData[0]}`;
 			} else {
 				th.innerHTML = rowData[0];
 			}

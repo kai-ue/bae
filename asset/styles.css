@@ -148,6 +148,20 @@ p.font_wh{
 	width: 100%;
 	padding: 0em;
 }
+table{
+	border: none;
+}
+th.font_blue {
+	display: inline-flex;
+	align-items: center;
+}
+.material-symbols-outlined {
+	margin-right: 8px;
+	flex-shrink: 0;
+}
+th.font_blue span:not(.material-symbols-outlined) {
+	white-space: normal;
+}
 .read_more-lg,
 .read_more {
 	display: block;
@@ -1222,6 +1236,39 @@ h5[lang-id="chchs"]::after{
 	border-radius: 50%;
 	background-color: var(--fill_blue);
 	box-shadow: 3px 3px 12px #fb77ff;
+}
+
+/*   Tooling   */
+body[data-page="tooling"] #hero{
+	background-image: url( "../img/img-tooling/hero_img-tooling.avif" );
+	background-position: bottom;
+}
+:where( #tooling-sec1 > div.row.p-lg-4 > div.col-md-2.p-3) > h5{
+	height: 3rem;
+	color: var(--font_blue);
+	font-weight: 600;
+}
+
+
+:where( #table_tooling_sec1, #table_tooling_sec2 ) > table > tr{
+	border-bottom: 1px solid var(--font_blue);
+}
+
+
+
+/*   Stamping   */
+body[data-page="stamping"] #hero{
+	background-image: url( "../img/img-stamping/hero_img-tooling.avif" );
+}
+
+/*   Welding   */
+body[data-page="welding"] #hero{
+	background-image: url( "../img/img-welding/hero_img-tooling.avif" );
+}
+
+/*   Plateing   */
+body[data-page="plateing"] #hero{
+	background-image: url( "../img/img-plateing/hero_img-tooling.avif" );
 }
 
 @keyframes pulse {

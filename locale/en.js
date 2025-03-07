@@ -66,22 +66,22 @@ window.currentTranslations = {
 		keywords: "contact us, Thai manufacturer, automotive parts supplier, precision manufacturing, contract manufacturer, BAE contact",
 		contact_us: "Contact Us",
 	},
-	tool: {
+	tooling: {
 		title: "Tooling & Die - Brother Auto Parts & Engineering (BAE)",
 		description: "Brother Auto Parts & Engineering (BAE) specializes in advanced tooling and die design for automotive and industrial applications. Learn how our precision tooling services can meet your production requirements.",
 		keywords: "tooling, die design, die manufacturing, automotive tooling, precision tooling, manufacturing solutions, BAE",
 	},
-	stamp: {
+	stamping: {
 		title: "Stamping - Brother Auto Parts & Engineering (BAE)",
 		description: "Discover the stamping services offered by Brother Auto Parts & Engineering (BAE), providing high-quality, precision stamping solutions for the automotive industry and beyond.",
 		keywords: "stamping, automotive stamping, precision stamping, manufacturing parts, stamping solutions, contract manufacturer, BAE",
 	},
-	weld: {
+	welding: {
 		title: "Welding - Brother Auto Parts & Engineering (BAE)",
 		description: "Brother Auto Parts & Engineering (BAE) offers expert welding services for the automotive and industrial sectors, providing high-strength and durable welding solutions for various applications.",
 		keywords: "welding, automotive welding, industrial welding, precision welding, welding services, BAE, Thai welding solutions",
 	},
-	plate: {
+	plating: {
 		title: "Plating - Brother Auto Parts & Engineering (BAE)",
 		description: "Learn about the plating services provided by Brother Auto Parts & Engineering (BAE), offering high-quality finishes for automotive parts and other industrial components.",
 		keywords: "plating, automotive plating, industrial plating, plating solutions, surface finishing, BAE, contract manufacturer",
