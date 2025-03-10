@@ -48,6 +48,8 @@ h1, h2, h3{
 .bodr_bx{
 	box-sizing: border-box;
 }
+
+
 :where(button, a, div, img):hover{
 	-webkit-transition: 0.3s ease;
 	-moz-transition: 0.3s ease;
@@ -154,6 +156,9 @@ table{
 th.font_blue {
 	display: inline-flex;
 	align-items: center;
+}
+.brdr_btm_blue{
+	border-bottom: 1px solid var(--font_blue);
 }
 .material-symbols-outlined {
 	margin-right: 8px;
@@ -513,7 +518,6 @@ footer ul:where(:not([class])) {
 /*   Index Page   */
 #hero {
 	position: relative;
-	width: 100%;
 	height: calc(90vh + 55px); 
 	max-height: 900px;
 	min-height: 300px;
@@ -626,7 +630,6 @@ footer ul:where(:not([class])) {
 	overflow: hidden;
 }
 #home-client{
-	width: 100%;
 	background-position:
 		top 0 left 0,
 		top 0 left 0,
@@ -873,29 +876,16 @@ body[data-page="about"] #hero::before {
 #about-ComProf2 > table{
 	border: 0;
 }
-#about-ComProf1 > table > tr,
-#about-ComProf2 > table > tr{
-	border-bottom: var(--font_blue) 1px solid !important;
-}
 #about-ComProf1 .material-symbols-outlined,
 #about-ComProf2 .material-symbols-outlined{
 	float: left;
 }
 #about-cert{
-	width: 100%;
 	background: radial-gradient(ellipse farthest-corner at 5% 5%, #fefffc, #dfdfd3, #77969b);
 }
 #about-cert .spc_btw > img{
 	height: 4rem;
 	filter: drop-shadow(1px 1px 7px #fff);
-}
-#about-cert .spc_btw::before{
-	content: "";
-	position: relative;
-	width: 1px;
-	height: 5rem;
-	margin: 0 1rem;
-	background-color: var(--font_blue);
 }
 #about-cert img[src="img/common/logo-URS.svg"]{
 	height: 4.5rem;
@@ -997,15 +987,14 @@ html[lang="jp"] #org_ch_container::after {
 body[data-page="products"] #hero{
 	background-image: url( ../img/img-index/hero_img.avif );
 }
-#prod-sec1 > div.flx_cen{
+:where( #tooling-sec1, #prod-sec1 ) > div.flx_cen{
 	width: fit-content;
-	margin: 0 auto;
 }
-h2[lang-id="prod_sec1_h"]{
+div.flx_cen > h2{
 	padding-right: 1rem;
 	border-right: 2px solid var(--fill_blue);
 }
-h5[lang-id="prod_sec1_tag"]{
+div.flx_cen > :where( h5, div:nth-child(2) ){
 	padding-left: 1rem;
 }
 #prod-sec1_card :where(.col-6.col-md-3 h5.font_blue){
@@ -1023,10 +1012,6 @@ h5[lang-id="prod_sec1_tag"]{
 }
 #prod-sec1_card :where(.col-6.col-md-3 > div:nth-child(2) > .read_btn):hover{
 	background-color: var(--font_blue);
-}
-#prod-sec_dynamic{
-	width: 100%;
-	position: relative;
 }
 #prod-sec_dynamic > .row{
 	max-width: 1200px;
@@ -1097,9 +1082,6 @@ body[data-page="csr"] #hero{
 	min-height: 17rem;
 	background: #ffffff00 url(../img/img-csr/seedling.avif) no-repeat center / cover;
 	background-clip: content-box;
-}
-#csr-tree_plant{
-	width: 100%;
 }
 :where(#csr-tree_plant > div.flex-grow-1){
 	background: linear-gradient(rgb(26 129 211 / 37%), rgb(249 9 82 / 0%)), url(../img/img-csr/tree_plant_sec_bg.jpg) no-repeat bottom / cover;
@@ -1243,16 +1225,12 @@ body[data-page="tooling"] #hero{
 	background-image: url( "../img/img-tooling/hero_img-tooling.avif" );
 	background-position: bottom;
 }
-:where( #tooling-sec1 > div.row.p-lg-4 > div.col-md-2.p-3) > h5{
+:where( #tooling-sec1 > div.row.p-2.px-lg-4 > div.col-md-2.p-3) > h5{
 	height: 3rem;
 	color: var(--font_blue);
 	font-weight: 600;
 }
-
-
-:where( #table_tooling_sec1, #table_tooling_sec2 ) > table > tr{
-	border-bottom: 1px solid var(--font_blue);
-}
+#tooling-sec3
 
 
 
@@ -1554,10 +1532,15 @@ body[data-page="plateing"] #hero{
 		padding: 5px 10px;
 		font-size: 4vw;
 	}
-	#prod-sec1 > div.flx_cen,
+	:where( #tooling-sec1, #prod-sec1 ) > div.flx_cen,
 	#about-cert > .kai_contain > .txt_right,
 	.head_left{
 		flex-direction: column;
+	}
+	:where( #tooling-sec1, #prod-sec1 ) > div.flx_cen > h2{
+		text-align: center;
+		border-right: none;
+		border-bottom: 1px solid var(--fill_blue);
 	}
 	#about-award,
 	#home-award{
@@ -1572,7 +1555,8 @@ body[data-page="plateing"] #hero{
 		left: auto;
 		bottom: 1rem;
 	}
-	#about-cert .txt_right > .spc_btw::before{
+	#about-cert .txt_right > .spc_btw::before,
+	:where( #tooling-sec1, #prod-sec1 ) > div.flx_cen br{
 		display: none;
 	}
 	#about-cert h2[lang-id="word_cert"] {

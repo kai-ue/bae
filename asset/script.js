@@ -187,18 +187,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	const path_Pro_gal = "img/img-index/img-crsl-pro_gal/";
 	const $arrProGal = [
-		{ title: 'Parts1 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts2 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts3 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts4 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts5 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts6 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts7 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts8 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts9 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts10 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts11 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
-		{ title: 'Parts12 Catalytic Converter Bracket', file_name: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif`, link_add: `${path_Pro_gal}s-Bracket Corner Sensor  E.avif` },
+		{ title: 'Bolt Mtg', file_name: `${path_Pro_gal}Bolt_Mtg.avif`, link_add: `${path_Pro_gal}Bolt_Mtg.avif` },
+		{ title: 'Bracket1', file_name: `${path_Pro_gal}Bracket1.avif`, link_add: `${path_Pro_gal}Bracket1.avif` },
+		{ title: 'BRKT', file_name: `${path_Pro_gal}BRKT.avif`, link_add: `${path_Pro_gal}BRKT.avif` },
+		{ title: 'BRKT Air Cleaner', file_name: `${path_Pro_gal}BRKT_Air_Cleaner.avif`, link_add: `${path_Pro_gal}BRKT_Air_Cleaner.avif` },
+		{ title: 'BRKT Assy', file_name: `${path_Pro_gal}BRKT_Assy.avif`, link_add: `${path_Pro_gal}BRKT_Assy.avif` },
+		{ title: 'BRKT Assy Accel Pedal', file_name: `${path_Pro_gal}BRKT_Assy_Accel_Pedal.avif`, link_add: `${path_Pro_gal}BRKT_Assy_Accel_Pedal.avif` },
+		{ title: 'BRKT Assy Fog Lamp', file_name: `${path_Pro_gal}BRKT_Assy_Fog_Lamp.avif`, link_add: `${path_Pro_gal}BRKT_Assy_Fog_Lamp.avif` },
+		{ title: 'BRKT Cable End', file_name: `${path_Pro_gal}BRKT_Cable_End.avif`, link_add: `${path_Pro_gal}BRKT_Cable_End.avif` },
+		{ title: 'BRKT Catalytic Con', file_name: `${path_Pro_gal}BRKT_Catalytic_Con.avif`, link_add: `${path_Pro_gal}BRKT_Catalytic_Con.avif` },
+		{ title: 'BRKT Diff Mtg', file_name: `${path_Pro_gal}BRKT_Diff_Mtg.avif`, link_add: `${path_Pro_gal}BRKT_Diff_Mtg.avif` },
+		{ title: 'BRKT Elec Unit', file_name: `${path_Pro_gal}BRKT_Elec_Unit.avif`, link_add: `${path_Pro_gal}BRKT_Elec_Unit.avif` },
+		{ title: 'BRKT Harness', file_name: `${path_Pro_gal}BRKT_Harness.avif`, link_add: `${path_Pro_gal}BRKT_Harness.avif` },
+		{ title: 'BRKT Hose Cont', file_name: `${path_Pro_gal}BRKT_Hose_Cont.avif`, link_add: `${path_Pro_gal}BRKT_Hose_Cont.avif` },
+		{ title: 'BRKT Pump', file_name: `${path_Pro_gal}BRKT_Pump.avif`, link_add: `${path_Pro_gal}BRKT_Pump.avif` },
+		{ title: 'BRKT Resvr Tank', file_name: `${path_Pro_gal}BRKT_Resvr_Tank.avif`, link_add: `${path_Pro_gal}BRKT_Resvr_Tank.avif` },
+		{ title: 'BRKT Tube', file_name: `${path_Pro_gal}BRKT_Tube.avif`, link_add: `${path_Pro_gal}BRKT_Tube.avif` },
+		{ title: 'Clamp', file_name: `${path_Pro_gal}Clamp.avif`, link_add: `${path_Pro_gal}Clamp.avif` },
+		{ title: 'Clamp-1', file_name: `${path_Pro_gal}Clamp-1.avif`, link_add: `${path_Pro_gal}Clamp-1.avif` },
+		{ title: 'Plate Clamp', file_name: `${path_Pro_gal}Plate_Clamp.avif`, link_add: `${path_Pro_gal}Plate_Clamp.avif` },
+		{ title: 'Protector Heat', file_name: `${path_Pro_gal}Protector_Heat.avif`, link_add: `${path_Pro_gal}Protector_Heat.avif` },
+		{ title: 'Prptector Fuel Fillter', file_name: `${path_Pro_gal}Prptector_Fuel_Fillter.avif`, link_add: `${path_Pro_gal}Prptector_Fuel_Fillter.avif` },
+		{ title: 'Strut', file_name: `${path_Pro_gal}Strut.avif`, link_add: `${path_Pro_gal}Strut.avif` },
+		{ title: 'Washer', file_name: `${path_Pro_gal}Washer.avif`, link_add: `${path_Pro_gal}Washer.avif` }
 	];
 
 	const path_Client = "img/img-index/img-crsl-client_gal/logo-";
@@ -296,6 +307,77 @@ document.addEventListener('DOMContentLoaded', function () {
 			url: "plateing.html"
 		}
 	];
+	
+	const $facTool = [
+		{
+	    	title: "VMC Machine",
+    		image: "HB-3210", // Image for the first machine
+		    rows: [
+				{ key: "Brand", value: "HARTFORD" 		},
+				{ key: "Model", value: "HB-3210 / S" 		},
+				{ key: "X/Y/Z travels (mm)", value: "3200 / 2100 / 1000" 		},
+				{ key: "Table size (mm)", value: "3200 x 2040" }
+		    ]
+		},
+		{
+		    title: "VMC Machine",
+		    image: "VMC-1600S", // Image for the second machine
+		    rows: [
+				{ key: "Brand", value: "HARTFORD" 		},
+				{ key: "Model", value: "VMC-1600S" 		},
+				{ key: "X/Y/Z travels (mm)", value: "1600 / 800 / 660" 		},
+				{ key: "Table size (mm)", value: "1700 x 750" }
+		    ]
+		},
+		{
+			title: "EDM wire-cut",
+			image: "",
+			rows: [
+				{ key: "Brand", value: "Mitsubishi" },
+				{ key: "Model", value: "MV1200S" },
+				{ key: "Max workpiece (W / D / H)", value: "810 x 700 x 215 mm" },
+				{ key: "Max workpiece weight", value: "500 kg" },
+				{ key: "X / Y / Z travels", value: "400 x 300 x 220 mm" },
+				{ key: "W axis travel", value: "300 mm" }
+			]
+		},
+		{
+			title: "EDM drilling",
+			image: "",
+			rows: [
+				{ key: "Brand", value: "IDDA" },
+				{ key: "Model", value: "DK703" },
+				{ key: "Worktable size", value: "320 x 440 mm" },
+				{ key: "Table travel", value: "250 x 350 mm" },
+				{ key: "Z axis travel", value: "350 mm" }
+			]
+		},
+		{
+			title: "Laser scanner",
+			image: "",
+			rows: [
+				{ key: "Brand", value: "Hexagon" },
+				{ key: "Model", value: "Absolute Arm 83" }
+			]
+		},
+		{
+			title: "CAD software",
+			image: "",
+			rows: [
+				{ key: "Company", value: "Cimatron" },
+				{ key: "Model", value: "12" }
+			]
+		},
+		{
+			title: "Other",
+			image: "",
+			rows: [
+				{ key: "Die Spotting M/C", value: "" },
+				{ key: "Grinding M/C", value: "" },
+				{ key: "Manual Lathe", value: "" }
+			]
+		}
+	];
 
 	const $arrToolingSec1 = [
 		["Faster Turnaround & Agile Response", "Quick adjustments, faster prototyping, and shorter lead times compared to outsourcing.", "speed"],
@@ -355,8 +437,9 @@ document.addEventListener('DOMContentLoaded', function () {
 			break;
 			
 			case 'tooling':
-				generateTable('table_tooling_sec1', $arrToolingSec1, 'tool_adv1');
-				generateTable('table_tooling_sec2', $arrToolingSec2, 'tool_adv2');
+				facilityTables( $facTool, 'tab_tool_sec2');
+				generateTable('tab_tool_sec3_1', $arrToolingSec1, 'tool_adv1');
+				generateTable('tab_tool_sec3_2', $arrToolingSec2, 'tool_adv2');
 				
 				break;
 
@@ -530,7 +613,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	function generateTable(tableWrapID, data, tableID) {
 		const $tableWrap = document.getElementById(tableWrapID);
-		const prefixes = ["about-ComProf", "table_tooling_sec"];
+		const prefixes = ["about-ComProf", "tab_tool_sec"];
 		
 		let table = document.createElement("table");
 		table.setAttribute("border", "1");
@@ -538,10 +621,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		data.forEach((rowData, rowIndex) => {
 			let tr = document.createElement("tr");
-
 			let th = document.createElement("th");
 			th.setAttribute("lang-id", `${tableID}_tr${rowIndex + 1}_th`);
 			if (prefixes.some(prefix => tableWrapID.startsWith(prefix))) {
+				tr.setAttribute("class", "brdr_btm_blue");
 				th.setAttribute("class", "font_blue");
 				th.innerHTML = `<span class='material-symbols-outlined'>${rowData[2]}</span>${rowData[0]}`;
 			} else {
@@ -681,6 +764,91 @@ document.addEventListener('DOMContentLoaded', function () {
 				window.location.href = mailtoLink;
 			}
 		});
-	}	
+	}
+
+	function facilityTables(tablesData, sectionID) {
+		const $tableWrap = document.getElementById(sectionID);
+
+		// Clear the container before adding new tables
+		$tableWrap.innerHTML = '';
+
+		// Group tables by title
+		const groupedTables = {};
+		tablesData.forEach(tableData => {
+			if(!groupedTables[tableData.title]) {
+				groupedTables[tableData.title] = [];
+			}
+			groupedTables[tableData.title].push(tableData);
+		});
+
+		// Create a table for each group
+		Object.keys(groupedTables).forEach(title => {
+			const group = groupedTables[title];
+
+			// Create a wrapper <div> for the table group
+			let tableContainer = document.createElement("div");
+			tableContainer.classList.add("fac_tab_cont");
+
+			// Create the <table> element
+			let table = document.createElement("table");
+			table.setAttribute("border", "1");
+			table.setAttribute("cellpadding", "5");
+
+			// Add table title as a <caption>
+			let caption = document.createElement("caption");
+			caption.textContent = title;
+			table.appendChild(caption);
+
+			// Create a header row for the group
+			let headerRow = document.createElement("tr");
+			let headerTh = document.createElement("th");
+			headerTh.setAttribute("colspan", group.length + 1); // Span across all columns
+			headerTh.textContent = title;
+			headerTh.classList.add("font_blue");
+			headerRow.appendChild(headerTh);
+			table.appendChild(headerRow);
+
+			// Create rows for each key
+			group[0].rows.forEach((rowData, rowIndex) => {
+				let tr = document.createElement("tr");
+				tr.setAttribute("class", "brdr_btm_blue");
+
+				// Add the key as a <th>
+				let th = document.createElement("th");
+				th.setAttribute("class", "font_blue");
+				th.setAttribute("lang-id", `table_${title}_tr${rowIndex + 1}_th`);
+				th.textContent = rowData.key;
+				tr.appendChild(th);
+
+				// Add a <td> and <img> for each machine in the group
+				group.forEach((machine, machineIndex) => {
+					let td = document.createElement("td");
+					td.setAttribute("lang-id", `table_${title}_tr${rowIndex + 1}_td${machineIndex + 1}`);
+					td.textContent = machine.rows[rowIndex].value;
+					tr.appendChild(td);
+
+					// Add image for the first row only (assuming all machines have the same structure)
+					if(rowIndex === 0) {
+						let img = document.createElement("img");
+						img.src = `../img/img-tooling/${machine.image}.avif`; // Use the correct path
+						img.alt = machine.title;
+						img.classList.add("fac_tab_img");
+						td.appendChild(img);
+					}
+				});
+
+				table.appendChild(tr);
+			});
+
+			// Append the table to the wrapper <div>
+			tableContainer.appendChild(table);
+
+			// Append the wrapper <div> to the container
+			$tableWrap.appendChild(tableContainer);
+		});
+	}
+
+
+
 	
 });
