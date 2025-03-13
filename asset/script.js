@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	const $facTool = [
 		{
 	    	title: "VMC Machine",
-    		image: "HB-3210", // Image for the first machine
+    		image: "img-tooling/hb_3210",
 		    rows: [
 				{ key: "Brand", value: "HARTFORD" 		},
 				{ key: "Model", value: "HB-3210 / S" 		},
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		},
 		{
 		    title: "VMC Machine",
-		    image: "VMC-1600S", // Image for the second machine
+		    image: "img-tooling/vmc_1600s",
 		    rows: [
 				{ key: "Brand", value: "HARTFORD" 		},
 				{ key: "Model", value: "VMC-1600S" 		},
@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		},
 		{
 			title: "EDM wire-cut",
-			image: "",
+			image: "img-tooling/mv1200s",
 			rows: [
 				{ key: "Brand", value: "Mitsubishi" },
 				{ key: "Model", value: "MV1200S" },
@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		},
 		{
 			title: "EDM drilling",
-			image: "",
+			image: "img-tooling/dk703",
 			rows: [
 				{ key: "Brand", value: "IDDA" },
 				{ key: "Model", value: "DK703" },
@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		},
 		{
 			title: "Laser scanner",
-			image: "",
+			image: "img-tooling/arm_83",
 			rows: [
 				{ key: "Brand", value: "Hexagon" },
 				{ key: "Model", value: "Absolute Arm 83" }
@@ -362,15 +362,31 @@ document.addEventListener('DOMContentLoaded', function () {
 		},
 		{
 			title: "CAD software",
-			image: "",
+			image: "img-tooling/cimatron",
 			rows: [
 				{ key: "Company", value: "Cimatron" },
 				{ key: "Model", value: "12" }
 			]
 		},
 		{
+			title: "CAD software",
+			image: "img-tooling/siemens",
+			rows: [
+				{ key: "Company", value: "Siemens" },
+				{ key: "Model", value: "NX ver.11" }
+			]
+		},
+		{
+			title: "CAD software",
+			image: "img-tooling/autocad",
+			rows: [
+				{ key: "Company", value: "AutoCAD" },
+				{ key: "Model", value: "Mechanical" }
+			]
+		},
+		{
 			title: "Other",
-			image: "",
+			//image: "",
 			rows: [
 				{ key: "Die Spotting M/C", value: "" },
 				{ key: "Grinding M/C", value: "" },
@@ -427,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				
 			case 'csr':
 				SolarSpec();
-				modalOnly('csr-iso_cert');
+				modalOnly('#csr-iso_cert');
 				
 				break;
 				
@@ -438,6 +454,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			
 			case 'tooling':
 				facilityTables( $facTool, 'tab_tool_sec2');
+				modalOnly('.wrap_thumb');
 				generateTable('tab_tool_sec3_1', $arrToolingSec1, 'tool_adv1');
 				generateTable('tab_tool_sec3_2', $arrToolingSec2, 'tool_adv2');
 				
@@ -711,12 +728,15 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 	
-	function modalOnly( aID ){
-		const linkElement = document.getElementById( aID);
-		const imgUrl = linkElement.href;
-		linkElement.addEventListener('click', (event) => {
-			event.preventDefault();
-			openModal( imgUrl );
+	function modalOnly(aClass) {
+		const $linkElements = document.querySelectorAll(aClass);
+
+		$linkElements.forEach(linkElement => {
+			const imgUrl = linkElement.href;
+			linkElement.addEventListener('click', (event) => {
+				event.preventDefault();
+				openModal(imgUrl);
+			});
 		});
 	}
 
@@ -768,11 +788,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	function facilityTables(tablesData, sectionID) {
 		const $tableWrap = document.getElementById(sectionID);
-
-		// Clear the container before adding new tables
 		$tableWrap.innerHTML = '';
 
-		// Group tables by title
 		const groupedTables = {};
 		tablesData.forEach(tableData => {
 			if(!groupedTables[tableData.title]) {
@@ -781,73 +798,95 @@ document.addEventListener('DOMContentLoaded', function () {
 			groupedTables[tableData.title].push(tableData);
 		});
 
-		// Create a table for each group
 		Object.keys(groupedTables).forEach(title => {
 			const group = groupedTables[title];
 
-			// Create a wrapper <div> for the table group
 			let tableContainer = document.createElement("div");
 			tableContainer.classList.add("fac_tab_cont");
 
-			// Create the <table> element
 			let table = document.createElement("table");
 			table.setAttribute("border", "1");
 			table.setAttribute("cellpadding", "5");
 
-			// Add table title as a <caption>
-			let caption = document.createElement("caption");
-			caption.textContent = title;
-			table.appendChild(caption);
-
-			// Create a header row for the group
 			let headerRow = document.createElement("tr");
+
 			let headerTh = document.createElement("th");
-			headerTh.setAttribute("colspan", group.length + 1); // Span across all columns
+			headerTh.setAttribute("colspan", 1); // Only span the first column
 			headerTh.textContent = title;
 			headerTh.classList.add("font_blue");
 			headerRow.appendChild(headerTh);
+
+			group.forEach((machine, machineIndex) => {
+				let td = document.createElement("td");
+				td.setAttribute("lang-id", `table_${title}_tr1_td${machineIndex + 1}`);
+
+				const $aTag = document.createElement('a');
+				$aTag.href = `../img/${machine.image}.avif`;
+				$aTag.removeAttribute('target');
+				$aTag.addEventListener('click', (event) => {
+					event.preventDefault();
+					openModal($aTag.href);
+				});
+
+				let img = document.createElement("img");
+				img.src = $aTag.href;
+				img.alt = machine.title;
+				img.classList.add("fac_tab_img");
+
+				$aTag.appendChild(img);
+				td.appendChild($aTag);
+
+				headerRow.appendChild(td);
+			});
 			table.appendChild(headerRow);
 
-			// Create rows for each key
 			group[0].rows.forEach((rowData, rowIndex) => {
 				let tr = document.createElement("tr");
 				tr.setAttribute("class", "brdr_btm_blue");
 
-				// Add the key as a <th>
 				let th = document.createElement("th");
 				th.setAttribute("class", "font_blue");
 				th.setAttribute("lang-id", `table_${title}_tr${rowIndex + 1}_th`);
 				th.textContent = rowData.key;
 				tr.appendChild(th);
 
-				// Add a <td> and <img> for each machine in the group
 				group.forEach((machine, machineIndex) => {
 					let td = document.createElement("td");
 					td.setAttribute("lang-id", `table_${title}_tr${rowIndex + 1}_td${machineIndex + 1}`);
 					td.textContent = machine.rows[rowIndex].value;
 					tr.appendChild(td);
-
-					// Add image for the first row only (assuming all machines have the same structure)
-					if(rowIndex === 0) {
-						let img = document.createElement("img");
-						img.src = `../img/img-tooling/${machine.image}.avif`; // Use the correct path
-						img.alt = machine.title;
-						img.classList.add("fac_tab_img");
-						td.appendChild(img);
-					}
 				});
-
 				table.appendChild(tr);
 			});
-
-			// Append the table to the wrapper <div>
 			tableContainer.appendChild(table);
-
-			// Append the wrapper <div> to the container
 			$tableWrap.appendChild(tableContainer);
+
+			setTimeout(() => {
+				checkOverflow(headerTh);
+			}, 0);
+		});
+		// Use ResizeObserver to handle dynamic resizing
+		const resizeObserver = new ResizeObserver(entries => {
+			entries.forEach(entry => {
+				const headerTh = entry.target.querySelector('th');
+				if(headerTh) {
+					checkOverflow(headerTh);
+				}
+			});
+		});
+		document.querySelectorAll('.fac_tab_cont').forEach(container => {
+			resizeObserver.observe(container);
 		});
 	}
-
+	function checkOverflow(headerTh) {
+		const parentWidth = headerTh.parentElement.offsetWidth;
+		const thWidth = headerTh.scrollWidth;
+		if(thWidth > parentWidth * 0.5) {
+			headerTh.classList.add('right_0');
+		} else {
+			headerTh.classList.remove('right_0');
+		}
+	}
 
 
 	

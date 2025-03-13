@@ -312,7 +312,7 @@ header{
 	left: 0;
 	margin: 0;
 	background-color: rgba(0, 0, 0, 0.3);
-	backdrop-filter: blur(3px); /* Apply blur to the content behind the header */
+	backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
 }
 header{
@@ -1230,7 +1230,47 @@ body[data-page="tooling"] #hero{
 	color: var(--font_blue);
 	font-weight: 600;
 }
-#tooling-sec3
+#tooling-sec2{
+	background: #ffffff00 url(../img/img-tooling/bg_tooling_sec2.jpg) no-repeat bottom / cover;
+}
+#tab_tool_sec2{
+	gap: 3rem 2rem;
+}
+:where(#tab_tool_sec2.py-3) > h2{
+	text-shadow: #fff 0px 1px 6px, #fff 0px 1px 7px, #fff 0px 1px 8px, #fff 0px 1px 11px;
+}
+.fac_tab_cont tr{
+	text-shadow: 0 0 5px #fff;
+	background-color: rgb(255 255 255 / 60%);
+	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
+}
+.fac_tab_img{
+	width: 5rem;
+}
+:where(.fac_tab_cont table tr){
+	position: relative;
+}	
+:where(.fac_tab_cont table tr:first-child) > th { 
+	position: absolute;
+	top: -1.5em;
+    left: 50%;
+	right: auto;
+	font-size: 1.5em;
+	font-weight: bold;
+	white-space: nowrap;
+	text-shadow: #fff 0px 1px 6px, #fff 0px 1px 7px, #fff 0px 1px 8px,  #fff 0px 1px 11px;
+}
+:where(.fac_tab_cont table tr:first-child) > th.right_0 {
+	left: auto;
+	right: 0;
+}
+:where(.fac_tab_cont table tr:not(:first-child)) > th,  
+:where(.fac_tab_cont table tr td) { 
+	font-size: 0.9rem;
+	line-height: 1rem;
+}
+
 
 
 
