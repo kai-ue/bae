@@ -394,6 +394,106 @@ document.addEventListener('DOMContentLoaded', function () {
 			]
 		}
 	];
+	
+	const $facStamp = [
+		{
+			title: "Stamping Machine",
+			image: "img-stamping/stamp-500T",
+			rows: [
+				{ key: "Maximum Capacity", value: "500 TON" },
+				{ key: "Die height (mm)", value: "860" },
+				{ key: "Slide adjustment (mm)", value: "430" },
+				{ key: "Upper Ram (mm)", value: "2000 x 1200" },
+				{ key: "Bolster (table) size (mm)", value: "2000 x 1300" },
+				{ key: "Type", value: "TAND / PROG" }
+			]
+		},
+		{
+			title: "Stamping Machine",
+			image: "img-stamping/stamp-350T",
+			rows: [
+				{ key: "Maximum Capacity", value: "350 TON" },
+				{ key: "Die height (mm)", value: "800" },
+				{ key: "Slide adjustment (mm)", value: "450" },
+				{ key: "Upper Ram (mm)", value: "2500 x 1520" },
+				{ key: "Bolster (table) size (mm)", value: "2500 x 1520" },
+				{ key: "Type", value: "TANDEM" }
+			]
+		},
+		{
+			title: "Stamping Machine",
+			image: "img-stamping/stamp-300T",
+			rows: [
+				{ key: "Maximum Capacity", value: "300 TON" },
+				{ key: "Die height (mm)", value: "590" },
+				{ key: "Slide adjustment (mm)", value: "110" },
+				{ key: "Upper Ram (mm)", value: "2100 x 700" },
+				{ key: "Bolster (table) size (mm)", value: "900 x 950" },
+				{ key: "Type", value: "TAND / PROG" }
+			]
+		},
+		{
+			title: "Stamping Machine",
+			image: "img-stamping/stamp-250T",
+			rows: [
+				{ key: "Maximum Capacity", value: "250 TON" },
+				{ key: "Die height (mm)", value: "550" },
+				{ key: "Slide adjustment (mm)", value: "120" },
+				{ key: "Upper Ram (mm)", value: "2700 x 920" },
+				{ key: "Bolster (table) size (mm)", value: "2700 x 920" },
+				{ key: "Type", value: "TAND / PROG" }
+			]
+		},
+		{
+			title: "Stamping Machine",
+			image: "img-stamping/stamp-200T",
+			rows: [
+				{ key: "Maximum Capacity", value: "200 TON" },
+				{ key: "Die height (mm)", value: "500" },
+				{ key: "Slide adjustment (mm)", value: "105" },
+				{ key: "Upper Ram (mm)", value: "1830 x 650" },
+				{ key: "Bolster (table) size (mm)", value: "2400 x 800" },
+				{ key: "Type", value: "TANDEM" }
+			]
+		},
+		{
+			title: "Stamping Machine",
+			image: "img-stamping/stamp-110T",
+			rows: [
+				{ key: "Maximum Capacity", value: "110 TON" },
+				{ key: "Die height (mm)", value: "390" },
+				{ key: "Slide adjustment (mm)", value: "100" },
+				{ key: "Upper Ram (mm)", value: "600 x 500" },
+				{ key: "Bolster (table) size (mm)", value: "1100 x 700" },
+				{ key: "Type", value: "TANDEM" }
+			]
+		},
+		{
+			title: "Stamping Machine",
+			image: "img-stamping/stamp-80T",
+			rows: [
+				{ key: "Maximum Capacity", value: "80 TON" },
+				{ key: "Die height (mm)", value: "350" },
+				{ key: "Slide adjustment (mm)", value: "130" },
+				{ key: "Upper Ram (mm)", value: "500 x 400" },
+				{ key: "Bolster (table) size (mm)", value: "1000 x 600" },
+				{ key: "Type", value: "TAND / PROG" }
+			]
+		},
+		{
+			title: "Stamping Machine",
+			image: "img-stamping/stamp-60T",
+			rows: [
+				{ key: "Maximum Capacity", value: "60 TON" },
+				{ key: "Die height (mm)", value: "300" },
+				{ key: "Slide adjustment (mm)", value: "70" },
+				{ key: "Upper Ram (mm)", value: "500 x 400" },
+				{ key: "Bolster (table) size (mm)", value: "900 x 550" },
+				{ key: "Type", value: "TANDEM" }
+			]
+		}
+	];
+	
 
 	const $arrToolingSec1 = [
 		["Faster Turnaround & Agile Response", "Quick adjustments, faster prototyping, and shorter lead times compared to outsourcing.", "speed"],
@@ -430,7 +530,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				generateTable('wrap_Awd-Mmth', $arrAwdMmth);
 				generateTable('wrap_Awd-Bri', $arrAwdBri);
 				generateTable('wrap_Awd-Hone', $arrAwdHone);
-				
 				break;
 			
 			case 'products':
@@ -438,28 +537,30 @@ document.addEventListener('DOMContentLoaded', function () {
 				loadSVG('img/common/parts_mapping/parts_mapping.svg', 'parts_mapping_container');
 				populateCarousel('crsl-pro_gal', $arrProGal);
 				populateCarousel('crsl-client', $arrClient);
-				
 				break;
 				
 			case 'csr':
 				SolarSpec();
 				modalOnly('#csr-iso_cert');
-				
 				break;
 				
 			case 'contact':	
 				ContactFormSubmit();
-				
-			break;
+				break;
 			
 			case 'tooling':
 				facilityTables( $facTool, 'tab_tool_sec2');
 				modalOnly('.wrap_thumb');
 				generateTable('tab_tool_sec3_1', $arrToolingSec1, 'tool_adv1');
 				generateTable('tab_tool_sec3_2', $arrToolingSec2, 'tool_adv2');
-				
 				break;
 
+			case 'stamping':
+				facilityTables( $facStamp, 'tab_stamp');
+				modalOnly('.wrap_thumb');
+				
+				break;
+				
 			// Add more cases for other pages if needed
 		}
 	}

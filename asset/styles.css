@@ -96,10 +96,10 @@ p.font_wh{
 .kai_contain{
 	width: 100%;
 	max-width: 1140px;
-    padding-right: var(--bs-gutter-x, .75rem);
-    padding-left: var(--bs-gutter-x, .75rem);
-    margin-right: auto;
-    margin-left: auto;
+	padding-right: var(--bs-gutter-x, .75rem);
+	padding-left: var(--bs-gutter-x, .75rem);
+	margin-right: auto;
+	margin-left: auto;
 }
 .pstn_rel_dis_blck{
 	position: relative;
@@ -521,7 +521,8 @@ footer ul:where(:not([class])) {
 	height: calc(90vh + 55px); 
 	max-height: 900px;
 	min-height: 300px;
-	background: #cfe1fe no-repeat center center/ cover;
+	background: linear-gradient(-45deg, #5389DC, rgb(234 185 200))
+	 no-repeat center center/ cover;
 	z-index: 0;
 }
 #hero.secondary {
@@ -1231,19 +1232,20 @@ body[data-page="tooling"] #hero{
 	font-weight: 600;
 }
 #tooling-sec2{
-	background: #ffffff00 url(../img/img-tooling/bg_tooling_sec2.jpg) no-repeat bottom / cover;
+	background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3)), url(../img/img-tooling/bg_tooling_sec2.jpg) no-repeat bottom / cover;
 }
 #tab_tool_sec2{
 	gap: 3rem 2rem;
 }
-:where(#tab_tool_sec2.py-3) > h2{
+#tooling-sec2 > h2{
 	text-shadow: #fff 0px 1px 6px, #fff 0px 1px 7px, #fff 0px 1px 8px, #fff 0px 1px 11px;
 }
-.fac_tab_cont tr{
+.fac_tab_cont > table{
 	text-shadow: 0 0 5px #fff;
 	background-color: rgb(255 255 255 / 60%);
 	backdrop-filter: blur(3px);
 	-webkit-backdrop-filter: blur(3px);
+	box-shadow: 1px 1px 12px #00000096;
 }
 .fac_tab_img{
 	width: 5rem;
@@ -1270,14 +1272,46 @@ body[data-page="tooling"] #hero{
 	font-size: 0.9rem;
 	line-height: 1rem;
 }
-
-
-
+#tooling-sec3{
+	background-image: radial-gradient(ellipse farthest-corner at 5% 5%, #F6EBE6, #dae3f2);
+}
 
 /*   Stamping   */
 body[data-page="stamping"] #hero{
-	background-image: url( "../img/img-stamping/hero_img-tooling.avif" );
+	background-image: url( "../img/img-index/hero_img.avif" );
 }
+.scroll_icon {
+	position: absolute;
+	right: 50%;
+	top: 50%;
+	font-size: 8rem;
+	padding: 0.5rem;
+	color: #fff;
+	background-color: #000;
+	border-radius: 20%;
+	pointer-events: none;
+	opacity: .5;
+	transition: opacity 0.3s ease;
+}
+#stamping-fac:hover .scroll_icon,
+#stamping-fac:focus-within .scroll_icon {
+	opacity: 0;
+}
+/* Ensure the scrollable content is focusable for :focus-within to work */
+#stamping-fac{
+	outline: none;
+}
+#tab_stamp{
+	width: 100%;
+	overflow-x: auto;
+}
+#tab_stamp table{
+	padding: 0.5rem;
+}
+#tab_stamp td{
+	padding: 0 1rem;
+}
+
 
 /*   Welding   */
 body[data-page="welding"] #hero{
